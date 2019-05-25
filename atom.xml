@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>离沫凌天๓</title>
   
-  
+  <subtitle>-Lintstar</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-22T13:49:08.806Z</updated>
+  <updated>2019-05-25T10:13:28.021Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS 笔记</title>
+    <link href="http://yoursite.com/2019/05/25/CentOS-%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/05/25/CentOS-笔记/</id>
+    <published>2019-05-25T10:09:05.000Z</published>
+    <updated>2019-05-25T10:13:28.021Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://qiniuyun.lintstar.top/CentOS-笔记.png" alt="CentOS-笔记"></p><p>####CentOS 常用命令<br>shutdown -h now             关机<br>shutdown -h +3              三分钟后关机<br>halt<br>poweroff<br>init 0</p><p>shutdown -r now             重启<br>shutdown -r +3              三分钟重启<br>reboot<br>init 6</p><p>cat 1.txt | tail - n +3001 | head -n 1000                       截取文件中的3001到4000</p><p>grep o 1.txt                正常过滤<br>grep -v 1.txt               反向过滤</p><p>cat &gt;1.txt                  清空文件内容<br>ll -d /data/www             查看权限</p><p>pkill -kill -t tty3          杀死用户进程</p><p>mkdir /media/cdrom<br>mount /dev/sr0  /media/cdrom             挂载光盘<br>umount /media/cdrom                      卸载</p><p>systemctl stop firewalld.service         关闭防火墙<br>setenforce 0                             给外界权限<br>systemctl disable firewalld.service      永久关闭<br>systemctl enable firewalld.service       永久开启<br>vim /etc/rc.d/rc.local                   设置开机启动<br>为镜像添加开机自动挂载<br>echo “mount /dev/sr0  /media/cdrom” &gt;&gt; /etc/rc.d/rc.local</p><p>vim /etc/selinux/config<br>^vim^cat                        把vim替换成cat继续执行</p><p>ls -al                          看临时文件</p><p>####CentOS7 目录文件</p><ul><li>/etc/yum.repos.d/                   yum源文件位置</li><li>/etc/rc.d/rc.local                  开机启动文件</li><li>rm -f /var/run/yum.pid</li><li>yum clean all                       清空yum源缓存</li><li>/etc/nginx/conf.d/default.conf      Nginx配置文件</li><li>vim /etc/my.cnf                     去mysql密码要求</li><li>/usr/share/nginx/html/              Nginx主页文件位置</li><li>/etc/httpd/conf/httpd.conf          Apache配置文件</li><li>/var/www/html/                      Apache主页文件位置</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;http://qiniuyun.lintstar.top/CentOS-笔记.png&quot; alt=&quot;CentOS-笔记&quot;&gt;&lt;/p&gt;
+&lt;p&gt;####CentOS 常用命令&lt;br&gt;shutdown -h now             关机&lt;br&gt;shutdo
+      
+    
+    </summary>
+    
+      <category term="Note" scheme="http://yoursite.com/categories/Note/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -34,6 +60,29 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Who am I</title>
+    <link href="http://yoursite.com/2019/05/21/Who-am-I/"/>
+    <id>http://yoursite.com/2019/05/21/Who-am-I/</id>
+    <published>2019-05-21T10:01:24.000Z</published>
+    <updated>2019-05-25T10:14:45.083Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="未来可期"><a href="#未来可期" class="headerlink" title="未来可期"></a>未来可期</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;未来可期&quot;&gt;&lt;a href=&quot;#未来可期&quot; class=&quot;headerlink&quot; title=&quot;未来可期&quot;&gt;&lt;/a&gt;未来可期&lt;/h3&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Me" scheme="http://yoursite.com/tags/Me/"/>
     
   </entry>
   
