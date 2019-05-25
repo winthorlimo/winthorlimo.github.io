@@ -169,7 +169,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">-Lintstar</p>
+        <p class="site-subtitle">花开花落 一路上起起跌跌</p>
       
   </div>
 
@@ -407,8 +407,15 @@
       
         
           
-            <h3 id="未来可期"><a href="#未来可期" class="headerlink" title="未来可期"></a>未来可期</h3>
+          未来可期
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/21/Who-am-I/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -581,31 +588,19 @@
       
         
           
-            <p><img src="http://qiniuyun.lintstar.top/CentOS-笔记.png" alt="CentOS-笔记"></p>
-<p>####CentOS 常用命令<br>shutdown -h now             关机<br>shutdown -h +3              三分钟后关机<br>halt<br>poweroff<br>init 0</p>
-<p>shutdown -r now             重启<br>shutdown -r +3              三分钟重启<br>reboot<br>init 6</p>
-<p>cat 1.txt | tail - n +3001 | head -n 1000                       截取文件中的3001到4000</p>
-<p>grep o 1.txt                正常过滤<br>grep -v 1.txt               反向过滤</p>
-<p>cat &gt;1.txt                  清空文件内容<br>ll -d /data/www             查看权限</p>
-<p>pkill -kill -t tty3          杀死用户进程</p>
-<p>mkdir /media/cdrom<br>mount /dev/sr0  /media/cdrom             挂载光盘<br>umount /media/cdrom                      卸载</p>
-<p>systemctl stop firewalld.service         关闭防火墙<br>setenforce 0                             给外界权限<br>systemctl disable firewalld.service      永久关闭<br>systemctl enable firewalld.service       永久开启<br>vim /etc/rc.d/rc.local                   设置开机启动<br>为镜像添加开机自动挂载<br>echo “mount /dev/sr0  /media/cdrom” &gt;&gt; /etc/rc.d/rc.local</p>
-<p>vim /etc/selinux/config<br>^vim^cat                        把vim替换成cat继续执行</p>
-<p>ls -al                          看临时文件</p>
-<p>####CentOS7 目录文件</p>
-<ul>
-<li>/etc/yum.repos.d/                   yum源文件位置</li>
-<li>/etc/rc.d/rc.local                  开机启动文件</li>
-<li>rm -f /var/run/yum.pid</li>
-<li>yum clean all                       清空yum源缓存</li>
-<li>/etc/nginx/conf.d/default.conf      Nginx配置文件</li>
-<li>vim /etc/my.cnf                     去mysql密码要求</li>
-<li>/usr/share/nginx/html/              Nginx主页文件位置</li>
-<li>/etc/httpd/conf/httpd.conf          Apache配置文件</li>
-<li>/var/www/html/                      Apache主页文件位置</li>
-</ul>
-
           
+####CentOS 常用命令shutdown -h now             关机shutdown -h +3              三分钟后关机haltpoweroffinit 0
+shutdown -r now             重启shutdown -r +3              三分钟重启rebootinit 6
+cat 1.txt | tail - n +3001 | head -n 1000                       截取文件中的3001到4000
+grep 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/25/CentOS-笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -756,17 +751,17 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+More info: 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/22/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
