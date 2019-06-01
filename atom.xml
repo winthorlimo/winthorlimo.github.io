@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://winthorlimo.github.io/"/>
-  <updated>2019-05-25T10:13:28.021Z</updated>
+  <updated>2019-06-01T15:03:59.401Z</updated>
   <id>https://winthorlimo.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github page + hexo Note</title>
+    <link href="https://winthorlimo.github.io/2019/06/01/Github-page-hexo-%E5%91%BD%E4%BB%A4/"/>
+    <id>https://winthorlimo.github.io/2019/06/01/Github-page-hexo-命令/</id>
+    <published>2019-06-01T14:35:06.000Z</published>
+    <updated>2019-06-01T15:03:59.401Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="2019-6-1"><a href="#2019-6-1" class="headerlink" title="2019.6.1"></a>2019.6.1</h4><p>Git 远程遇到了问题:</p><blockquote><p>Please make sure you have the correct access rights and the repository exists.</p></blockquote><p>发现是ssh key有问题，连接不上服务器</p><ol><li><p>首先是重新在git设置一下身份的名字和邮箱：</p><ul><li><code>git config --global user.name &quot;yourname&quot;</code></li><li><p><code>git config --global user.email“your@email.com&quot;</code></p><p>注：要添加具体的yourname，your@email</p></li></ul></li><li><p>删除.ssh文件夹（直接搜索该文件夹）下的known_hosts</p><p> win10必备搜索软件： Everything</p></li><li><p>在 git输入命令：</p><p> <code>$ ssh-keygen -t rsa -C &quot;your@email.com&quot;</code></p><p> 然后会出现：</p><blockquote><p>Generating public/private rsa key pair. Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):</p></blockquote><p> 回车后系统自动在 .ssh 文件夹下生成两个文件，id_rsa和id_rsa.pub，用记事本打开id_rsa.pub，把全部内容复制</p></li><li>登陆GitHub 账户，进入设置中的“SSH and GPG keys”新建 SSH      keys 在 Key中把刚刚复制的粘贴进去，点击 add ssh key</li><li><p>在 git 中输入命令</p><p> <code>ssh -T git@github.com</code></p><p> 然后输入Yes回车，就会提示成功</p></li></ol><p>之后就可以正常 hexo d -g 啦</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;2019-6-1&quot;&gt;&lt;a href=&quot;#2019-6-1&quot; class=&quot;headerlink&quot; title=&quot;2019.6.1&quot;&gt;&lt;/a&gt;2019.6.1&lt;/h4&gt;&lt;p&gt;Git 远程遇到了问题:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Please make s
+      
+    
+    </summary>
+    
+      <category term="Note" scheme="https://winthorlimo.github.io/categories/Note/"/>
+    
+    
+      <category term="hexo" scheme="https://winthorlimo.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS 笔记</title>
