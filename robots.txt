@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /about/
+
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/
+Disallow: /photo/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: https://www.lintstar.top/sitemap.xml
