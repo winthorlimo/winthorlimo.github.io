@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://winthorlimo.github.io/"/>
-  <updated>2019-06-01T15:03:59.401Z</updated>
+  <updated>2019-06-02T04:21:37.353Z</updated>
   <id>https://winthorlimo.github.io/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Github page + hexo Note</title>
-    <link href="https://winthorlimo.github.io/2019/06/01/Github-page-hexo-%E5%91%BD%E4%BB%A4/"/>
-    <id>https://winthorlimo.github.io/2019/06/01/Github-page-hexo-命令/</id>
-    <published>2019-06-01T14:35:06.000Z</published>
-    <updated>2019-06-01T15:03:59.401Z</updated>
+    <title>Hexo日志</title>
+    <link href="https://winthorlimo.github.io/note/2019/undefined02/1c91193.html"/>
+    <id>https://winthorlimo.github.io/note/2019/undefined02/1c91193.html</id>
+    <published>2019-06-02T04:18:55.000Z</published>
+    <updated>2019-06-02T04:21:37.353Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="2019-6-1"><a href="#2019-6-1" class="headerlink" title="2019.6.1"></a>2019.6.1</h4><p>Git 远程遇到了问题:</p><blockquote><p>Please make sure you have the correct access rights and the repository exists.</p></blockquote><p>发现是ssh key有问题，连接不上服务器</p><ol><li><p>首先是重新在git设置一下身份的名字和邮箱：</p><ul><li><code>git config --global user.name &quot;yourname&quot;</code></li><li><p><code>git config --global user.email“your@email.com&quot;</code></p><p>注：要添加具体的yourname，your@email</p></li></ul></li><li><p>删除.ssh文件夹（直接搜索该文件夹）下的known_hosts</p><p> win10必备搜索软件： Everything</p></li><li><p>在 git输入命令：</p><p> <code>$ ssh-keygen -t rsa -C &quot;your@email.com&quot;</code></p><p> 然后会出现：</p><blockquote><p>Generating public/private rsa key pair. Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):</p></blockquote><p> 回车后系统自动在 .ssh 文件夹下生成两个文件，id_rsa和id_rsa.pub，用记事本打开id_rsa.pub，把全部内容复制</p></li><li>登陆GitHub 账户，进入设置中的“SSH and GPG keys”新建 SSH      keys 在 Key中把刚刚复制的粘贴进去，点击 add ssh key</li><li><p>在 git 中输入命令</p><p> <code>ssh -T git@github.com</code></p><p> 然后输入Yes回车，就会提示成功</p></li></ol><p>之后就可以正常 hexo d -g 啦</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="2019-6-1"><a href="#2019-6-1" class="headerlink" title="2019.6.1"></a>2019.6.1</h4><p>Git 远程遇到了问题:</p><blockquote><p>Please make sure you have the correct access rights and the repository exists.</p></blockquote><p>发现是ssh key有问题，连接不上服务器</p><ol><li><p>首先是重新在git设置一下身份的名字和邮箱：</p><ul><li><code>git config --global user.name &quot;yourname&quot;</code></li><li><p><code>git config --global user.email“your@email.com&quot;</code></p><p>注：要添加具体的yourname，your@email</p></li></ul></li><li>删除.ssh文件夹（直接搜索该文件夹）下的known_hosts</li><li><p>在 git输入命令：</p><p> <code>$ ssh-keygen -t rsa -C &quot;your@email.com&quot;</code></p><p> 然后会出现：</p><blockquote><p>Generating public/private rsa key pair. Enter file in which to save the key (/Users/your_user_directory/.ssh/id_rsa):</p></blockquote><p> 回车后系统自动在 .ssh 文件夹下生成两个文件，id_rsa和id_rsa.pub，用记事本打开id_rsa.pub，把全部内容复制</p></li><li>登陆GitHub 账户，进入设置中的“SSH and GPG keys”新建 SSH      keys 在 Key中把刚刚复制的粘贴进去，点击 add ssh key</li><li><p>在 git 中输入命令</p><p> <code>ssh -T git@github.com</code></p><p> 然后输入Yes回车，就会提示成功</p></li></ol><p>之后就可以正常 hexo d -g 啦</p>]]></content>
     
     <summary type="html">
     
@@ -45,10 +45,10 @@
   
   <entry>
     <title>CentOS 笔记</title>
-    <link href="https://winthorlimo.github.io/2019/05/25/CentOS-%E7%AC%94%E8%AE%B0/"/>
-    <id>https://winthorlimo.github.io/2019/05/25/CentOS-笔记/</id>
+    <link href="https://winthorlimo.github.io/note/2019/undefined25/875db5e1.html"/>
+    <id>https://winthorlimo.github.io/note/2019/undefined25/875db5e1.html</id>
     <published>2019-05-25T10:09:05.000Z</published>
-    <updated>2019-05-25T10:13:28.021Z</updated>
+    <updated>2019-06-01T15:14:59.718Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://qiniuyun.lintstar.top/CentOS-笔记.png" alt="CentOS-笔记"></p><p>####CentOS 常用命令<br>shutdown -h now             关机<br>shutdown -h +3              三分钟后关机<br>halt<br>poweroff<br>init 0</p><p>shutdown -r now             重启<br>shutdown -r +3              三分钟重启<br>reboot<br>init 6</p><p>cat 1.txt | tail - n +3001 | head -n 1000                       截取文件中的3001到4000</p><p>grep o 1.txt                正常过滤<br>grep -v 1.txt               反向过滤</p><p>cat &gt;1.txt                  清空文件内容<br>ll -d /data/www             查看权限</p><p>pkill -kill -t tty3          杀死用户进程</p><p>mkdir /media/cdrom<br>mount /dev/sr0  /media/cdrom             挂载光盘<br>umount /media/cdrom                      卸载</p><p>systemctl stop firewalld.service         关闭防火墙<br>setenforce 0                             给外界权限<br>systemctl disable firewalld.service      永久关闭<br>systemctl enable firewalld.service       永久开启<br>vim /etc/rc.d/rc.local                   设置开机启动<br>为镜像添加开机自动挂载<br>echo “mount /dev/sr0  /media/cdrom” &gt;&gt; /etc/rc.d/rc.local</p><p>vim /etc/selinux/config<br>^vim^cat                        把vim替换成cat继续执行</p><p>ls -al                          看临时文件</p><p>####CentOS7 目录文件</p><ul><li>/etc/yum.repos.d/                   yum源文件位置</li><li>/etc/rc.d/rc.local                  开机启动文件</li><li>rm -f /var/run/yum.pid</li><li>yum clean all                       清空yum源缓存</li><li>/etc/nginx/conf.d/default.conf      Nginx配置文件</li><li>vim /etc/my.cnf                     去mysql密码要求</li><li>/usr/share/nginx/html/              Nginx主页文件位置</li><li>/etc/httpd/conf/httpd.conf          Apache配置文件</li><li>/var/www/html/                      Apache主页文件位置</li></ul>]]></content>
     
@@ -71,10 +71,10 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://winthorlimo.github.io/2019/05/22/hello-world/"/>
-    <id>https://winthorlimo.github.io/2019/05/22/hello-world/</id>
+    <link href="https://winthorlimo.github.io/note/2019/undefined22/4a17b156.html"/>
+    <id>https://winthorlimo.github.io/note/2019/undefined22/4a17b156.html</id>
     <published>2019-05-22T13:49:08.806Z</published>
-    <updated>2019-05-22T13:49:08.806Z</updated>
+    <updated>2019-06-01T15:14:59.720Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
@@ -92,10 +92,10 @@
   
   <entry>
     <title>Who am I</title>
-    <link href="https://winthorlimo.github.io/2019/05/21/Who-am-I/"/>
-    <id>https://winthorlimo.github.io/2019/05/21/Who-am-I/</id>
+    <link href="https://winthorlimo.github.io/note/2019/undefined21/e3eaa03c.html"/>
+    <id>https://winthorlimo.github.io/note/2019/undefined21/e3eaa03c.html</id>
     <published>2019-05-21T10:01:24.000Z</published>
-    <updated>2019-05-25T10:14:45.083Z</updated>
+    <updated>2019-06-01T15:14:59.719Z</updated>
     
     <content type="html"><![CDATA[<h3 id="未来可期"><a href="#未来可期" class="headerlink" title="未来可期"></a>未来可期</h3>]]></content>
     
