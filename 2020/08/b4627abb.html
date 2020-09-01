@@ -89,13 +89,13 @@
 
 
 
-<meta name="description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta name="description" content="“使用开发语言提供的禁用外部实体的方法；过滤用户提交的XML数据：关键词：">
 <meta name="keywords" content="Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XXE 漏洞">
 <meta property="og:url" content="https://www.lintstar.top/2020/08/b4627abb.html">
 <meta property="og:site_name" content="离沫凌天๓">
-<meta property="og:description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta property="og:description" content="“使用开发语言提供的禁用外部实体的方法；过滤用户提交的XML数据：关键词：">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://qiniuyun.lintstar.top/20200809154625.png">
 <meta property="og:image" content="http://qiniuyun.lintstar.top/20200809153531.png">
@@ -111,10 +111,10 @@
 <meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809232712531.png">
 <meta property="og:image" content="http://qiniuyun.lintstar.top/20200810223201.png">
 <meta property="og:image" content="http://qiniuyun.lintstar.top/20200810223237.png">
-<meta property="og:updated_time" content="2020-08-20T09:26:02.504Z">
+<meta property="og:updated_time" content="2020-09-01T15:59:43.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XXE 漏洞">
-<meta name="twitter:description" content="XXE 漏洞XML外部实体注入 / XXE(XMLExternalEntityInjection)漏洞发生在应用程序解析XML输入时，没有禁止外部实体的加载。通过XML实体的SYSTEM关键词导致XML解析器可以从本地文件或者远程URI中读取数据。所以攻击者可以通过XML实体传递自己构造的恶意值，使得处理程序解析它。当引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口">
+<meta name="twitter:description" content="“使用开发语言提供的禁用外部实体的方法；过滤用户提交的XML数据：关键词：">
 <meta name="twitter:image" content="http://qiniuyun.lintstar.top/20200809154625.png">
 
 
@@ -428,9 +428,13 @@
           
 
           
+              <div class="post-description">
+                  “使用开发语言提供的禁用外部实体的方法；过滤用户提交的XML数据：关键词：<!DOCTYPE和<!ENTITY，或者SYSTEM和PUBLIC。PHP版本大于5.4.45的默认不解析外部实体。”
+              </div>
+          
 
         </div>
-      </header>
+      </div></header>
     
 
     
@@ -600,7 +604,7 @@
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
   </li>
 </ul>
 
@@ -828,7 +832,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-    全站字数：<span class="post-count">115.8k</span>
+    全站字数：<span class="post-count">115.9k</span>
     </span>
 </div>
 
